@@ -18,7 +18,7 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 	JLabel subject_label;
 	String subject;
 	
-	public Base_Window_Top() {
+	public Base_Window_Top(String subject) {
 		
 		setLayout(new BorderLayout()); //그리드 레이아웃
 		

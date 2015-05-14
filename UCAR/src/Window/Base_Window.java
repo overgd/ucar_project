@@ -10,13 +10,14 @@ public class Base_Window extends JFrame {
 	
 	Base_Window_Top base_top;
 	Base_Window_Bottom base_bottom;
+	String subject;
 	
 	public Base_Window(String title) {
 		
 		super(title);
 		setLayout(new BorderLayout());
 		
-		base_top = new Base_Window_Top(); //탑 윈도우 패널
+		base_top = new Base_Window_Top(subject("")); //탑 윈도우 패널
 		add("North", base_top);
 		
 		base_bottom = new Base_Window_Bottom(); //바텀 윈도우 패널
@@ -28,6 +29,13 @@ public class Base_Window extends JFrame {
 		setVisible(true); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+	}
+	
+	public String subject(String subject) {
+		
+		subject = this.subject;
+		
+		return subject;
 	}
 	
 }
