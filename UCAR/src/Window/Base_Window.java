@@ -16,11 +16,10 @@ public class Base_Window extends JFrame {
 		super(title);
 		setLayout(new BorderLayout());
 		
-		base_top = new Base_Window_Top();
-		base_top.setBackground(Color.WHITE);
+		base_top = new Base_Window_Top(); //탑 윈도우 패널
 		add("North", base_top);
 		
-		base_bottom = new Base_Window_Bottom();
+		base_bottom = new Base_Window_Bottom(); //바텀 윈도우 패널
 		add("South", base_bottom);
 		
 		setAlwaysOnTop(true);

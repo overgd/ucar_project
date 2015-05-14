@@ -2,6 +2,7 @@ package Window;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -15,34 +16,33 @@ public class Base_Window_Bottom extends JPanel {
 	public Base_Window_Bottom() {
 		
 		super();
+
+		btns = new JButton[5]; // 버튼 갯수
+		btns_panel = new JPanel[btns.length]; // 버튼 패널
+		null_panel = new JPanel[btns.length]; // 여백 패널
 		
-		btns = new JButton[7]; // 버튼
-		btns_panel = new JPanel[7]; // 버튼 개개인 패널
-		null_panel = new JPanel[7]; // 여백 패널
+		setLayout(new FlowLayout(FlowLayout.RIGHT)); // 그리드 레이아웃
 		
+		/*여백 생성*/
+		for(int i = 0; i < null_panel.length; i++) {
+			null_panel[i] = new JPanel();
+			null_panel[i].setPreferredSize(new Dimension(30, 100));
+		}
 		
+		/*버튼 생성*/
 		for(int i = 0; i < btns.length; i++) {
 			
-			btns[i] = new JButton("하나");
-			
-			btns[i].setPreferredSize(new Dimension(100, 50));
+			btns[i] = new JButton("");
+			btns[i].setPreferredSize(new Dimension(100, 40));
 			
 			btns_panel[i] = new JPanel();
-			
 			btns_panel[i].add(btns[i]);
-		
+			
 			add(btns_panel[i]);
+			add(null_panel[i]);
 			
 		}
-		
-		
-		for(int i = 0; i < btns.length; i++) { // 아래 여백 생성
-			null_panel[i] = new JPanel();
-			add(null_panel[i]);
-		}
-		
-		setLayout(new GridLayout(0, 7)); // 그리드 레이아웃
-		
+
 		setVisible(true);
 		
 	}
