@@ -17,12 +17,6 @@ public class Base_Window extends JFrame {
 		super(title);
 		setLayout(new BorderLayout());
 		
-		base_top = new Base_Window_Top(subject("")); //탑 윈도우 패널
-		add("North", base_top);
-		
-		base_bottom = new Base_Window_Bottom(); //바텀 윈도우 패널
-		add("South", base_bottom);
-		
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(500, 50, 1024, 768); // 위치(x : 500, y : 50), 크기(1024x768)
@@ -32,10 +26,22 @@ public class Base_Window extends JFrame {
 	}
 	
 	public String subject(String subject) {
-		
 		subject = this.subject;
-		
 		return subject;
+	}
+	
+	public void base_top_visible(boolean visible) {
+		if(visible) {
+			base_top = new Base_Window_Top(subject("")); //탑 윈도우 패널
+			add("North", base_top);
+		}
+	}
+	
+	public void base_bottom_visible(boolean visible) {
+		if(visible) {
+			base_bottom = new Base_Window_Bottom(); //바텀 윈도우 패널
+			add("South", base_bottom);
+		}
 	}
 	
 }
