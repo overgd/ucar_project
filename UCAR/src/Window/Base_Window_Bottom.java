@@ -16,13 +16,21 @@ public class Base_Window_Bottom extends JPanel {
 	public Base_Window_Bottom() {
 		
 		super();
-
-		btns = new JButton[5]; // 버튼 갯수
-		btns_panel = new JPanel[btns.length]; // 버튼 패널
-		null_panel = new JPanel[btns.length]; // 여백 패널
 		
 		setLayout(new FlowLayout(FlowLayout.RIGHT)); // 그리드 레이아웃
 		
+		button_add(5);
+
+		setVisible(true);
+		
+	}
+	
+	public void button_add(int btn_num){
+		
+		btns = new JButton[btn_num]; // 버튼 갯수
+		btns_panel = new JPanel[btns.length]; // 버튼 패널
+		null_panel = new JPanel[btns.length]; // 여백 패널
+
 		/*여백 생성*/
 		for(int i = 0; i < null_panel.length; i++) {
 			null_panel[i] = new JPanel();
@@ -40,11 +48,9 @@ public class Base_Window_Bottom extends JPanel {
 			
 			add(btns_panel[i]);
 			add(null_panel[i]);
-			
-		}
 
-		setVisible(true);
-		
+		}
+	
 	}
 
 }

@@ -8,7 +8,7 @@ public class Home_Window extends Base_Window {
 
 		super(title);
 		base_top_visible(true);
-		base_bottom_visible(false);
+		base_bottom_visible(true);
 		
 	}
 	
@@ -24,6 +24,12 @@ public class Home_Window extends Base_Window {
 		super.base_top_visible(visible);
 	}
 
+	@Override
+	public void base_center_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_center_visible(visible);
+	}
+	
 	@Override
 	public void base_bottom_visible(boolean visible) {
 		// TODO Auto-generated method stub

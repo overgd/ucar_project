@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 public class Base_Window extends JFrame {
 	
 	Base_Window_Top base_top;
+	Base_Window_Center base_center;
 	Base_Window_Bottom base_bottom;
 	String subject;
 	
@@ -34,6 +35,13 @@ public class Base_Window extends JFrame {
 		if(visible) {
 			base_top = new Base_Window_Top(subject("")); //탑 윈도우 패널
 			add("North", base_top);
+		}
+	}
+	
+	public void base_center_visible(boolean visible) {
+		if(visible) {
+			base_center = new Base_Window_Center();
+			add("Center", base_center);
 		}
 	}
 	
