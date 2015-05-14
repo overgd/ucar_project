@@ -1,27 +1,44 @@
 package Home;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 import Window.Base_Window;
 
 public class Home_Window extends Base_Window {
 	
+	String[] btn_name = {"등록", "리셋"};
+	
 	public Home_Window(String title) {
 
 		super(title);
-		base_top_visible(true);
-		base_bottom_visible(true);
+		
+		base_top_visible(true, "UCAR");
+		
+		base_center_visible(true);
+		
+		base_bottom_visible(true, btn_name);
+
+		base_setting(true);
 		
 	}
 	
 	@Override
-	public String subject(String subject) {
-		subject = "";
-		return subject;
+	public void base_setting(boolean check) {
+		// TODO Auto-generated method stub
+		super.base_setting(check);
 	}
 
 	@Override
-	public void base_top_visible(boolean visible) {
+	public String subject(String subject) {
 		// TODO Auto-generated method stub
-		super.base_top_visible(visible);
+		return super.subject(subject);
+	}
+
+	@Override
+	public void base_top_visible(boolean visible, String subject) {
+		// TODO Auto-generated method stub
+		super.base_top_visible(visible, subject);
 	}
 
 	@Override
@@ -29,13 +46,11 @@ public class Home_Window extends Base_Window {
 		// TODO Auto-generated method stub
 		super.base_center_visible(visible);
 	}
-	
+
 	@Override
-	public void base_bottom_visible(boolean visible) {
+	public void base_bottom_visible(boolean visible, String[] btn_name) {
 		// TODO Auto-generated method stub
-		super.base_bottom_visible(visible);
+		super.base_bottom_visible(visible, btn_name);
 	}
-
-
 	
 }

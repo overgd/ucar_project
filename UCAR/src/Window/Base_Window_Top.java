@@ -3,8 +3,6 @@ package Window;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Label;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,7 +18,7 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 	
 	public Base_Window_Top(String subject) {
 		
-		setLayout(new BorderLayout()); //그리드 레이아웃
+		setLayout(new BorderLayout()); //보더레이아웃
 		
 		btns_panel = new JPanel[2];
 		btns_panel[0] = new JPanel();
