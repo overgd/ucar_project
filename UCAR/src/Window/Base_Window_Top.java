@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 
+	Base_Window_Top_Dao top_dao;
+	
 	JButton backbtn, homebtn; // 백 버튼, 홈 버튼
 	JPanel[] btns_panel;
 	JPanel[] null_panel;
@@ -19,6 +21,8 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 	public Base_Window_Top(String subject) {
 		
 		setLayout(new BorderLayout()); //보더레이아웃
+		
+		top_dao = new Base_Window_Top_Dao();
 		
 		btns_panel = new JPanel[2];
 		btns_panel[0] = new JPanel();
@@ -36,9 +40,11 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 		/*버튼 생성*/
 		backbtn = new JButton(""); // 백 버튼
 		backbtn.setPreferredSize(new Dimension(100, 100));
-
+		top_dao.setBackbtn(backbtn);
+		
 		homebtn = new JButton(""); // 홈 버튼
 		homebtn.setPreferredSize(new Dimension(100, 100));
+		top_dao.setHomebtn(homebtn);
 		
 		/*버튼을 패널에 추가*/
 		btns_panel[0].add(null_panel[0]);

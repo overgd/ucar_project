@@ -1,5 +1,7 @@
 package Home;
 
+import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -23,6 +25,12 @@ public class Home_Window extends Base_Window {
 		
 	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		super.actionPerformed(e);
+	}
+
 	@Override
 	public void base_setting(boolean check) {
 		// TODO Auto-generated method stub
