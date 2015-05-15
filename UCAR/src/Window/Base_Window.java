@@ -1,7 +1,6 @@
 package Window;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +14,8 @@ public class Base_Window extends JFrame implements ActionListener {
 	Base_Window_Bottom base_bottom;
 	
 	JButton[] bottom_btn;
-	JButton backbtn, homebtn;
+	protected JButton backbtn;
+	JButton homebtn;
 	
 	String subject;
 	
@@ -23,8 +23,6 @@ public class Base_Window extends JFrame implements ActionListener {
 		
 		super(title);
 		setLayout(new BorderLayout());
-		
-//		window_setting(true);
 		
 	}
 	
@@ -44,16 +42,17 @@ public class Base_Window extends JFrame implements ActionListener {
 	public void base_top_visible(boolean visible, String subject) {
 		if(visible) {
 			base_top = new Base_Window_Top(subject); //탑 윈도우 패널
+			add("North", base_top);
 			backbtn = base_top.top_dao.getBackbtn();
 			backbtn.addActionListener(this);
 			homebtn = base_top.top_dao.getHomebtn();
 			homebtn.addActionListener(this);
-			add("North", base_top);
 		}
 	}
 	
 	public void base_center_visible(boolean visible) {
 		if(visible) {
+			
 			base_center = new Base_Window_Center();
 			add("Center", base_center);
 		}
@@ -65,11 +64,11 @@ public class Base_Window extends JFrame implements ActionListener {
 			
 			base_bottom = new Base_Window_Bottom(btn_name); //바텀 윈도우 패널
 			add("South", base_bottom);
-			
 			bottom_btn = base_bottom.bottom_dao.getBottom_btn();
-			for(int i = 0; i < bottom_btn.length; i++){
+			for(int i = 0; i < bottom_btn.length; i++) {
 				bottom_btn[i].addActionListener(this);
 			}
+			
 		}
 		
 	}
@@ -77,21 +76,9 @@ public class Base_Window extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		JButton btn = (JButton)e.getSource();
 		
-		for(int i = 0; i < bottom_btn.length; i++) {
-			if(btn == bottom_btn[i]) {
-				base_center.center_layout.show(base_center.slide, "a");
-			}
-		}
-		if(btn == backbtn) {
-			base_center.center_layout.previous(base_center.slide);
-		}
-		if(btn == homebtn) {
-			base_center.center_layout.first(base_center.slide);
-		}
 		
 	}
-	
+
 	
 }
