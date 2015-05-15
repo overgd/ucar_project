@@ -1,6 +1,7 @@
 package Window;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -35,6 +36,7 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 		for(int i = 0; i < null_panel.length; i++) {
 			null_panel[i] = new JPanel();
 			null_panel[i].setPreferredSize(new Dimension(30, 150));
+			null_panel[i].setBackground(Color.WHITE);
 		}
 		
 		/*버튼 생성*/
@@ -51,13 +53,16 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 		btns_panel[0].add(backbtn); 
 		btns_panel[0].add(null_panel[1]);
 		btns_panel[0].add(subject_label);
+		btns_panel[0].setBackground(Color.WHITE);
 		
 		btns_panel[1].add(homebtn);
 		btns_panel[1].add(null_panel[2]);
+		btns_panel[1].setBackground(Color.WHITE);
 		
 		add("West", btns_panel[0]);
 		add("East", btns_panel[1]);
 		
+		setBackground(Color.WHITE);
 		setVisible(true);
 	}
 	

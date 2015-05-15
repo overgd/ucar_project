@@ -1,6 +1,7 @@
 package Window;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,6 +33,7 @@ public class Base_Window extends JFrame implements ActionListener {
 	}
 	
 	public void base_setting(boolean check) { // 윈도우 기본 설정
+		setBackground(Color.WHITE);
 		setAlwaysOnTop(true);  							//항상 위 옵션
 		setResizable(false);							//크기 조절 불가능
 		setBounds(500, 50, 1024, 768);					// 위치(x : 500, y : 50), 크기(1024x768)

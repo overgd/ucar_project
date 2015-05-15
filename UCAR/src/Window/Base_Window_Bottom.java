@@ -1,5 +1,6 @@
 package Window;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -24,6 +25,7 @@ public class Base_Window_Bottom extends JPanel {
 		
 		button_add(btn_name.length);
 		
+		setBackground(Color.WHITE);
 		setVisible(true);
 		
 	}
@@ -38,11 +40,13 @@ public class Base_Window_Bottom extends JPanel {
 		for(int i = 0; i < null_panel.length; i++) {
 			null_panel[i] = new JPanel();
 			null_panel[i].setPreferredSize(new Dimension(50, 150));
+			null_panel[i].setBackground(Color.WHITE);
 		
 			btns[i] = new JButton();
 			btns[i].setPreferredSize(new Dimension(100, 40));
 			
 			btns_panel[i] = new JPanel();
+			btns_panel[i].setBackground(Color.WHITE);
 		}
 		
 		bottom_dao.setBottom_btn(btns);

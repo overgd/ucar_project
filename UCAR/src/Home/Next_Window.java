@@ -6,11 +6,13 @@ import Window.Base_Window;
 
 public class Next_Window extends Base_Window {
 
+	String[] btn_name = {"등록", "취소"};
 	
 	public Next_Window(String title) {
 		
 		super(title);
-		base_top_visible(true, "다음");
+		base_top_visible(true, "매매");
+		base_bottom_visible(true, btn_name);
 		base_setting(true);
 	
 	}
