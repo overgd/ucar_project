@@ -10,8 +10,7 @@ import javax.swing.JPanel;
 import Window.Base_Window;
 
 public class Home_Window extends Base_Window {
-	
-	String[] btn_name = {"수정", "등록", "리셋", "파워"};
+
 	JButton backbtn;
 	JButton homebtn;
 	
