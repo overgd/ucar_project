@@ -41,10 +41,10 @@ public class Home_Window extends Base_Window {
 		deal_btn.addActionListener(this);
 		sale_btn.addActionListener(this);
 		
-		car_btn.setBounds(15, 5, 180, 180);
-		user_btn.setBounds(5, 5, 180, 180);
-		deal_btn.setBounds(0, 15, 180, 180);
-		sale_btn.setBounds(5, 15, 180, 180);
+		car_btn.setBounds(30, 10, 200, 200);
+		user_btn.setBounds(30, 10, 200, 200);
+		deal_btn.setBounds(30, 10, 200, 200);
+		sale_btn.setBounds(30, 10, 200, 200);
 		
 		car_btn_panel = new JPanel(null);
 		user_btn_panel = new JPanel(null);
@@ -63,7 +63,7 @@ public class Home_Window extends Base_Window {
 		home_panel.add(deal_btn_panel);
 		home_panel.add(sale_btn_panel);
 		
-		home_panel.setBounds(256, 180, 512, 384);
+		home_panel.setBounds(256, 180, 500, 500);
 		
 		add(home_panel);
 
