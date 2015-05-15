@@ -12,6 +12,7 @@ public class Next_Window extends Base_Window {
 		
 		super(title);
 		base_top_visible(true, "¸Å¸Å");
+		base_center_visible(true);
 		base_bottom_visible(true, btn_name);
 		base_setting(true);
 	
