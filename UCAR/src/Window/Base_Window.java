@@ -1,14 +1,18 @@
 package Window;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Base_Window extends JFrame {
+public class Base_Window extends JFrame implements ActionListener {
 	
 	Base_Window_Top base_top;
 	Base_Window_Center base_center;
 	Base_Window_Bottom base_bottom;
+	
 	String subject;
 	
 	public Base_Window(String title) {
@@ -42,6 +46,7 @@ public class Base_Window extends JFrame {
 	
 	public void base_center_visible(boolean visible) {
 		if(visible) {
+			//base_bottom.bottom_dao.getBottom_btn();
 			base_center = new Base_Window_Center();
 			add("Center", base_center);
 		}
@@ -52,6 +57,12 @@ public class Base_Window extends JFrame {
 			base_bottom = new Base_Window_Bottom(btn_name); //바텀 윈도우 패널
 			add("South", base_bottom);
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
 	}
 	
 	

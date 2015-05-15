@@ -7,13 +7,13 @@ import Window.Base_Window;
 
 public class Home_Window extends Base_Window {
 	
-	String[] btn_name = {"등록", "리셋"};
+	String[] btn_name = {"수정", "등록", "리셋"};
 	
 	public Home_Window(String title) {
 
 		super(title);
 		
-		base_top_visible(true, "UCAR");
+		base_top_visible(true, "상세 조회");
 		
 		base_center_visible(true);
 		

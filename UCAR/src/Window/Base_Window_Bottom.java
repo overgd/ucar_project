@@ -10,17 +10,20 @@ public class Base_Window_Bottom extends JPanel {
 
 	JButton[] btns;
 	JPanel[] null_panel, btns_panel;
+	Base_Window_Bottom_Dao bottom_dao;
 	
 	public Base_Window_Bottom(String[] btn_name) {
 	
 		setLayout(new FlowLayout(FlowLayout.RIGHT)); // 그리드 레이아웃
+		
+		bottom_dao = new Base_Window_Bottom_Dao();
 		
 		button_create(btn_name.length);
 		
 		button_insert_name(btn_name);
 		
 		button_add(btn_name.length);
-
+		
 		setVisible(true);
 		
 	}
@@ -41,6 +44,8 @@ public class Base_Window_Bottom extends JPanel {
 			
 			btns_panel[i] = new JPanel();
 		}
+		
+		bottom_dao.setBottom_btn(btns);
 		
 	}
 	
