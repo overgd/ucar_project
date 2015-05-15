@@ -19,18 +19,22 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 	JLabel subject_label;
 	String subject;
 	
+	ButtonImage img;
+	
 	public Base_Window_Top(String subject) {
 		
 		setLayout(new BorderLayout()); //보더레이아웃
 		
 		top_dao = new Base_Window_Top_Dao();
 		
+		img = new ButtonImage();
+		
 		btns_panel = new JPanel[2];
 		btns_panel[0] = new JPanel();
 		btns_panel[1] = new JPanel();
 		
 		subject_label = new JLabel(subject);
-		subject_label.setFont(new Font("맑은 고딕", Font.BOLD, 50));
+		subject_label.setFont(new Font("맑은 고딕", Font.BOLD, 60));
 		
 		null_panel = new JPanel[3];
 		for(int i = 0; i < null_panel.length; i++) {
@@ -40,12 +44,14 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 		}
 		
 		/*버튼 생성*/
-		backbtn = new JButton(""); // 백 버튼
-		backbtn.setPreferredSize(new Dimension(100, 100));
+		backbtn = new JButton(); // 백 버튼
+		backbtn.setIcon(img.back_img);
+		backbtn.setPreferredSize(new Dimension(140, 140));
 		top_dao.setBackbtn(backbtn);
 		
-		homebtn = new JButton(""); // 홈 버튼
-		homebtn.setPreferredSize(new Dimension(100, 100));
+		homebtn = new JButton(); // 홈 버튼
+		homebtn.setIcon(img.home_img);
+		homebtn.setPreferredSize(new Dimension(140, 140));
 		top_dao.setHomebtn(homebtn);
 		
 		/*버튼을 패널에 추가*/

@@ -3,6 +3,7 @@ package Window;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -43,6 +44,7 @@ public class Base_Window_Bottom extends JPanel {
 			null_panel[i].setBackground(Color.WHITE);
 		
 			btns[i] = new JButton();
+			btns[i].setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 			btns[i].setPreferredSize(new Dimension(100, 40));
 			
 			btns_panel[i] = new JPanel();

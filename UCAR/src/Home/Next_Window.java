@@ -6,7 +6,7 @@ import Window.Base_Window;
 
 public class Next_Window extends Base_Window {
 
-	String[] btn_name = {"등록", "취소"};
+	String[] btn_name = {"등 록", "취 소"};
 	
 	public Next_Window(String title) {
 		

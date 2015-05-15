@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 public class Base_Window extends JFrame implements ActionListener {
 	
@@ -25,6 +26,7 @@ public class Base_Window extends JFrame implements ActionListener {
 		super(title);
 		setLayout(new BorderLayout());
 		
+		
 	}
 	
 	public String subject(String subject) {
@@ -33,6 +35,14 @@ public class Base_Window extends JFrame implements ActionListener {
 	}
 	
 	public void base_setting(boolean check) { // 윈도우 기본 설정
+		
+		try{
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
 		setBackground(Color.WHITE);
 		setAlwaysOnTop(true);  							//항상 위 옵션
 		setResizable(false);							//크기 조절 불가능
