@@ -63,7 +63,7 @@ public class Home_Window extends Base_Window {
 		home_panel.add(deal_btn_panel);
 		home_panel.add(sale_btn_panel);
 		
-		home_panel.setBounds(256, 180, 500, 500);
+		home_panel.setBounds(256, 140, 500, 500);
 		
 		add(home_panel);
 
