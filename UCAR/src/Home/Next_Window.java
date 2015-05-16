@@ -3,18 +3,17 @@ package Home;
 import java.awt.event.ActionEvent;
 
 import Window.Base_Window;
+import Window.Base_Window_Panel;
 
-public class Next_Window extends Base_Window {
+public class Next_Window extends Base_Window_Panel {
 
 	String[] btn_name = {"등 록", "취 소"};
 	
 	public Next_Window(String title) {
-		
-		super(title);
+
 		base_top_visible(true, "매매");
 		base_center_visible(true);
 		base_bottom_visible(true, btn_name);
-		base_setting(true);
 	
 	}
 
@@ -22,12 +21,6 @@ public class Next_Window extends Base_Window {
 	public String subject(String subject) {
 		// TODO Auto-generated method stub
 		return super.subject(subject);
-	}
-
-	@Override
-	public void base_setting(boolean check) {
-		// TODO Auto-generated method stub
-		super.base_setting(check);
 	}
 
 	@Override
