@@ -22,7 +22,11 @@ public class Ucar_Init extends Base_Window {
 		super(title);
 		
 		home_panel = new Home_Panel();
+		
 		home_panel.car_btn.addActionListener(this);
+		home_panel.user_btn.addActionListener(this);
+		home_panel.deal_btn.addActionListener(this);
+		home_panel.sale_btn.addActionListener(this);
 		
 		panel = new TopAndBottom_Panel[2];
 		
@@ -32,17 +36,19 @@ public class Ucar_Init extends Base_Window {
 		slide.add(home_panel, "home");
 		
 		for(int i = 0; i < panel.length; i++) {
+			
 			panel[i].backbtn.addActionListener(this);
 			panel[i].homebtn.addActionListener(this);
 			panel[i].bottom_btn[panel[i].btn_num-1].addActionListener(this);
 			slide.add(panel[i], String.valueOf(i));
+			
 		}
 		
 		add(slide);
 		layout.show(slide, "home");
 		
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -62,6 +68,7 @@ public class Ucar_Init extends Base_Window {
 			}
 			if(btn == panel[i].homebtn) {
 				layout.show(slide, "home");
+				System.out.println("È¨¹öÆ°");
 			}
 		}
 		
