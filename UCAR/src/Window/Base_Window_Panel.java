@@ -1,6 +1,7 @@
 package Window;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,19 +15,22 @@ public class Base_Window_Panel extends JPanel implements ActionListener {
 	Base_Window_Center base_center;
 	Base_Window_Bottom base_bottom;
 	
-	JButton[] bottom_btn;
-	protected JButton backbtn;
-	JButton homebtn;
+	public JButton[] bottom_btn;
+	public JButton backbtn;
+	public JButton homebtn;
 	
 	String subject;
+	public String[] btn_name;
+	
+	CardLayout baselayout;
 	
 	public Base_Window_Panel() {
 		
 		super();
-		
+	
 		setLayout(new BorderLayout());
-		
 		setBackground(Color.WHITE);
+		
 		setVisible(true);
 	
 	}
@@ -41,9 +45,7 @@ public class Base_Window_Panel extends JPanel implements ActionListener {
 			base_top = new Base_Window_Top(subject); //탑 윈도우 패널
 			add("North", base_top);
 			backbtn = base_top.top_dao.getBackbtn();
-			backbtn.addActionListener(this);
 			homebtn = base_top.top_dao.getHomebtn();
-			homebtn.addActionListener(this);
 		}
 	}
 	
@@ -62,17 +64,14 @@ public class Base_Window_Panel extends JPanel implements ActionListener {
 			base_bottom = new Base_Window_Bottom(btn_name); //바텀 윈도우 패널
 			add("South", base_bottom);
 			bottom_btn = base_bottom.bottom_dao.getBottom_btn();
-			for(int i = 0; i < bottom_btn.length; i++) {
-				bottom_btn[i].addActionListener(this);
-			}
-			
 		}
 		
 	}	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+
+		
 		
 	}
 

@@ -1,20 +1,22 @@
-package Home;
+package Panel;
 
 import java.awt.event.ActionEvent;
 
 import Window.Base_Window;
 import Window.Base_Window_Panel;
 
-public class Next_Window extends Base_Window_Panel {
+public class First_Panel extends TopAndBottom_Panel {
 
-	String[] btn_name = {"등 록", "취 소"};
+	String[] btn_name = {"등록", "취소", "수정"};
+	public String subject = "첫번째";
 	
-	public Next_Window(String title) {
-
-		base_top_visible(true, "매매");
+	public First_Panel() {
+		
+		btn_num = btn_name.length;
+		
+		base_top_visible(true, subject);
 		base_center_visible(true);
 		base_bottom_visible(true, btn_name);
-	
 	}
 
 	@Override

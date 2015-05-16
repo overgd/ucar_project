@@ -1,27 +1,22 @@
-package Home;
+package Panel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import Window.Base_Window;
 import Window.Base_Window_Panel;
 
-public class Home_Window_Panel extends Base_Window_Panel {
-
-	JButton backbtn;
-	JButton homebtn;
+public class Home_Panel extends Base_Window_Panel {
 	
 	JPanel home_panel;
 	
 	JPanel car_btn_panel, user_btn_panel, deal_btn_panel, sale_btn_panel;
-	JButton car_btn, user_btn, deal_btn, sale_btn;
+	public JButton car_btn, user_btn, deal_btn, sale_btn;
 	
-	public Home_Window_Panel() {
+	public Home_Panel() {
 		
 		setLayout(null);
 		
@@ -29,11 +24,6 @@ public class Home_Window_Panel extends Base_Window_Panel {
 		user_btn = new JButton("회원");
 		deal_btn = new JButton("매매");
 		sale_btn = new JButton("판매");
-		
-		car_btn.addActionListener(this);
-		user_btn.addActionListener(this);
-		deal_btn.addActionListener(this);
-		sale_btn.addActionListener(this);
 		
 		car_btn.setBounds(30, 10, 200, 200);
 		user_btn.setBounds(30, 10, 200, 200);
@@ -73,11 +63,6 @@ public class Home_Window_Panel extends Base_Window_Panel {
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		
-		JButton btn = (JButton)e.getSource();
-		if(btn == car_btn) {
-			
-		}
-
 	}
 
 	@Override
