@@ -6,11 +6,11 @@ import javax.swing.JPanel;
 
 public class ButtonImage extends JPanel {
 	
-	ImageIcon home_img, back_img, pcinfo_img_1, pcinfo_img_2,
+	public ImageIcon home_img, back_img, pcinfo_img_1, pcinfo_img_2,
 	saleinfo_img_1, saleinfo_img_2, ucinfo_img_1, ucinfo_img_2,
 	userinfo_img_1, userinfo_img_2;
 	
-	ButtonImage() {
+	public ButtonImage() {
 		
 		home_img = new ImageIcon("./img/btn_home_1.jpg");
 		back_img = new ImageIcon("./img/btn_back_1.jpg");

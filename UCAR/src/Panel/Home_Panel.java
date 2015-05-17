@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import Window.Base_Window_Panel;
+import Window.ButtonImage;
 
 public class Home_Panel extends Base_Window_Panel {
 	
@@ -15,6 +16,8 @@ public class Home_Panel extends Base_Window_Panel {
 	
 	JPanel car_btn_panel, user_btn_panel, deal_btn_panel, sale_btn_panel;
 	public JButton car_btn, user_btn, deal_btn, sale_btn;
+	
+	ButtonImage img;
 	
 	public Home_Panel() {
 		
@@ -26,6 +29,7 @@ public class Home_Panel extends Base_Window_Panel {
 		sale_btn = new JButton("ÆÇ¸Å");
 		
 		car_btn.setBounds(30, 10, 200, 200);
+//		car_btn.setIcon();
 		user_btn.setBounds(30, 10, 200, 200);
 		deal_btn.setBounds(30, 10, 200, 200);
 		sale_btn.setBounds(30, 10, 200, 200);
@@ -75,12 +79,6 @@ public class Home_Panel extends Base_Window_Panel {
 	public void base_top_visible(boolean visible, String subject) {
 		// TODO Auto-generated method stub
 		super.base_top_visible(visible, subject);
-	}
-
-	@Override
-	public void base_center_visible(boolean visible) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible);
 	}
 
 	@Override

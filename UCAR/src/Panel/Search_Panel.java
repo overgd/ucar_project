@@ -5,20 +5,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import Window.Base_Window_Panel;
-import Window.ButtonImage;
 
-public class TopAndBottom_Panel extends Base_Window_Panel {
-
-	String[] btn_name = {""};
+public class Search_Panel extends Base_Window_Panel {
+	
 	public int btn_num;
 	public String subject;
-	
-	public TopAndBottom_Panel() {
+		
+	public Search_Panel() {
 		
 		super();
-		
-		base_top_visible(true, subject);
-		base_center_visible(true);
 		
 	}
 
@@ -33,7 +28,13 @@ public class TopAndBottom_Panel extends Base_Window_Panel {
 		// TODO Auto-generated method stub
 		super.base_top_visible(visible, subject);
 	}
-	
+
+	@Override
+	public void base_top_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_top_visible(visible);
+	}
+
 	@Override
 	public void base_center_visible(boolean visible, ImageIcon img_icon1,
 			ImageIcon img_icon2) {
@@ -61,23 +62,15 @@ public class TopAndBottom_Panel extends Base_Window_Panel {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		super.actionPerformed(e);
-	}
-
-	@Override
-	public void base_top_visible(boolean visible) {
-		// TODO Auto-generated method stub
-		super.base_top_visible(visible);
-	}
-
-	@Override
 	public void base_bottom_visible(boolean visible) {
 		// TODO Auto-generated method stub
 		super.base_bottom_visible(visible);
 	}
-	
-	
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		super.actionPerformed(e);
+	}
+	
 }

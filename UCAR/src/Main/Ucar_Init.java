@@ -1,25 +1,30 @@
 package Main;
 
-import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 import Panel.First_Panel;
 import Panel.Home_Panel;
-import Panel.Second_Panel;
-import Panel.TopAndBottom_Panel;
+import Panel.Search_Panel;
+import Panel.TwoButton_Panel;
 import Window.Base_Window;
+import Window.ButtonImage;
 
 public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
-	TopAndBottom_Panel[] panel;
+	Search_Panel[] panel;
 	
 	public Ucar_Init(String title) {
 		
-		super(title);
+	super(title);
 		
 		home_panel = new Home_Panel();
 		
@@ -28,10 +33,10 @@ public class Ucar_Init extends Base_Window {
 		home_panel.deal_btn.addActionListener(this);
 		home_panel.sale_btn.addActionListener(this);
 		
-		panel = new TopAndBottom_Panel[2];
+		panel = new Search_Panel[2];
 		
 		panel[0] = new First_Panel();
-		panel[1] = new Second_Panel();
+		panel[1] = new First_Panel();
 		
 		slide.add(home_panel, "home");
 		
@@ -39,15 +44,19 @@ public class Ucar_Init extends Base_Window {
 			
 			panel[i].backbtn.addActionListener(this);
 			panel[i].homebtn.addActionListener(this);
+			if(panel[i].btn_num > 0) {
 			panel[i].bottom_btn[panel[i].btn_num-1].addActionListener(this);
-			slide.add(panel[i], String.valueOf(i));
+			}
 			
+			slide.add(panel[i], String.valueOf(i));
 		}
 		
 		add(slide);
+		
 		layout.show(slide, "home");
 		
 	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -58,7 +67,6 @@ public class Ucar_Init extends Base_Window {
 		
 		if(btn == home_panel.car_btn) {
 			this.layout.show(slide, "0");
-	
 		}
 		
 		for(int i = 0; i < panel.length; i++) {

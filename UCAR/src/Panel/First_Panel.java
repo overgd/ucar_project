@@ -2,21 +2,39 @@ package Panel;
 
 import java.awt.event.ActionEvent;
 
-import Window.Base_Window;
-import Window.Base_Window_Panel;
+import javax.swing.ImageIcon;
 
-public class First_Panel extends TopAndBottom_Panel {
+import Window.ButtonImage;
 
-	String[] btn_name = {"등록", "취소", "수정"};
+public class First_Panel extends Search_Panel {
+
+	String[] search_list_name = {"하나", "둘", "셋"};
+	String[] btn_name = {"확인"};
+	
 	public String subject = "첫번째";
+	ButtonImage img;
 	
 	public First_Panel() {
 		
-		btn_num = btn_name.length;
+		super();
 		
-		base_top_visible(true, subject);
-		base_center_visible(true);
+		img = new ButtonImage();
+		base_top_visible(true, "조회");
+		base_center_visible(true, search_list_name, search_list_name);
 		base_bottom_visible(true, btn_name);
+		
+	}
+ 
+	@Override
+	public void base_top_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_top_visible(visible);
+	}
+
+	@Override
+	public void base_bottom_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_bottom_visible(visible);
 	}
 
 	@Override
@@ -29,6 +47,21 @@ public class First_Panel extends TopAndBottom_Panel {
 	public void base_top_visible(boolean visible, String subject) {
 		// TODO Auto-generated method stub
 		super.base_top_visible(visible, subject);
+	}
+	
+
+	@Override
+	public void base_center_visible(boolean visible, ImageIcon img_icon1,
+			ImageIcon img_icon2) {
+		// TODO Auto-generated method stub
+		super.base_center_visible(visible, img_icon1, img_icon2);
+	}
+
+	@Override
+	public void base_center_visible(boolean visible, String[] search_name,
+			String[] search_list_name) {
+		// TODO Auto-generated method stub
+		super.base_center_visible(visible, search_name, search_list_name);
 	}
 
 	@Override

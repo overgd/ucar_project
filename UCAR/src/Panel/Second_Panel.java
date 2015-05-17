@@ -15,9 +15,20 @@ public class Second_Panel extends TopAndBottom_Panel {
 		btn_num = btn_name.length;
 		
 		base_top_visible(true, subject);
-		base_center_visible(true);
 		base_bottom_visible(true, btn_name);
 		
+	}
+	
+	@Override
+	public void base_top_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_top_visible(visible);
+	}
+
+	@Override
+	public void base_bottom_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_bottom_visible(visible);
 	}
 
 	@Override
@@ -30,12 +41,6 @@ public class Second_Panel extends TopAndBottom_Panel {
 	public void base_top_visible(boolean visible, String subject) {
 		// TODO Auto-generated method stub
 		super.base_top_visible(visible, subject);
-	}
-
-	@Override
-	public void base_center_visible(boolean visible) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible);
 	}
 
 	@Override
