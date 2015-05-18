@@ -49,9 +49,9 @@ public class Ucar_Init extends Base_Window {
 	
 	public void panel_add() {
 		
-		panel = new Search_Panel[2];
+		panel = new Search_Panel[1];
 		panel[0] = new First_Panel();
-		panel[1] = new First_Panel();
+//		panel[1] = new First_Panel();
 		
 		for(int i = 0; i < panel.length; i++) {
 			

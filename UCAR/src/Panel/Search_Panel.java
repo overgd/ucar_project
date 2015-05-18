@@ -2,7 +2,10 @@ package Panel;
 
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 
@@ -13,13 +16,18 @@ public class Search_Panel extends Base_Window_Panel {
 	
 	public DB_Conn conn;
 	public Connection con;
+	public PreparedStatement pstmt;
+	public Statement stmt;
+	public String selectsql = "select * from test_info where car = ?";
+	
 	public int btn_num;
 	public String subject;
-		
+	
+	public String[] table_data;	
+	
 	public Search_Panel() {
 		
 		super();
-		DB_Connect();
 		
 	}
 	
@@ -33,13 +41,46 @@ public class Search_Panel extends Base_Window_Panel {
 		catch(Exception e) {
 			System.out.println("DB연결실패");
 		}
-		finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		
+	}
+	
+	public void DB_Select() { 
+	
+		try {
+			pstmt = con.prepareStatement(selectsql);
+			pstmt.setString(1, "대형");
+			ResultSet rs = pstmt.executeQuery();
+			
+			table_data = new String[3];
+			
+			int i = 0;
+			
+			while(rs.next()) {
+				
+				table_data[i] = rs.getString("car");
+				
+				if(i != 0) {
+					
+					if(table_data[i].equals(table_data[i-1])){
+						System.out.println("같음");
+					}
+					else if(!table_data[i].equals(table_data[i-1])) {
+						System.out.println(table_data[i]);
+					}
+				}
+				
+				else if(i == 0) {
+					System.out.println(table_data[i]);
+				}
+				
+				i++;
 			}
-		}
+
+			System.out.println("조회 완료");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 		
 	}
 	

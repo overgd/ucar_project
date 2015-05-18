@@ -20,12 +20,22 @@ public class First_Panel extends Search_Panel {
 
 		btn_num = btn_name.length;
 		
+		DB_Connect();
+		DB_Select();
+		
 		base_top_visible(true, "Á¶È¸");
 		base_center_visible(true, search_name, search_list_name);
 		base_bottom_visible(true, btn_name);
 		
 	}
- 
+	
+	
+	@Override
+	public void DB_Connect() {
+		// TODO Auto-generated method stub
+		super.DB_Connect();
+	}
+	
 	@Override
 	public void base_top_visible(boolean visible) {
 		// TODO Auto-generated method stub
