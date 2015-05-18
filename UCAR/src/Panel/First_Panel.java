@@ -13,13 +13,13 @@ public class First_Panel extends Search_Panel {
 	String[] btn_name = {"확인"};
 	
 	public String subject = "첫번째";
-	ButtonImage img;
 	
 	public First_Panel() {
 		
 		super();
+
+		btn_num = btn_name.length;
 		
-		img = new ButtonImage();
 		base_top_visible(true, "조회");
 		base_center_visible(true, search_name, search_list_name);
 		base_bottom_visible(true, btn_name);

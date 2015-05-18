@@ -22,5 +22,6 @@ public class ButtonImage extends JPanel {
 		ucinfo_img_2 = new ImageIcon("./img/btn_ucinfo_2.png");
 		userinfo_img_1 = new ImageIcon("./img/btn_userinfo_1.png");
 		userinfo_img_2 = new ImageIcon("./img/btn_userinfo_2.png");
+		
 	}
 }

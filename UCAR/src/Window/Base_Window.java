@@ -55,8 +55,6 @@ public class Base_Window extends JFrame implements ActionListener {
 	
 		JButton btn = (JButton)e.getSource();
 		
-		
-		
 	} 
 	
 }
