@@ -7,17 +7,20 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import Panel.TwoButton_Panel;
 import Window.Base_Window_Panel;
 import Window.ButtonImage;
 
-public class Sale_Panel_0 extends Base_Window_Panel {
-	
+public class Sale_Panel_0 extends TwoButton_Panel {
+
 	JPanel Sale_Panel_0;
 	
-	JPanel grosssales_btn_panel, yearsearch_btn_panel, monthlysearch_btn_panel,
-			searchilbyeol_btn_panel, salesregistration_btn_panel, detailedsearch_btn_panel;
-	public JButton grosssales_btn, yearsearch_btn, monthlysearch_btn, searchilbyeol_btn,
-			salesregistration_btn, detailedsearch_btn;
+	JPanel gross_sales_btn_panel, year_search_btn_panel,
+			monthly_search_btn_panel, search_ilbyeol_btn_panel,
+			sales_registration_btn_panel, detailed_search_btn_panel;
+	public JButton gross_sales_btn, year_search_btn,
+			monthly_search_btn, search_ilbyeol_btn,
+			sales_registration_btn, detailed_search_btn;
 	
 	ButtonImage img;
 	
@@ -27,63 +30,67 @@ public class Sale_Panel_0 extends Base_Window_Panel {
 		
 		img = new ButtonImage();
 		
-		grosssales_btn = new JButton("총 매출");
-		grosssales_btn.setIcon(img.ucinfo_img_1);
-		grosssales_btn.setPressedIcon(img.ucinfo_img_2);
-		yearsearch_btn = new JButton("연간 검색");
-		yearsearch_btn.setIcon(img.userinfo_img_1);
-		yearsearch_btn.setPressedIcon(img.userinfo_img_2);
-		monthlysearch_btn = new JButton("월별 검색");
+		gross_sales_btn = new JButton();
+		gross_sales_btn.setIcon(img.totalsaleinfo_img_1);
+		gross_sales_btn.setPressedIcon(img.totalsaleinfo_img_2);
+		sales_registration_btn = new JButton();
+		sales_registration_btn.setIcon(img.saleregister_img_1);
+		sales_registration_btn.setPressedIcon(img.saleregister_img_2);
+		detailed_search_btn = new JButton();
+		detailed_search_btn.setIcon(img.detailsearch_img_1);
+		detailed_search_btn.setPressedIcon(img.detailsearch_img_2);
+		year_search_btn = new JButton();
+		year_search_btn.setIcon(img.yysearch_img_1);
+		year_search_btn.setPressedIcon(img.yysearch_img_2);
+		monthly_search_btn = new JButton();
+		monthly_search_btn.setIcon(img.mmsearch_img_1);
+		monthly_search_btn.setPressedIcon(img.mmsearch_img_2);
+		search_ilbyeol_btn = new JButton();
+		search_ilbyeol_btn.setIcon(img.ddsearch_img_1);
+		search_ilbyeol_btn.setPressedIcon(img.ddsearch_img_2);
+
 		
-		searchilbyeol_btn = new JButton("일별 검색");
-		searchilbyeol_btn.setIcon(img.pcinfo_img_1);
-		searchilbyeol_btn.setPressedIcon(img.pcinfo_img_2);
-		salesregistration_btn = new JButton("매출 등록");
-		salesregistration_btn.setIcon(img.pcinfo_img_1);
-		salesregistration_btn.setPressedIcon(img.pcinfo_img_2);
-		detailedsearch_btn = new JButton("상세 검색");
-		detailedsearch_btn.setIcon(img.pcinfo_img_1);
-		detailedsearch_btn.setPressedIcon(img.pcinfo_img_2);
+		gross_sales_btn.setBounds(130, 160, 200, 200);
+		sales_registration_btn.setBounds(65, 160, 200, 200);
+		detailed_search_btn.setBounds(0, 160, 200, 200);
+		year_search_btn.setBounds(130, 0, 200, 200);
+		monthly_search_btn.setBounds(65, 0, 200, 200);
+		search_ilbyeol_btn.setBounds(0, 0, 200, 200);
 		
-		grosssales_btn.setBounds(30, 10, 178, 200);
-		yearsearch_btn.setBounds(30, 10, 178, 200);
-		monthlysearch_btn.setBounds(30, 10, 178, 200);
-		searchilbyeol_btn.setBounds(30, 10, 178, 200);
-		salesregistration_btn.setBounds(30, 10, 178, 200);
-		detailedsearch_btn.setBounds(30, 10, 178, 200);
-		
-		grosssales_btn_panel = new JPanel(null);
-		grosssales_btn_panel.setBackground(Color.WHITE);
-		yearsearch_btn_panel = new JPanel(null);
-		yearsearch_btn_panel.setBackground(Color.WHITE);
-		monthlysearch_btn_panel = new JPanel(null);
-		monthlysearch_btn_panel.setBackground(Color.WHITE);
-		searchilbyeol_btn_panel = new JPanel(null);
-		searchilbyeol_btn_panel.setBackground(Color.WHITE);
-		salesregistration_btn_panel = new JPanel(null);
-		salesregistration_btn_panel.setBackground(Color.WHITE);
-		detailedsearch_btn_panel = new JPanel(null);
-		detailedsearch_btn_panel.setBackground(Color.WHITE);
+		gross_sales_btn_panel = new JPanel(null);
+		gross_sales_btn_panel.setBackground(Color.WHITE);
+		sales_registration_btn_panel = new JPanel(null);
+		sales_registration_btn_panel.setBackground(Color.WHITE);
+		detailed_search_btn_panel = new JPanel(null);
+		detailed_search_btn_panel.setBackground(Color.WHITE);
+		year_search_btn_panel = new JPanel(null);
+		year_search_btn_panel.setBackground(Color.WHITE);
+		monthly_search_btn_panel = new JPanel(null);
+		monthly_search_btn_panel.setBackground(Color.WHITE);
+		search_ilbyeol_btn_panel = new JPanel(null);
+		search_ilbyeol_btn_panel.setBackground(Color.WHITE);
 		
 		
-		grosssales_btn_panel.add(grosssales_btn);
-		yearsearch_btn_panel.add(yearsearch_btn);
-		monthlysearch_btn_panel.add(monthlysearch_btn);
-		searchilbyeol_btn_panel.add(searchilbyeol_btn);
-		salesregistration_btn_panel.add(searchilbyeol_btn);
-		detailedsearch_btn_panel.add(searchilbyeol_btn);
+		gross_sales_btn_panel.add(gross_sales_btn);
+		sales_registration_btn_panel.add(sales_registration_btn);
+		detailed_search_btn_panel.add(detailed_search_btn);
+		year_search_btn_panel.add(year_search_btn);
+		monthly_search_btn_panel.add(monthly_search_btn);
+		search_ilbyeol_btn_panel.add(search_ilbyeol_btn);
+
 		
-		Sale_Panel_0 = new JPanel(new GridLayout(3,3));
+		Sale_Panel_0 = new JPanel(new GridLayout(2,3));
 		Sale_Panel_0.setBackground(Color.WHITE);		
 		
-		Sale_Panel_0.add(grosssales_btn_panel);
-		Sale_Panel_0.add(yearsearch_btn_panel);
-		Sale_Panel_0.add(monthlysearch_btn_panel);
-		Sale_Panel_0.add(searchilbyeol_btn_panel);
-		Sale_Panel_0.add(salesregistration_btn_panel);
-		Sale_Panel_0.add(detailedsearch_btn_panel);
+		Sale_Panel_0.add(gross_sales_btn_panel);
+		Sale_Panel_0.add(sales_registration_btn_panel);
+		Sale_Panel_0.add(detailed_search_btn_panel);
+		Sale_Panel_0.add(year_search_btn_panel);
+		Sale_Panel_0.add(monthly_search_btn_panel);
+		Sale_Panel_0.add(search_ilbyeol_btn_panel);
+
 		
-		Sale_Panel_0.setBounds(256, 140, 500, 500);
+		Sale_Panel_0.setBounds(0, 0, 1024, 768);
 		
 		add(Sale_Panel_0);
 		
