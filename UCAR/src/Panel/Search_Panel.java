@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -18,12 +19,12 @@ public class Search_Panel extends Base_Window_Panel {
 	public Connection con;
 	public PreparedStatement pstmt;
 	public Statement stmt;
-	public String selectsql = "select * from test_info where car = ?";
+	public String selectsql = "select * from test_info where car = ? and brand = ? and model = ?";
 	
 	public int btn_num;
 	public String subject;
 	
-	public String[] table_data;	
+	public ArrayList<String>[] table_data;
 	
 	public Search_Panel() {
 		
@@ -49,33 +50,54 @@ public class Search_Panel extends Base_Window_Panel {
 		try {
 			pstmt = con.prepareStatement(selectsql);
 			pstmt.setString(1, "대형");
+			pstmt.setString(2, "");
+			pstmt.setString(3, "");
 			ResultSet rs = pstmt.executeQuery();
 			
-			table_data = new String[3];
+			table_data = new ArrayList[3];
+			table_data = new 
 			
 			int i = 0;
 			
 			while(rs.next()) {
 				
-				table_data[i] = rs.getString("car");
+				table_data.add(i, rs.getString("car"));
+				table_data.add(i, rs.getString("brand"));
+				table_data.add(i, rs.getString("model"));
 				
 				if(i != 0) {
 					
-					if(table_data[i].equals(table_data[i-1])){
+					if(table_data_1.get(i).equals(table_data_1.get(i-1))){
 						System.out.println("같음");
 					}
-					else if(!table_data[i].equals(table_data[i-1])) {
-						System.out.println(table_data[i]);
+					else if(!table_data_1.get(i).equals(table_data_1.get(i-1))) {
+						System.out.println(table_data_1.get(i));
+					}
+					
+					if(table_data_2.get(i).equals(table_data_2.get(i-1))){
+						System.out.println("같음");
+					}
+					else if(!table_data_2.get(i).equals(table_data_2.get(i-1))) {
+						System.out.println(table_data_2.get(i));
+					}
+					
+					if(table_data_3.get(i).equals(table_data_3.get(i-1))){
+						System.out.println("같음");
+					}
+					else if(!table_data_3.get(i).equals(table_data_3.get(i-1))) {
+						System.out.println(table_data_3.get(i));
 					}
 				}
 				
 				else if(i == 0) {
-					System.out.println(table_data[i]);
+					System.out.println(table_data_1.get(i));
+					System.out.println(table_data_2.get(i));
+					System.out.println(table_data_3.get(i));
 				}
 				
 				i++;
 			}
-
+			
 			System.out.println("조회 완료");
 			
 		} catch (SQLException e) {
