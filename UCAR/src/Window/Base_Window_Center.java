@@ -36,7 +36,7 @@ public class Base_Window_Center extends JPanel {
 		
 	}
 	
-	public Base_Window_Center(String[] search_name, ArrayList<String> list_val1, ArrayList<String> list_val2, ArrayList<String> list_val3) {
+	public Base_Window_Center(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
 		
 		super();
 		SearchList_Panel(search_name, list_val1, list_val2, list_val3);
@@ -56,7 +56,7 @@ public class Base_Window_Center extends JPanel {
 	
 	
 	
-	public void SearchList_Panel(String[] search_name, ArrayList<String> list_val1, ArrayList<String> list_val2, ArrayList<String> list_val3) {
+	public void SearchList_Panel(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
 		
 		JPanel panel;
 		
@@ -64,18 +64,18 @@ public class Base_Window_Center extends JPanel {
 		String[] list_val_2;
 		String[] list_val_3;
 		
-		list_val_1 = new String[list_val1.size()];
-		list_val_2 = new String[list_val2.size()];
-		list_val_3 = new String[list_val3.size()];
+		list_val_1 = new String[list_val1.length];
+		list_val_2 = new String[list_val2.length];
+		list_val_3 = new String[list_val3.length];
 		
-		for(int i = 0; i < list_val1.size();i++){
-			list_val_1[i] = list_val1.get(i);
+		for(int i = 0; i < list_val1.length ;i++){
+			list_val_1[i] = list_val1[i];
 		}
-		for(int i = 0; i < list_val2.size();i++){
-			list_val_2[i] = list_val2.get(i);
+		for(int i = 0; i < list_val2.length;i++){
+			list_val_2[i] = list_val2[i];
 		}
-		for(int i = 0; i < list_val3.size();i++){
-			list_val_3[i] = list_val3.get(i);
+		for(int i = 0; i < list_val3.length;i++){
+			list_val_3[i] = list_val3[i];
 		}
 		
 		ArrayList<String[]> list = new ArrayList();
@@ -103,20 +103,35 @@ public class Base_Window_Center extends JPanel {
 			panel.add(search_label[i]);
 			
 		}
-		
 		////////////////////////////¸®½ºÆ®////////////////////////////////////
-		for(int i = 0; i < name.length; i++) {
+	
+			search_list[0] = new JList(list_val1);
+			search_list[0].setFont(new Font("¸¼Àº °íµñ",0 ,30));
 			
-			search_list[i] = new JList(list.get(i));
-			search_list[i].setFont(new Font("¸¼Àº °íµñ",0 ,30));
+			list_scrollpane[0] = new JScrollPane(search_list[0]);
+			list_scrollpane[0].setPreferredSize(new Dimension(250, 410));
+			list_scrollpane[0].setBounds(X-60+(0*200), Y+150, 200, 250);
 			
-			list_scrollpane[i] = new JScrollPane(search_list[i]);
-			list_scrollpane[i].setPreferredSize(new Dimension(250, 410));
-			list_scrollpane[i].setBounds(X-60+(i*200), Y+150, 200, 250);
+			panel.add(list_scrollpane[0]);
 			
-			panel.add(list_scrollpane[i]);
-		}
-		
+			search_list[1] = new JList(list_val2);
+			search_list[1].setFont(new Font("¸¼Àº °íµñ",0 ,30));
+			
+			list_scrollpane[1] = new JScrollPane(search_list[1]);
+			list_scrollpane[1].setPreferredSize(new Dimension(250, 410));
+			list_scrollpane[1].setBounds(X-60+(1*200), Y+150, 200, 250);
+			
+			panel.add(list_scrollpane[1]);
+			
+			search_list[2] = new JList(list_val3);
+			search_list[2].setFont(new Font("¸¼Àº °íµñ",0 ,30));
+			
+			list_scrollpane[2] = new JScrollPane(search_list[2]);
+			list_scrollpane[2].setPreferredSize(new Dimension(250, 410));
+			list_scrollpane[2].setBounds(X-60+(2*200), Y+150, 200, 250);
+			
+			panel.add(list_scrollpane[2]);
+			
 		panel.setBounds(0, 0, 1024, 500);
 		panel.setBackground(Color.WHITE);
 		add(panel);

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionEvent;
@@ -21,11 +22,13 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 	public Connection con;
 	public PreparedStatement pstmt;
 	public Statement stmt;
-	public String selectsql = "select * from test_info where 1=1 ";
-	public ArrayList<String> result_data_0;
-	public ArrayList<String> result_data_1;
-	public ArrayList<String> result_data_2;
-	public ArrayList<String> null_data;
+	
+	public String[] result_data_0;
+	public String[] result_data_1;
+	public String[] result_data_2;
+	
+	public String[] null_data = {""};
+	
 	public String[] selection;
 	
 	public int btn_num;
@@ -38,55 +41,53 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		super();
 		
 		selection = new String[3];
+
 		DB_Connect();
 		DB_Select("");
 		DB_Select_0(0);
+		
 	
 	}
 	
 	public void DB_Select_0(int num) {
 		
-		result_data_0 = new ArrayList();
+		result_data_0 = new String[table_data[num].size()];
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
-			if(i-1 >= 0) {
-				if(table_data[num].get(i) != table_data[num].get(i-1)) {
-					System.out.println(table_data[num].get(i)+"<-");
-						result_data_0.add(i, table_data[num].get(i));
-				}
-			}
+					result_data_0[i] = table_data[num].get(i);
+					System.out.println(i);
 		}
 
 	}
 	
 	public void DB_Select_1(int num) {
 		
-//		result_data_0 = new String[table_data[num].size()];
+		result_data_1 = new String[table_data[num].size()];
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
 			if(i-1 >= 0) {
 				if(table_data[num].get(i) != table_data[num].get(i-1)) {
-					result_data_1.add(i, table_data[num].get(i));
+					result_data_1[i] = table_data[num].get(i);
 				}
 			}
 		}
 
 	}
 	
-	public void DB_Select_2(int num) {
-		
-//		result_data_0 = new String[table_data[num].size()];
-		
-		for(int i = 0; i < table_data[num].size() ;i++){
-			if(i-1 >= 0) {
-				if(table_data[num].get(i) != table_data[num].get(i-1)) {
-					result_data_2.add(i, table_data[num].get(i));
-				}
-			}
-		}
-
-	}
-	
+//	public void DB_Select_2(int num) {
+//		
+////		result_data_0 = new String[table_data[num].size()];
+//		
+//		for(int i = 0; i < table_data[num].size() ;i++){
+//			if(i-1 >= 0) {
+//				if(table_data[num].get(i) != table_data[num].get(i-1)) {
+//					result_data_2.add(i, table_data[num].get(i));
+//				}
+//			}
+//		}
+//
+//	}
+//	
 
 	
 	public void DB_Connect() {
@@ -103,14 +104,14 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 	}
 	
 	public void DB_Select(String where) { 
-	
+		
+		String selectsql = "select distinct ? from test_info where 1=1";
+		
 		try {
 			
-			selectsql = selectsql + where;
+			pstmt = con.prepareStatement(selectsql);
 			
-			stmt = con.prepareStatement(selectsql);
-			
-			ResultSet rs = stmt.executeQuery(selectsql);
+			ResultSet rs = pstmt.executeQuery();
 			
 			table_data = new ArrayList[3];
 			
@@ -123,9 +124,7 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 			while(rs.next()) {
 				
 				table_data[0].add(i, rs.getString("car"));
-				
 				table_data[1].add(i, rs.getString("brand"));
-				
 				table_data[2].add(i, rs.getString("model"));
 				
 				for(int c = 0; c < table_data.length; c++) {
@@ -133,15 +132,15 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 					if(i != 0) {
 						
 							if(table_data[c].get(i).equals(table_data[c].get(i-1))){
-								System.out.println("같음");
+//								System.out.println("같음");
 							}
 							else if(!table_data[c].get(i).equals(table_data[c].get(i-1))) {
-								System.out.println(table_data[c].get(i));
+//								System.out.println(table_data[c].get(i));
 							}					
 					}
 					
 					else if(i == 0) {
-						System.out.println(table_data[c].get(i));
+//						System.out.println(table_data[c].get(i));
 					}
 				}
 				i++;

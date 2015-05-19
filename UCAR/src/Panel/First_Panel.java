@@ -11,7 +11,7 @@ public class First_Panel extends Search_Panel {
 
 	String[] search_name = {"차  종", "브랜드", "모델명"};
 	String[] btn_name = {"확인"};
-	String where = "and car = 대형";
+	String where = " ";
 	
 	public String subject = "첫번째";
 	
@@ -27,7 +27,7 @@ public class First_Panel extends Search_Panel {
 		
 		base_center.search_list[0].addListSelectionListener(this);
 		base_center.search_list[1].addListSelectionListener(this);
-		base_center.search_list[2].addListSelectionListener(this);
+//		base_center.search_list[2].addListSelectionListener(this);
 		
 	}
 	
@@ -47,9 +47,11 @@ public class First_Panel extends Search_Panel {
 			if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 				
 				selection[0] = (String)base_center.search_list[0].getSelectedValue();
-				System.out.println(selection[0]+"asd");
+				System.out.println(selection[0]);
+				
 				DB_Select("and car = '"+selection[0]+"'");
 				DB_Select_1(1);
+				
 				base_center_visible(false);
 				base_center_visible(true, search_name, result_data_0, result_data_1, null_data);
 	

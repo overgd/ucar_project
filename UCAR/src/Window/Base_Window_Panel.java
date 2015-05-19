@@ -81,7 +81,7 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 		}
 	}
 	
-	public void base_center_visible(boolean visible, String[] search_name, ArrayList<String> list_val1, ArrayList<String> list_val2, ArrayList<String> list_val3) {
+	public void base_center_visible(boolean visible, String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
 		if(visible) {
 			base_center = new Base_Window_Center(search_name, list_val1, list_val2, list_val3);
 			add("Center", base_center);
@@ -91,8 +91,8 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 	public void base_center_visible(boolean visible, String[] search_name) {
 		if(visible) {
 			
-			ArrayList<String> list_val = new ArrayList<String>();
-			list_val.add(1, "");
+			String[] list_val = {""};
+			
 			base_center = new Base_Window_Center(search_name, list_val, list_val, list_val);
 			add("Center", base_center);			
 		}
