@@ -54,7 +54,6 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
 			result_data_0[i] = table_data[num].get(i);
-			System.out.println(result_data_0[i]);
 		}
 
 	}
@@ -65,7 +64,6 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
 			result_data_1[i] = table_data[num].get(i);
-			System.out.println(i+"result_data_1");
 		}
 
 	}
@@ -76,7 +74,6 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
 			result_data_2[i] = table_data[num].get(i);
-			System.out.println(i+"result_data_2");
 		}
 
 	}

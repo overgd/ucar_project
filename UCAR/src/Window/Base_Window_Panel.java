@@ -99,9 +99,9 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 	}
 	
 	public void base_center_visible(boolean visible) {
-		if(visible) {
-			base_center = new Base_Window_Center();
+		if(visible) {			
 			add("Center", base_center);
+			base_center.setVisible(true);
 		}
 		else if(!visible) {
 			base_center.setVisible(false);

@@ -59,14 +59,14 @@ public class Base_Window_Center extends JPanel {
 	
 	public void SearchList_Panel(String[] search_name, int num, String[] list_val) {
 		
-		setLayout(new FlowLayout());
 		search_list[num] = new JList(list_val);
 		list_scrollpane[num] = new JScrollPane(search_list[num]);
-		search_panel[num] = new JPanel(new FlowLayout());
+		list_scrollpane[num].setBounds(0, 0, 200, 200);
+		search_panel[num] = new JPanel(null);
 		search_panel[num].add(list_scrollpane[num]);
-		add(search_panel[num]);
-				
-		setVisible(true);
+		search_panel[num].setBounds(10+(num*200), 10, 200, 200);
+		search_panel[num].setVisible(true);
+		add(search_panel[num]);		
 	}
 	
 	public void TwoButton_Panel(ImageIcon img_icon1, ImageIcon img_icon2) {
