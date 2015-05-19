@@ -110,7 +110,7 @@ public class Base_Window_Center extends JPanel {
 		for(int i = 0; i < btn.length; i++) {
 			btn[i] = new JButton();
 			btn[i].setIcon(icon[i]);
-			btn[i].setBounds(X+(i*250), Y, 200, 450);
+			btn[i].setBounds(X+(i*250), Y, 200, 420);
 			add(btn[i]);
 		}	
 		
