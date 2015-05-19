@@ -21,9 +21,9 @@ public class ButtonImage extends JPanel {
 	public ButtonImage() {
 		
 		home_img_1 = new ImageIcon("./img/btn_home_1.jpg");
-		home_img_2 = new ImageIcon("./img/btn_home_2.jpg");
+		home_img_2 = new ImageIcon("./img/btn_home_2.png");
 		back_img_1 = new ImageIcon("./img/btn_back_1.jpg");
-		back_img_2 = new ImageIcon("./img/btn_back_2.jpg");
+		back_img_2 = new ImageIcon("./img/btn_back_2.png");
 		pcinfo_img_1 = new ImageIcon("./img/btn_pcinfo_1.png");
 		pcinfo_img_2 = new ImageIcon("./img/btn_pcinfo_2.png");
 		chinfo_img_1 = new ImageIcon("./img/btn_chinfo_1.jpg");

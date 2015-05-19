@@ -45,12 +45,14 @@ public class Base_Window_Top extends JPanel { //기본 윈도우 탑
 		
 		/*버튼 생성*/
 		backbtn = new JButton(); // 백 버튼
-		backbtn.setIcon(img.back_img);
+		backbtn.setIcon(img.back_img_1);
+		backbtn.setPressedIcon(img.back_img_2);
 		backbtn.setPreferredSize(new Dimension(140, 140));
 		top_dao.setBackbtn(backbtn);
 		
 		homebtn = new JButton(); // 홈 버튼
-		homebtn.setIcon(img.home_img);
+		homebtn.setIcon(img.home_img_1);
+		homebtn.setPressedIcon(img.home_img_2);
 		homebtn.setPreferredSize(new Dimension(140, 140));
 		top_dao.setHomebtn(homebtn);
 		
