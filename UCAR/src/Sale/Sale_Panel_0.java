@@ -1,4 +1,4 @@
-package Car;
+package Sale;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import Window.Base_Window_Panel;
 import Window.ButtonImage;
 
-public class Test_Panel extends Base_Window_Panel {
+public class Sale_Panel_0 extends Base_Window_Panel {
 	
 	JPanel Sale_Panel_0;
 	
@@ -21,7 +21,7 @@ public class Test_Panel extends Base_Window_Panel {
 	
 	ButtonImage img;
 	
-	public Test_Panel() {
+	public Sale_Panel_0() {
 		
 		setLayout(null);
 		
