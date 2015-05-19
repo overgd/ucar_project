@@ -9,17 +9,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import DB.DB_Conn;
 import Window.Base_Window_Panel;
 
-public class Search_Panel extends Base_Window_Panel {
+public class Search_Panel extends Base_Window_Panel implements ListSelectionListener {
 	
 	public DB_Conn conn;
 	public Connection con;
 	public PreparedStatement pstmt;
 	public Statement stmt;
 	public String selectsql = "select * from test_info where 1=1 ";
+	public String[] selection;
 	
 	public int btn_num;
 	public String subject;
@@ -29,6 +32,8 @@ public class Search_Panel extends Base_Window_Panel {
 	public Search_Panel() {
 		
 		super();
+		selection = new String[3];
+		
 		
 	}
 	
@@ -96,6 +101,20 @@ public class Search_Panel extends Base_Window_Panel {
 	}
 	
 	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		
+		super.valueChanged(e);
+		
+		for(int i = 0; i < base_center.search_list.length; i++) {
+			if( !base_center.search_list[i].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+				selection[i] = (String)base_center.search_list[i].getSelectedValue();
+				System.out.println(selection[i]);
+			}
+		}
+	
+	}
+
+	@Override
 	public String subject(String subject) {
 		// TODO Auto-generated method stub
 		return super.subject(subject);
@@ -118,13 +137,6 @@ public class Search_Panel extends Base_Window_Panel {
 			ImageIcon img_icon2) {
 		// TODO Auto-generated method stub
 		super.base_center_visible(visible, img_icon1, img_icon2);
-	}
-
-	@Override
-	public void base_center_visible(boolean visible, String[] search_name,
-			String[] search_list_name) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible, search_name, search_list_name);
 	}
 
 	@Override

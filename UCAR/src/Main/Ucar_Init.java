@@ -26,8 +26,6 @@ public class Ucar_Init extends Base_Window {
 	Search_Panel[] panel;
 	TwoButton_Panel test_panel;
 
-	String[] selection;
-	
 	public Ucar_Init(String title) {
 		
 	super(title);
@@ -60,12 +58,11 @@ public class Ucar_Init extends Base_Window {
 		panel[0] = new First_Panel();
 //		panel[1] = new First_Panel();
 		
-		selection = new String[panel[0].base_center.search_list.length];
 		
-		for(int i = 0; i < panel[0].base_center.search_list.length; i++) {
-			panel[0].base_center.search_list[i].addListSelectionListener(this);
-			
-		}
+//		for(int i = 0; i < panel[0].base_center.search_list.length; i++) {
+//			panel[0].base_center.search_list[i].addListSelectionListener(this);
+//			
+//		}
 		
 		for(int i = 0; i < panel.length; i++) {
 			
@@ -92,13 +89,6 @@ public class Ucar_Init extends Base_Window {
 		
 		super.valueChanged(e);
 		
-		for(int i = 0; i < panel[0].base_center.search_list.length; i++) {
-			if( !panel[0].base_center.search_list[i].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-				selection[i] = (String)panel[0].base_center.search_list[i].getSelectedValue();
-				int index = panel[0].base_center.search_list[i].getSelectedIndex();
-				System.out.println(selection[i]);
-			}
-		}
 	}
 
 	@Override

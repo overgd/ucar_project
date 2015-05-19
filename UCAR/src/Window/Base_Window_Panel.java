@@ -9,8 +9,12 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class Base_Window_Panel extends JPanel implements ActionListener {
+import DB.DB_Conn;
+
+public class Base_Window_Panel extends JPanel implements ActionListener, ListSelectionListener {
 
 	public Base_Window_Top base_top;
 	public Base_Window_Center base_center;
@@ -41,6 +45,13 @@ public class Base_Window_Panel extends JPanel implements ActionListener {
 		return subject;
 	}
 	
+	
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void base_top_visible(boolean visible, String subject) {
 		if(visible) {
 			base_top = new Base_Window_Top(subject); //탑 윈도우 패널
@@ -66,10 +77,21 @@ public class Base_Window_Panel extends JPanel implements ActionListener {
 		}
 	}
 	
-	public void base_center_visible(boolean visible, String[] search_name, String[] search_list_name) {
+	public void base_center_visible(boolean visible, String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
 		if(visible) {
-			base_center = new Base_Window_Center(search_name, search_list_name);
+			base_center = new Base_Window_Center(search_name, list_val1, list_val2, list_val3);
 			add("Center", base_center);
+		}
+	}
+	
+	public void base_center_visible(boolean visible, String[] search_name) {
+		if(visible) {
+			
+			String[] list_val = {""}; 
+			
+			base_center = new Base_Window_Center(search_name, list_val, list_val, list_val);
+			
+			add("Center", base_center);			
 		}
 	}
 	

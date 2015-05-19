@@ -42,13 +42,6 @@ public class TopAndBottom_Panel extends Base_Window_Panel {
 	}
 
 	@Override
-	public void base_center_visible(boolean visible, String[] search_name,
-			String[] search_list_name) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible, search_name, search_list_name);
-	}
-
-	@Override
 	public void base_center_visible(boolean visible) {
 		// TODO Auto-generated method stub
 		super.base_center_visible(visible);

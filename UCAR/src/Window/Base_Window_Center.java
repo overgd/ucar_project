@@ -35,11 +35,11 @@ public class Base_Window_Center extends JPanel {
 		
 	}
 	
-	public Base_Window_Center(String[] search_name, String[] search_list_name) {
+	public Base_Window_Center(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
 		
 		super();
 		
-		SearchList_Panel(search_name, search_list_name);
+		SearchList_Panel(search_name, list_val1, list_val2, list_val3);
 		
 		setBackground(Color.WHITE);
 		setVisible(true);
@@ -55,19 +55,19 @@ public class Base_Window_Center extends JPanel {
 		
 	}
 	
-	public void SearchList_Panel(String[] search_name, String[] search_list_name) {
+	public void SearchList_Panel(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
 		
 		JPanel panel;
 		
-		String[] list = search_list_name;
+		String[] list1 = list_val1;
 		String[] name = search_name;
 		
 		setLayout(null);
 		
 		panel = new JPanel(null);
 
-		search_list = new JList[list.length];
-		search_label = new JLabel[search_list.length];
+		search_list = new JList[list1.length];
+		search_label = new JLabel[name.length];
 		list_scrollpane = new JScrollPane[search_list.length];
 		
 		for(int i = 0; i < name.length; i++) {
@@ -79,9 +79,9 @@ public class Base_Window_Center extends JPanel {
 			
 		}
 		
-		for(int i = 0; i < list.length; i++) {
+		for(int i = 0; i < list1.length; i++) {
 			
-			search_list[i] = new JList(list);
+			search_list[i] = new JList(list1);
 			search_list[i].setFont(new Font("¸¼Àº °íµñ",0 ,30));
 			
 			list_scrollpane[i] = new JScrollPane(search_list[i]);
