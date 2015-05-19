@@ -19,7 +19,7 @@ public class Search_Panel extends Base_Window_Panel {
 	public Connection con;
 	public PreparedStatement pstmt;
 	public Statement stmt;
-	public String selectsql = "select * from test_info where car = ? and brand = ? and model = ?";
+	public String selectsql = "select * from test_info where 1=1 ";
 	
 	public int btn_num;
 	public String subject;
@@ -45,21 +45,21 @@ public class Search_Panel extends Base_Window_Panel {
 		
 	}
 	
-	public void DB_Select() { 
+	public void DB_Select(String where) { 
 	
 		try {
-			pstmt = con.prepareStatement(selectsql);
-			pstmt.setString(1, "대형");
-			pstmt.setString(2, "");
-			pstmt.setString(3, "");
-			ResultSet rs = pstmt.executeQuery();
+			
+			selectsql = selectsql + where;
+			
+			stmt = con.prepareStatement(selectsql);
+			
+			ResultSet rs = stmt.executeQuery(selectsql);
 			
 			table_data = new ArrayList[3];
 			
-			table_data[0] = new ArrayList<String>();
-			table_data[1] = new ArrayList<String>();
-			table_data[2] = new ArrayList<String>();
-			
+			for(int i = 0; i < table_data.length; i++) {	
+				table_data[i] = new ArrayList<String>();
+			}
 			
 			int i = 0;
 			
@@ -69,36 +69,21 @@ public class Search_Panel extends Base_Window_Panel {
 				table_data[1].add(i, rs.getString("brand"));
 				table_data[2].add(i, rs.getString("model"));
 				
-				if(i != 0) {
-					
-					if(table_data[0].get(i).equals(table_data[0].get(i-1))){
-						System.out.println("같음");
-					}
-					else if(!table_data[0].get(i).equals(table_data[0].get(i-1))) {
-						System.out.println(table_data[0].get(i));
-					}
-					
-					if(table_data[1].get(i).equals(table_data[1].get(i-1))){
-						System.out.println("같음");
-					}
-					else if(!table_data[1].get(i).equals(table_data[1].get(i-1))) {
-						System.out.println(table_data[1].get(i));
+				for(int c = 0; c < table_data.length; c++) {
+					if(i != 0) {
+						
+							if(table_data[c].get(i).equals(table_data[c].get(i-1))){
+								System.out.println("같음");
+							}
+							else if(!table_data[c].get(i).equals(table_data[c].get(i-1))) {
+								System.out.println(table_data[c].get(i));
+							}					
 					}
 					
-					if(table_data[2].get(i).equals(table_data[2].get(i-1))){
-						System.out.println("같음");
-					}
-					else if(!table_data[2].get(i).equals(table_data[2].get(i-1))) {
-						System.out.println(table_data[2].get(i));
+					else if(i == 0) {
+						System.out.println(table_data[c].get(i));
 					}
 				}
-				
-				else if(i == 0) {
-					System.out.println(table_data[0].get(i));
-					System.out.println(table_data[1].get(i));
-					System.out.println(table_data[2].get(i));
-				}
-				
 				i++;
 			}
 			

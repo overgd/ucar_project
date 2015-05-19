@@ -11,6 +11,7 @@ public class First_Panel extends Search_Panel {
 	String[] search_list_name = {"아우디", "놀래미", "학"};
 	String[] search_name = {"차  종", "브랜드", "모델명"};
 	String[] btn_name = {"확인"};
+	String where = "and car = '대형'";
 	
 	public String subject = "첫번째";
 	
@@ -21,7 +22,7 @@ public class First_Panel extends Search_Panel {
 		btn_num = btn_name.length;
 		
 		DB_Connect();
-		DB_Select();
+		DB_Select(where);
 		
 		base_top_visible(true, "조회");
 		base_center_visible(true, search_name, search_list_name);
