@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 
 public class Base_Window_Panel extends JPanel implements ActionListener {
 
-	Base_Window_Top base_top;
-	Base_Window_Center base_center;
-	Base_Window_Bottom base_bottom;
+	public Base_Window_Top base_top;
+	public Base_Window_Center base_center;
+	public Base_Window_Bottom base_bottom;
 	
 	public JButton[] bottom_btn;
 	public JButton backbtn;

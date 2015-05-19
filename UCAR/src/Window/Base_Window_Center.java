@@ -16,10 +16,10 @@ import javax.swing.JScrollPane;
 
 public class Base_Window_Center extends JPanel {
 	
-	JButton[] btn;
-	JLabel[] search_label;
-	JList[] search_list;
-	JScrollPane[] list_scrollpane;
+	public JButton[] btn;
+	public JLabel[] search_label;
+	public JList[] search_list;
+	public JScrollPane[] list_scrollpane;
 	
 	int X = 285;
 	int Y = 0;
