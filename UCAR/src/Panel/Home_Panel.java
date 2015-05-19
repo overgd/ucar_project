@@ -95,5 +95,4 @@ public class Home_Panel extends Base_Window_Panel {
 		// TODO Auto-generated method stub
 		super.base_bottom_visible(visible, btn_name);
 	}
-	
 }

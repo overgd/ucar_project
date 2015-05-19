@@ -30,29 +30,31 @@ public class Test_Panel extends TwoButton_Panel {
 		
 		img = new ButtonImage();
 		
-		gross_sales_btn = new JButton("총 매출");
-		gross_sales_btn.setIcon(img.ucinfo_img_1);
-		gross_sales_btn.setPressedIcon(img.ucinfo_img_2);	
-		year_search_btn = new JButton("연간 검색");
-		year_search_btn.setIcon(img.userinfo_img_1);
-		year_search_btn.setPressedIcon(img.userinfo_img_2);
-		monthly_search_btn = new JButton("월별 검색");
-		search_ilbyeol_btn = new JButton("일별 검색");
-		search_ilbyeol_btn.setIcon(img.pcinfo_img_1);
-		search_ilbyeol_btn.setPressedIcon(img.pcinfo_img_2);
-		sales_registration_btn = new JButton("매출 등록");
-		sales_registration_btn.setIcon(img.pcinfo_img_1);
-		sales_registration_btn.setPressedIcon(img.pcinfo_img_2);
-		detailed_search_btn = new JButton("상세 검색");
-		detailed_search_btn.setIcon(img.pcinfo_img_1);
-		detailed_search_btn.setPressedIcon(img.pcinfo_img_2);
+		gross_sales_btn = new JButton();
+		gross_sales_btn.setIcon(img.totalsaleinfo_img_1);
+		gross_sales_btn.setPressedIcon(img.totalsaleinfo_img_2);	
+		year_search_btn = new JButton();
+		year_search_btn.setIcon(img.yysearch_img_1);
+		year_search_btn.setPressedIcon(img.yysearch_img_2);
+		monthly_search_btn = new JButton();
+		monthly_search_btn.setIcon(img.mmsearch_img_1);
+		monthly_search_btn.setPressedIcon(img.mmsearch_img_2);
+		search_ilbyeol_btn = new JButton();
+		search_ilbyeol_btn.setIcon(img.ddsearch_img_1);
+		search_ilbyeol_btn.setPressedIcon(img.ddsearch_img_2);
+		sales_registration_btn = new JButton();
+		sales_registration_btn.setIcon(img.saleregister_img_1);
+		sales_registration_btn.setPressedIcon(img.saleregister_img_2);
+		detailed_search_btn = new JButton();
+		detailed_search_btn.setIcon(img.detailsearch_img_1);
+		detailed_search_btn.setPressedIcon(img.detailsearch_img_2);
 		
-		gross_sales_btn.setBounds(30, 10, 178, 200);
-		year_search_btn.setBounds(30, 10, 178, 200);
-		monthly_search_btn.setBounds(30, 10, 178, 200);
-		search_ilbyeol_btn.setBounds(30, 10, 178, 200);
-		sales_registration_btn.setBounds(30, 10, 178, 200);
-		detailed_search_btn.setBounds(30, 10, 178, 200);
+		gross_sales_btn.setBounds(150, 100, 200, 200);
+		year_search_btn.setBounds(150, 100, 200, 200);
+		monthly_search_btn.setBounds(150, 100, 200, 200);
+		search_ilbyeol_btn.setBounds(150, 0, 200, 200);
+		sales_registration_btn.setBounds(150, 0, 200, 200);
+		detailed_search_btn.setBounds(150, 0, 200, 200);
 		
 		gross_sales_btn_panel = new JPanel(null);
 		gross_sales_btn_panel.setBackground(Color.WHITE);
@@ -72,10 +74,10 @@ public class Test_Panel extends TwoButton_Panel {
 		year_search_btn_panel.add(year_search_btn);
 		monthly_search_btn_panel.add(monthly_search_btn);
 		search_ilbyeol_btn_panel.add(search_ilbyeol_btn);
-		sales_registration_btn_panel.add(search_ilbyeol_btn);
-		detailed_search_btn_panel.add(search_ilbyeol_btn);
+		sales_registration_btn_panel.add(sales_registration_btn);
+		detailed_search_btn_panel.add(detailed_search_btn);
 		
-		Sale_Panel_0 = new JPanel(new GridLayout(3,3));
+		Sale_Panel_0 = new JPanel(new GridLayout(2,3));
 		Sale_Panel_0.setBackground(Color.WHITE);		
 		
 		Sale_Panel_0.add(gross_sales_btn_panel);
