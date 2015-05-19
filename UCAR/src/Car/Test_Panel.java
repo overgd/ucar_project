@@ -1,9 +1,10 @@
-package Panel;
+package Car;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 
+import Panel.TwoButton_Panel;
 import Window.ButtonImage;
 
 public class Test_Panel extends TwoButton_Panel {
