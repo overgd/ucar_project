@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -35,7 +36,7 @@ public class Base_Window_Center extends JPanel {
 		
 	}
 	
-	public Base_Window_Center(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
+	public Base_Window_Center(String[] search_name, ArrayList<String> list_val1, ArrayList<String> list_val2, ArrayList<String> list_val3) {
 		
 		super();
 		SearchList_Panel(search_name, list_val1, list_val2, list_val3);
@@ -55,11 +56,34 @@ public class Base_Window_Center extends JPanel {
 	
 	
 	
-	public void SearchList_Panel(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
+	public void SearchList_Panel(String[] search_name, ArrayList<String> list_val1, ArrayList<String> list_val2, ArrayList<String> list_val3) {
 		
 		JPanel panel;
 		
-		String[] list = list_val1;
+		String[] list_val_1;
+		String[] list_val_2;
+		String[] list_val_3;
+		
+		list_val_1 = new String[list_val1.size()];
+		list_val_2 = new String[list_val2.size()];
+		list_val_3 = new String[list_val3.size()];
+		
+		for(int i = 0; i < list_val1.size();i++){
+			list_val_1[i] = list_val1.get(i);
+		}
+		for(int i = 0; i < list_val2.size();i++){
+			list_val_2[i] = list_val2.get(i);
+		}
+		for(int i = 0; i < list_val3.size();i++){
+			list_val_3[i] = list_val3.get(i);
+		}
+		
+		ArrayList<String[]> list = new ArrayList();
+		
+		list.add(0, list_val_1);
+		list.add(1, list_val_2);
+		list.add(2, list_val_3);
+		
 		String[] name = search_name;
 		
 		setLayout(null);
@@ -70,6 +94,7 @@ public class Base_Window_Center extends JPanel {
 		search_label = new JLabel[name.length];
 		list_scrollpane = new JScrollPane[search_list.length];
 		
+		//////////////////////////////¶óº§////////////////////////////////////
 		for(int i = 0; i < name.length; i++) {
 			
 			search_label[i] = new JLabel(name[i]);
@@ -79,9 +104,10 @@ public class Base_Window_Center extends JPanel {
 			
 		}
 		
+		////////////////////////////¸®½ºÆ®////////////////////////////////////
 		for(int i = 0; i < name.length; i++) {
 			
-			search_list[i] = new JList(list);
+			search_list[i] = new JList(list.get(i));
 			search_list[i].setFont(new Font("¸¼Àº °íµñ",0 ,30));
 			
 			list_scrollpane[i] = new JScrollPane(search_list[i]);

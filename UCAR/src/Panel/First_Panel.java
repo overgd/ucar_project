@@ -10,7 +10,6 @@ import Window.ButtonImage;
 public class First_Panel extends Search_Panel {
 
 	String[] search_name = {"차  종", "브랜드", "모델명"};
-	
 	String[] btn_name = {"확인"};
 	String where = "and car = 대형";
 	
@@ -23,7 +22,7 @@ public class First_Panel extends Search_Panel {
 		btn_num = btn_name.length;
 		
 		base_top_visible(true, "조회");
-		base_center_visible(true, search_name);
+		base_center_visible(true, search_name, result_data_0, null_data, null_data);
 		base_bottom_visible(true, btn_name);
 		
 		base_center.search_list[0].addListSelectionListener(this);
@@ -45,6 +44,28 @@ public class First_Panel extends Search_Panel {
 		
 		super.valueChanged(e);	
 
+			if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+				
+				selection[0] = (String)base_center.search_list[0].getSelectedValue();
+				System.out.println(selection[0]+"asd");
+				DB_Select("and car = '"+selection[0]+"'");
+				DB_Select_1(1);
+				base_center_visible(false);
+				base_center_visible(true, search_name, result_data_0, result_data_1, null_data);
+	
+			}
+			
+//			if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+//				
+//				selection[1] = (String)base_center.search_list[1].getSelectedValue();
+//				System.out.println(selection[1]);
+//				DB_Select("and brand = '"+selection[1]+"'");
+//				DB_Select_2(0);
+//				base_center_visible(false);
+//				base_center_visible(true, search_name, result_data_0, result_data_1, result_data_2);
+//	
+//			}
+	
 	}
 
 

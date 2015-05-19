@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -75,9 +76,12 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 			base_center = new Base_Window_Center(img_icon1, img_icon2);
 			add("Center", base_center);
 		}
+		else if(!visible) {
+			base_center.setVisible(false);
+		}
 	}
 	
-	public void base_center_visible(boolean visible, String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
+	public void base_center_visible(boolean visible, String[] search_name, ArrayList<String> list_val1, ArrayList<String> list_val2, ArrayList<String> list_val3) {
 		if(visible) {
 			base_center = new Base_Window_Center(search_name, list_val1, list_val2, list_val3);
 			add("Center", base_center);
@@ -87,7 +91,8 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 	public void base_center_visible(boolean visible, String[] search_name) {
 		if(visible) {
 			
-			String[] list_val = {""}; 
+			ArrayList<String> list_val = new ArrayList<String>();
+			list_val.add(1, "");
 			base_center = new Base_Window_Center(search_name, list_val, list_val, list_val);
 			add("Center", base_center);			
 		}
@@ -97,6 +102,9 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 		if(visible) {
 			base_center = new Base_Window_Center();
 			add("Center", base_center);
+		}
+		else if(!visible) {
+			base_center.setVisible(false);
 		}
 	}
 	public void base_bottom_visible(boolean visible, String[] btn_name) {
