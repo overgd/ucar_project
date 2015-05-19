@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionEvent;
 
+import Window.Base_Window_Center;
 import Window.ButtonImage;
 
 public class First_Panel extends Search_Panel {
@@ -22,52 +23,82 @@ public class First_Panel extends Search_Panel {
 		btn_num = btn_name.length;
 		
 		base_top_visible(true, "조회");
-		base_center_visible(true, search_name, result_data_0, null_data, null_data);
+		
+		base_center = new Base_Window_Center();
+		
+		base_center.SearchList_Panel(search_name, 0, result_data_0);
+		base_center.SearchList_Panel(search_name, 1, result_data_1);
+		base_center.SearchList_Panel(search_name, 2, result_data_2);
+		base_center.add("Center", base_center.search_panel[0]);
+		base_center.setVisible(true);
+		
 		base_bottom_visible(true, btn_name);
 		
-		base_center.search_list[0].addListSelectionListener(this);
-		base_center.search_list[1].addListSelectionListener(this);
-//		base_center.search_list[2].addListSelectionListener(this);
+//		base_center.search_list[0].addListSelectionListener(this);
 		
 	}
-	
-	
+
 	@Override
-	public void DB_Select(String where) {
+	public void DB_Select_0(int num) {
 		// TODO Auto-generated method stub
-		super.DB_Select(where);
+		super.DB_Select_0(num);
 	}
 
+	@Override
+	public void DB_Select_1(int num) {
+		// TODO Auto-generated method stub
+		super.DB_Select_1(num);
+	}
+
+	@Override
+	public void DB_Select_2(int num) {
+		// TODO Auto-generated method stub
+		super.DB_Select_2(num);
+	}
+
+	@Override
+	public void DB_Select(String column, String where) {
+		// TODO Auto-generated method stub
+		super.DB_Select(column, where);
+	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
 		super.valueChanged(e);	
 
-			if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-				
-				selection[0] = (String)base_center.search_list[0].getSelectedValue();
-				System.out.println(selection[0]);
-				
-				DB_Select("and car = '"+selection[0]+"'");
-				DB_Select_1(1);
-				
-				base_center_visible(false);
-				base_center_visible(true, search_name, result_data_0, result_data_1, null_data);
-	
-			}
+//			if( !base_center.search_list.getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+//				
+//				selection[0] = (String)base_center.search_list.getSelectedValue();
+//				System.out.println(selection[0]);
+//
+//				DB_Select("brand", "and car = '"+selection[0]+"'");
+//				DB_Select_1(0);
+//				
+//				base_center_visible(true, search_name, 1, result_data_0);
+//			
+//			}
 			
 //			if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-//				
+//					
 //				selection[1] = (String)base_center.search_list[1].getSelectedValue();
 //				System.out.println(selection[1]);
-//				DB_Select("and brand = '"+selection[1]+"'");
-//				DB_Select_2(0);
-//				base_center_visible(false);
-//				base_center_visible(true, search_name, result_data_0, result_data_1, result_data_2);
-//	
+//				if(selection[0] != null) {
+//					DB_Select("model", "and brand = '"+selection[1]+"'");
+//					
+//					DB_Select_2(0);
+//					
+////					base_center_visible(true, search_name, 1, result_data_1);
+//				}
+//				
 //			}
-	
+//			
+//			if( !base_center.search_list[2].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+//				
+//				selection[2] = (String)base_center.search_list[1].getSelectedValue();
+//
+//			}
+//	
 	}
 
 

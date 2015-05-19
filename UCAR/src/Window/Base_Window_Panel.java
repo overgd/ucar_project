@@ -3,13 +3,19 @@ package Window;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -29,6 +35,8 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 	public String[] btn_name;
 	
 	CardLayout baselayout;
+	
+	public JPanel panel;
 	
 	public Base_Window_Panel() {
 		
@@ -81,19 +89,11 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 		}
 	}
 	
-	public void base_center_visible(boolean visible, String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
-		if(visible) {
-			base_center = new Base_Window_Center(search_name, list_val1, list_val2, list_val3);
-			add("Center", base_center);
-		}
-	}
-	
 	public void base_center_visible(boolean visible, String[] search_name) {
 		if(visible) {
 			
 			String[] list_val = {""};
-			
-			base_center = new Base_Window_Center(search_name, list_val, list_val, list_val);
+
 			add("Center", base_center);			
 		}
 	}

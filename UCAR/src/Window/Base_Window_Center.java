@@ -18,9 +18,11 @@ import javax.swing.JScrollPane;
 public class Base_Window_Center extends JPanel {
 	
 	public JButton[] btn;
-	public JLabel[] search_label;
-	public JList[] search_list;
-	public JScrollPane[] list_scrollpane;
+	
+	public JPanel[] search_panel = new JPanel[3];
+	public JLabel[] search_label = new JLabel[3];
+	public JList[] search_list = new JList[3];
+	public JScrollPane[] list_scrollpane = new JScrollPane[3];
 	
 	int X = 285;
 	int Y = 0;
@@ -36,14 +38,15 @@ public class Base_Window_Center extends JPanel {
 		
 	}
 	
-	public Base_Window_Center(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
+	
+	public Base_Window_Center(String[] search_name, int num, String[] list_val) {
 		
 		super();
-		SearchList_Panel(search_name, list_val1, list_val2, list_val3);
+		
 		setBackground(Color.WHITE);
 		setVisible(true);
-		
-	}	
+
+	}
 	
 	public Base_Window_Center() {
 		
@@ -54,88 +57,16 @@ public class Base_Window_Center extends JPanel {
 		
 	}
 	
-	
-	
-	public void SearchList_Panel(String[] search_name, String[] list_val1, String[] list_val2, String[] list_val3) {
+	public void SearchList_Panel(String[] search_name, int num, String[] list_val) {
 		
-		JPanel panel;
-		
-		String[] list_val_1;
-		String[] list_val_2;
-		String[] list_val_3;
-		
-		list_val_1 = new String[list_val1.length];
-		list_val_2 = new String[list_val2.length];
-		list_val_3 = new String[list_val3.length];
-		
-		for(int i = 0; i < list_val1.length ;i++){
-			list_val_1[i] = list_val1[i];
-		}
-		for(int i = 0; i < list_val2.length;i++){
-			list_val_2[i] = list_val2[i];
-		}
-		for(int i = 0; i < list_val3.length;i++){
-			list_val_3[i] = list_val3[i];
-		}
-		
-		ArrayList<String[]> list = new ArrayList();
-		
-		list.add(0, list_val_1);
-		list.add(1, list_val_2);
-		list.add(2, list_val_3);
-		
-		String[] name = search_name;
-		
-		setLayout(null);
-		
-		panel = new JPanel(null);
-
-		search_list = new JList[name.length];
-		search_label = new JLabel[name.length];
-		list_scrollpane = new JScrollPane[search_list.length];
-		
-		//////////////////////////////¶óº§////////////////////////////////////
-		for(int i = 0; i < name.length; i++) {
-			
-			search_label[i] = new JLabel(name[i]);
-			search_label[i].setFont(new Font("¸¼Àº °íµñ",Font.BOLD ,30));
-			search_label[i].setBounds(X-10+(i*200), Y, 200, 200);
-			panel.add(search_label[i]);
-			
-		}
-		////////////////////////////¸®½ºÆ®////////////////////////////////////
-	
-			search_list[0] = new JList(list_val1);
-			search_list[0].setFont(new Font("¸¼Àº °íµñ",0 ,30));
-			
-			list_scrollpane[0] = new JScrollPane(search_list[0]);
-			list_scrollpane[0].setPreferredSize(new Dimension(250, 410));
-			list_scrollpane[0].setBounds(X-60+(0*200), Y+150, 200, 250);
-			
-			panel.add(list_scrollpane[0]);
-			
-			search_list[1] = new JList(list_val2);
-			search_list[1].setFont(new Font("¸¼Àº °íµñ",0 ,30));
-			
-			list_scrollpane[1] = new JScrollPane(search_list[1]);
-			list_scrollpane[1].setPreferredSize(new Dimension(250, 410));
-			list_scrollpane[1].setBounds(X-60+(1*200), Y+150, 200, 250);
-			
-			panel.add(list_scrollpane[1]);
-			
-			search_list[2] = new JList(list_val3);
-			search_list[2].setFont(new Font("¸¼Àº °íµñ",0 ,30));
-			
-			list_scrollpane[2] = new JScrollPane(search_list[2]);
-			list_scrollpane[2].setPreferredSize(new Dimension(250, 410));
-			list_scrollpane[2].setBounds(X-60+(2*200), Y+150, 200, 250);
-			
-			panel.add(list_scrollpane[2]);
-			
-		panel.setBounds(0, 0, 1024, 500);
-		panel.setBackground(Color.WHITE);
-		add(panel);
-		
+		setLayout(new FlowLayout());
+		search_list[num] = new JList(list_val);
+		list_scrollpane[num] = new JScrollPane(search_list[num]);
+		search_panel[num] = new JPanel(new FlowLayout());
+		search_panel[num].add(list_scrollpane[num]);
+		add(search_panel[num]);
+				
+		setVisible(true);
 	}
 	
 	public void TwoButton_Panel(ImageIcon img_icon1, ImageIcon img_icon2) {

@@ -43,10 +43,9 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		selection = new String[3];
 
 		DB_Connect();
-		DB_Select("");
+		DB_Select("car", "");
 		DB_Select_0(0);
 		
-	
 	}
 	
 	public void DB_Select_0(int num) {
@@ -54,8 +53,8 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		result_data_0 = new String[table_data[num].size()];
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
-					result_data_0[i] = table_data[num].get(i);
-					System.out.println(i);
+			result_data_0[i] = table_data[num].get(i);
+			System.out.println(result_data_0[i]);
 		}
 
 	}
@@ -65,31 +64,23 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		result_data_1 = new String[table_data[num].size()];
 		
 		for(int i = 0; i < table_data[num].size() ;i++){
-			if(i-1 >= 0) {
-				if(table_data[num].get(i) != table_data[num].get(i-1)) {
-					result_data_1[i] = table_data[num].get(i);
-				}
-			}
+			result_data_1[i] = table_data[num].get(i);
+			System.out.println(i+"result_data_1");
 		}
 
 	}
 	
-//	public void DB_Select_2(int num) {
-//		
-////		result_data_0 = new String[table_data[num].size()];
-//		
-//		for(int i = 0; i < table_data[num].size() ;i++){
-//			if(i-1 >= 0) {
-//				if(table_data[num].get(i) != table_data[num].get(i-1)) {
-//					result_data_2.add(i, table_data[num].get(i));
-//				}
-//			}
-//		}
-//
-//	}
-//	
+	public void DB_Select_2(int num) {
+		
+		result_data_2 = new String[table_data[num].size()];
+		
+		for(int i = 0; i < table_data[num].size() ;i++){
+			result_data_2[i] = table_data[num].get(i);
+			System.out.println(i+"result_data_2");
+		}
 
-	
+	}
+
 	public void DB_Connect() {
 		
 		conn = new DB_Conn();
@@ -103,14 +94,20 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		
 	}
 	
-	public void DB_Select(String where) { 
+	public void DB_Select(String column, String where) { 
 		
-		String selectsql = "select distinct ? from test_info where 1=1";
-		
+		String selectsql_1 = "select distinct ";
+		String selectsql_2 = " from test_info where 1=1 ";
+		String selectsql;
+		if(where != ""){
+			selectsql = selectsql_1	+ column + selectsql_2 + where;
+		}
+		else {
+			selectsql = selectsql_1	+ column + selectsql_2;
+		}
 		try {
-			
+			System.out.println(selectsql);
 			pstmt = con.prepareStatement(selectsql);
-			
 			ResultSet rs = pstmt.executeQuery();
 			
 			table_data = new ArrayList[3];
@@ -122,27 +119,7 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 			int i = 0;
 			
 			while(rs.next()) {
-				
-				table_data[0].add(i, rs.getString("car"));
-				table_data[1].add(i, rs.getString("brand"));
-				table_data[2].add(i, rs.getString("model"));
-				
-				for(int c = 0; c < table_data.length; c++) {
-					
-					if(i != 0) {
-						
-							if(table_data[c].get(i).equals(table_data[c].get(i-1))){
-//								System.out.println("°°À½");
-							}
-							else if(!table_data[c].get(i).equals(table_data[c].get(i-1))) {
-//								System.out.println(table_data[c].get(i));
-							}					
-					}
-					
-					else if(i == 0) {
-//						System.out.println(table_data[c].get(i));
-					}
-				}
+				table_data[0].add(i, rs.getString(1));
 				i++;
 			}
 			
