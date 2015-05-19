@@ -25,23 +25,23 @@ public class Home_Panel extends Base_Window_Panel {
 		
 		img = new ButtonImage();
 		
-		car_btn = new JButton("차");
+		car_btn = new JButton();
 		car_btn.setIcon(img.ucinfo_img_1);
 		car_btn.setPressedIcon(img.ucinfo_img_2);
-		user_btn = new JButton("회원");
+		user_btn = new JButton();
 		user_btn.setIcon(img.userinfo_img_1);
 		user_btn.setPressedIcon(img.userinfo_img_2);
-		deal_btn = new JButton("매매");
-		deal_btn.setIcon(img.saleinfo_img_1);
-		deal_btn.setPressedIcon(img.saleinfo_img_2);
-		sale_btn = new JButton("판매");
+		deal_btn = new JButton();
+		deal_btn.setIcon(img.chinfo_img_1);
+		deal_btn.setPressedIcon(img.chinfo_img_2);
+		sale_btn = new JButton();
 		sale_btn.setIcon(img.pcinfo_img_1);
 		sale_btn.setPressedIcon(img.pcinfo_img_2);
 		
-		car_btn.setBounds(30, 10, 178, 200);
-		user_btn.setBounds(30, 10, 178, 200);
-		deal_btn.setBounds(30, 10, 178, 200);
-		sale_btn.setBounds(30, 10, 178, 200);
+		car_btn.setBounds(0, 0, 200, 200);
+		user_btn.setBounds(0, 0, 200, 200);
+		deal_btn.setBounds(0, 0, 200, 200);
+		sale_btn.setBounds(0, 0, 200, 200);
 		
 		car_btn_panel = new JPanel(null);
 		car_btn_panel.setBackground(Color.WHITE);

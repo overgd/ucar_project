@@ -6,9 +6,7 @@ import javax.swing.JPanel;
 
 public class ButtonImage extends JPanel {
 	
-	public ImageIcon home_img, back_img, pcinfo_img_1, pcinfo_img_2,
-	saleinfo_img_1, saleinfo_img_2, ucinfo_img_1, ucinfo_img_2,
-	userinfo_img_1, userinfo_img_2;
+	public ImageIcon home_img, back_img, pcinfo_img_1, pcinfo_img_2, ucinfo_img_1, ucinfo_img_2, userinfo_img_1, userinfo_img_2, chinfo_img_1, chinfo_img_2;
 	
 	public ButtonImage() {
 		
@@ -16,8 +14,8 @@ public class ButtonImage extends JPanel {
 		back_img = new ImageIcon("./img/btn_back_1.jpg");
 		pcinfo_img_1 = new ImageIcon("./img/btn_pcinfo_1.png");
 		pcinfo_img_2 = new ImageIcon("./img/btn_pcinfo_2.png");
-		saleinfo_img_1 = new ImageIcon("./img/btn_saleinfo_1.png");
-		saleinfo_img_2 = new ImageIcon("./img/btn_saleinfo_2.png");
+		chinfo_img_1 = new ImageIcon("./img/btn_chinfo_1.jpg");
+		chinfo_img_2 = new ImageIcon("./img/btn_chinfo_2.jpg");
 		ucinfo_img_1 = new ImageIcon("./img/btn_ucinfo_1.png");
 		ucinfo_img_2 = new ImageIcon("./img/btn_ucinfo_2.png");
 		userinfo_img_1 = new ImageIcon("./img/btn_userinfo_1.png");
