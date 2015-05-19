@@ -13,6 +13,7 @@ import javax.swing.Timer;
 import Panel.First_Panel;
 import Panel.Home_Panel;
 import Panel.Search_Panel;
+import Panel.Test_Panel;
 import Panel.TwoButton_Panel;
 import Window.Base_Window;
 import Window.ButtonImage;
@@ -21,6 +22,7 @@ public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
 	Search_Panel[] panel;
+	TwoButton_Panel test_panel;
 	
 	public Ucar_Init(String title) {
 		
@@ -50,6 +52,7 @@ public class Ucar_Init extends Base_Window {
 	public void panel_add() {
 		
 		panel = new Search_Panel[1];
+		
 		panel[0] = new First_Panel();
 //		panel[1] = new First_Panel();
 		
@@ -67,6 +70,11 @@ public class Ucar_Init extends Base_Window {
 		
 	}
 	
+	public void test_add() {
+		test_panel = new Test_Panel();
+		slide.add(test_panel, "test");
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -79,8 +87,12 @@ public class Ucar_Init extends Base_Window {
 			this.layout.show(slide, "0");
 		}
 		
+		if(btn == home_panel.deal_btn) {
+			test_add();
+			this.layout.show(slide, "test");
+		}
+		
 		for(int i = 0; i < panel.length; i++) {
-			
 			
 			if(btn == panel[i].backbtn) {
 				layout.previous(slide);
