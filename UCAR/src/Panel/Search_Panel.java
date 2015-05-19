@@ -55,44 +55,48 @@ public class Search_Panel extends Base_Window_Panel {
 			ResultSet rs = pstmt.executeQuery();
 			
 			table_data = new ArrayList[3];
-			table_data = new 
+			
+			table_data[0] = new ArrayList<String>();
+			table_data[1] = new ArrayList<String>();
+			table_data[2] = new ArrayList<String>();
+			
 			
 			int i = 0;
 			
 			while(rs.next()) {
 				
-				table_data.add(i, rs.getString("car"));
-				table_data.add(i, rs.getString("brand"));
-				table_data.add(i, rs.getString("model"));
+				table_data[0].add(i, rs.getString("car"));
+				table_data[1].add(i, rs.getString("brand"));
+				table_data[2].add(i, rs.getString("model"));
 				
 				if(i != 0) {
 					
-					if(table_data_1.get(i).equals(table_data_1.get(i-1))){
+					if(table_data[0].get(i).equals(table_data[0].get(i-1))){
 						System.out.println("같음");
 					}
-					else if(!table_data_1.get(i).equals(table_data_1.get(i-1))) {
-						System.out.println(table_data_1.get(i));
+					else if(!table_data[0].get(i).equals(table_data[0].get(i-1))) {
+						System.out.println(table_data[0].get(i));
 					}
 					
-					if(table_data_2.get(i).equals(table_data_2.get(i-1))){
+					if(table_data[1].get(i).equals(table_data[1].get(i-1))){
 						System.out.println("같음");
 					}
-					else if(!table_data_2.get(i).equals(table_data_2.get(i-1))) {
-						System.out.println(table_data_2.get(i));
+					else if(!table_data[1].get(i).equals(table_data[1].get(i-1))) {
+						System.out.println(table_data[1].get(i));
 					}
 					
-					if(table_data_3.get(i).equals(table_data_3.get(i-1))){
+					if(table_data[2].get(i).equals(table_data[2].get(i-1))){
 						System.out.println("같음");
 					}
-					else if(!table_data_3.get(i).equals(table_data_3.get(i-1))) {
-						System.out.println(table_data_3.get(i));
+					else if(!table_data[2].get(i).equals(table_data[2].get(i-1))) {
+						System.out.println(table_data[2].get(i));
 					}
 				}
 				
 				else if(i == 0) {
-					System.out.println(table_data_1.get(i));
-					System.out.println(table_data_2.get(i));
-					System.out.println(table_data_3.get(i));
+					System.out.println(table_data[0].get(i));
+					System.out.println(table_data[1].get(i));
+					System.out.println(table_data[2].get(i));
 				}
 				
 				i++;

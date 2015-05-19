@@ -7,10 +7,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import Panel.TwoButton_Panel;
 import Window.Base_Window_Panel;
 import Window.ButtonImage;
 
-public class Test_Panel extends Base_Window_Panel {
+public class Test_Panel extends TwoButton_Panel {
 	
 	JPanel Sale_Panel_0;
 	
