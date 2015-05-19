@@ -22,7 +22,7 @@ public class Car_Panel_0 extends TwoButton_Panel {
 		
 		base_top_visible(true, subject);
 		
-		base_center_visible(true, img.back_img, img.home_img);
+		base_center_visible(true, img.ucinfolong_img_1, img.usedcarinfolong_img_1);
 		
 	}
 

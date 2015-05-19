@@ -22,7 +22,7 @@ public class Deal_Panel_1_1 extends TwoButton_Panel {
 		
 		base_top_visible(true, subject);
 		
-		base_center_visible(true, img.back_img, img.home_img);
+		base_center_visible(true, img.carquicklong_img_1, img.cardetailsearchlong_img_1);
 		
 	}
 
