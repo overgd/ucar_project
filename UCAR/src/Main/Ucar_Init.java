@@ -171,8 +171,5 @@ public class Ucar_Init extends Base_Window {
 				}
 			}
 		}
-		
 	}
-	
-
 }

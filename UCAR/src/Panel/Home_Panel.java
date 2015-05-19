@@ -38,10 +38,10 @@ public class Home_Panel extends Base_Window_Panel {
 		sale_btn.setIcon(img.pcinfo_img_1);
 		sale_btn.setPressedIcon(img.pcinfo_img_2);
 		
-		car_btn.setBounds(0, 0, 200, 200);
-		user_btn.setBounds(0, 0, 200, 200);
-		deal_btn.setBounds(0, 0, 200, 200);
-		sale_btn.setBounds(0, 0, 200, 200);
+		car_btn.setBounds(30, 0, 200, 200);
+		user_btn.setBounds(30, 0, 200, 200);
+		deal_btn.setBounds(30, 0, 200, 200);
+		sale_btn.setBounds(30, 0, 200, 200);
 		
 		car_btn_panel = new JPanel(null);
 		car_btn_panel.setBackground(Color.WHITE);

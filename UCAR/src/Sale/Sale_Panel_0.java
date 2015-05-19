@@ -34,7 +34,7 @@ public class Sale_Panel_0 extends Base_Window_Panel {
 		yearsearch_btn.setIcon(img.userinfo_img_1);
 		yearsearch_btn.setPressedIcon(img.userinfo_img_2);
 		monthlysearch_btn = new JButton("월별 검색");
-
+		
 		searchilbyeol_btn = new JButton("일별 검색");
 		searchilbyeol_btn.setIcon(img.pcinfo_img_1);
 		searchilbyeol_btn.setPressedIcon(img.pcinfo_img_2);
