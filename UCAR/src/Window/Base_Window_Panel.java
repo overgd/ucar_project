@@ -88,9 +88,7 @@ public class Base_Window_Panel extends JPanel implements ActionListener, ListSel
 		if(visible) {
 			
 			String[] list_val = {""}; 
-			
 			base_center = new Base_Window_Center(search_name, list_val, list_val, list_val);
-			
 			add("Center", base_center);			
 		}
 	}

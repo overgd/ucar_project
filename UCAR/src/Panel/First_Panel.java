@@ -10,6 +10,7 @@ import Window.ButtonImage;
 public class First_Panel extends Search_Panel {
 
 	String[] search_name = {"차  종", "브랜드", "모델명"};
+	
 	String[] btn_name = {"확인"};
 	String where = "and car = 대형";
 	
@@ -26,8 +27,8 @@ public class First_Panel extends Search_Panel {
 		base_bottom_visible(true, btn_name);
 		
 		base_center.search_list[0].addListSelectionListener(this);
-//		base_center.search_list[1].addListSelectionListener(this);
-//		base_center.search_list[2].addListSelectionListener(this);
+		base_center.search_list[1].addListSelectionListener(this);
+		base_center.search_list[2].addListSelectionListener(this);
 		
 	}
 	

@@ -22,6 +22,8 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 	public PreparedStatement pstmt;
 	public Statement stmt;
 	public String selectsql = "select * from test_info where 1=1 ";
+	public String[] result_data;
+	
 	public String[] selection;
 	
 	public int btn_num;
@@ -32,8 +34,10 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 	public Search_Panel() {
 		
 		super();
-		selection = new String[3];
 		
+		selection = new String[3];
+		DB_Connect();
+		DB_Select("and 1=1");
 		
 	}
 	
