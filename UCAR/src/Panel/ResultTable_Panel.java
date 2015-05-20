@@ -1,5 +1,8 @@
 package Panel;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 
@@ -21,6 +25,7 @@ public class ResultTable_Panel extends Base_Window_Panel {
 	
 	public Model model;
 	public JTable table;
+	public JScrollPane scrollpane;
 	
 	public Connection con;
 	public PreparedStatement pstmt, pstmtNoscroll;
@@ -28,12 +33,18 @@ public class ResultTable_Panel extends Base_Window_Panel {
 	
 	public ResultSet re, reNoscroll;
 	
-	public String selectSql = "select * from car_info where 1=1 ";
-	
+	public String selectSql1 = "select * from ";
+	public String from_table = "";
+	public String selectSql2 = " where 1=1 ";
+	public String selectSql = "";
+			
 	public ResultTable_Panel() {
 		
 		table = new JTable();
-
+		scrollpane = new JScrollPane(table);
+		table.setFont(new Font("맑은 고딕", 0, 20));
+		table.setRowHeight(80);
+		
 	}
 	
 	public void DB_Connect() {
@@ -49,7 +60,9 @@ public class ResultTable_Panel extends Base_Window_Panel {
 		
 	}
 	
-	public void DB_Select() throws SQLException {
+	public void DB_Select(String from_table, String where) throws SQLException {
+		
+		selectSql = selectSql1 + from_table + selectSql2 + where;
 		
 		pstmt = con.prepareStatement(selectSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); //last메서드를 생성하기  위해 두가지 옵션을 추가
 		pstmtNoscroll = con.prepareStatement(selectSql); //그냥 쿼리만 가지고 만듦

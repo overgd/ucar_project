@@ -1,6 +1,7 @@
 package Panel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
@@ -20,7 +21,7 @@ public class Second_Panel extends ResultTable_Panel {
 		
 		try {
 		DB_Connect();
-		DB_Select();
+		DB_Select("car_info", "");
 		}
 		catch(Exception e) {
 			System.out.println("¿¹¿Ü1");
@@ -34,8 +35,7 @@ public class Second_Panel extends ResultTable_Panel {
 			}
 		}
 //		table.setFont(new Font("¸¼Àº °íµñ", 0, 15));
-		add("Center", new JScrollPane(table));
-		
+		add("Center", scrollpane);
 		
 		base_bottom_visible(true, btn_name);
 		
