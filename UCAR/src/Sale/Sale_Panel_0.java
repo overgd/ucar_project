@@ -14,11 +14,12 @@ import Window.ButtonImage;
 
 public class Sale_Panel_0 extends TopAndBottom_Panel {
 
-	JPanel Sale_Panel_0;
+	public JPanel panel;
 	
-	JPanel gross_sales_btn_panel, year_search_btn_panel,
+	public JPanel gross_sales_btn_panel, year_search_btn_panel,
 			monthly_search_btn_panel, search_ilbyeol_btn_panel,
 			sales_registration_btn_panel, detailed_search_btn_panel;
+	
 	public JButton gross_sales_btn, year_search_btn,
 			monthly_search_btn, search_ilbyeol_btn,
 			sales_registration_btn, detailed_search_btn;
@@ -78,19 +79,19 @@ public class Sale_Panel_0 extends TopAndBottom_Panel {
 		monthly_search_btn_panel.add(monthly_search_btn);
 		search_ilbyeol_btn_panel.add(search_ilbyeol_btn);
 
-		Sale_Panel_0 = new JPanel(new GridLayout(2,3));
-		Sale_Panel_0.setBackground(Color.WHITE);		
+		panel = new JPanel(new GridLayout(2,3));
+		panel.setBackground(Color.WHITE);		
 		
-		Sale_Panel_0.add(gross_sales_btn_panel);
-		Sale_Panel_0.add(sales_registration_btn_panel);
-		Sale_Panel_0.add(detailed_search_btn_panel);
-		Sale_Panel_0.add(year_search_btn_panel);
-		Sale_Panel_0.add(monthly_search_btn_panel);
-		Sale_Panel_0.add(search_ilbyeol_btn_panel);
+		panel.add(gross_sales_btn_panel);
+		panel.add(sales_registration_btn_panel);
+		panel.add(detailed_search_btn_panel);
+		panel.add(year_search_btn_panel);
+		panel.add(monthly_search_btn_panel);
+		panel.add(search_ilbyeol_btn_panel);
 		
-		Sale_Panel_0.setBounds(0, 0, 1024, 768);
+		panel.setBounds(0, 0, 1024, 768);
 		
-		add(Sale_Panel_0);
+		add(panel);
 		
 		setVisible(true);
 	}

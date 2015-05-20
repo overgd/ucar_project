@@ -3,6 +3,7 @@ package Panel;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 import Window.Base_Window_Panel;
 import Window.ButtonImage;
@@ -12,6 +13,10 @@ public class TopAndBottom_Panel extends Base_Window_Panel {
 	String[] btn_name = {""};
 	public int btn_num;
 	public String subject;
+	
+	public JButton gross_sales_btn, year_search_btn,
+	monthly_search_btn, search_ilbyeol_btn,
+	sales_registration_btn, detailed_search_btn;
 	
 	public TopAndBottom_Panel() {
 		
