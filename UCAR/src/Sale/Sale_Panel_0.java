@@ -20,10 +20,6 @@ public class Sale_Panel_0 extends TopAndBottom_Panel {
 			monthly_search_btn_panel, search_ilbyeol_btn_panel,
 			sales_registration_btn_panel, detailed_search_btn_panel;
 	
-	public JButton gross_sales_btn, year_search_btn,
-			monthly_search_btn, search_ilbyeol_btn,
-			sales_registration_btn, detailed_search_btn;
-	
 	ButtonImage img;
 	
 	public Sale_Panel_0() {

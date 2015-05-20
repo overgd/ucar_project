@@ -13,14 +13,16 @@ import Car.Test_Panel;
 import Deal.Deal_Panel_0;
 import Deal.Deal_Panel_1_0;
 import Deal.Deal_Panel_1_1;
+import Deal.Deal_Panel_1_2;
 import Deal.Deal_Panel_2_0;
 import Deal.Deal_Panel_2_1;
+import Deal.Deal_Panel_2_2;
 import Panel.Home_Panel;
 import Panel.Search_Panel;
-import Panel.Second_Panel;
 import Panel.TopAndBottom_Panel;
 import Panel.TwoButton_Panel;
 import Sale.Sale_Panel_0;
+import Sale.Sale_Panel_6_0;
 import User.User_Panel_0;
 import Window.Base_Window;
 
@@ -67,7 +69,7 @@ public class Ucar_Init extends Base_Window {
 		slide.add(home_panel, "home");
 	
 	}
-	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	public void search_panel_add(JButton btn) {//////////////////////////조회 판넬 추가
 		
 		if(btn == home_panel.car_btn) {/////////////////////////////차
@@ -87,6 +89,26 @@ public class Ucar_Init extends Base_Window {
 				
 				slide.add(search_panel[i],"car_"+ String.valueOf(index_car));
 				index_car++;
+			}
+		}
+		
+		else if(btn == home_panel.deal_btn) {///////////////////////////매매
+			search_panel = new Search_Panel[2];
+			search_panel[0] = new Deal_Panel_1_2();///////////////////////////차종 빠른 검색
+			search_panel[1] = new Deal_Panel_2_2();///////////////////////////중고차 빠른 검색
+			
+			for(int i = 0; i < search_panel.length; i++) {
+				
+				search_panel[i].backbtn.addActionListener(this);
+				search_panel[i].homebtn.addActionListener(this);
+				search_panel[i].base_center.search_list[0].addListSelectionListener(this);
+				
+				if(search_panel[i].btn_num > 0) {
+					search_panel[i].bottom_btn[search_panel[i].btn_num-1].addActionListener(this);
+				}
+				
+				slide.add(search_panel[i],"deal_"+ String.valueOf(index_deal));
+				index_deal++;
 			}
 		}
 		
@@ -146,7 +168,7 @@ public class Ucar_Init extends Base_Window {
 				
 				tandb_panel[i].backbtn.addActionListener(this);
 				tandb_panel[i].homebtn.addActionListener(this);
-				
+			
 				tandb_panel[i].gross_sales_btn.addActionListener(this);
 				tandb_panel[i].detailed_search_btn.addActionListener(this);
 				tandb_panel[i].monthly_search_btn.addActionListener(this);
@@ -155,6 +177,22 @@ public class Ucar_Init extends Base_Window {
 				tandb_panel[i].year_search_btn.addActionListener(this);
 				
 				slide.add(tandb_panel[i], "sale_"+String.valueOf(index_sale));
+				index_sale++;
+			}
+			
+			twobtn_panel = new TwoButton_Panel[1];
+			twobtn_panel[0] = new Sale_Panel_6_0();
+			
+			for(int i = 0; i < twobtn_panel.length; i++) {
+				
+				twobtn_panel[i].backbtn.addActionListener(this);
+				twobtn_panel[i].homebtn.addActionListener(this);
+				
+				if(twobtn_panel[i].btn_num > 0) {
+					twobtn_panel[i].bottom_btn[twobtn_panel[i].btn_num-1].addActionListener(this);
+				}
+				
+				slide.add(twobtn_panel[i], "sale_"+String.valueOf(index_sale));
 				index_sale++;
 			}
 			
@@ -182,6 +220,7 @@ public class Ucar_Init extends Base_Window {
 				twobtn_panel[i].base_center.btn[1].addActionListener(this);
 				
 				slide.add(twobtn_panel[i], "deal_"+String.valueOf(index_deal));
+				index_deal++;
 			}
 			
 		}
@@ -267,6 +306,7 @@ public class Ucar_Init extends Base_Window {
 		if(btn == home_panel.user_btn) { ///회원 버튼
 			
 			twobtn_panel_add(home_panel.user_btn);
+			
 			this.layout.show(slide, "user_0");
 			location_id = 2;
 		}
@@ -274,6 +314,8 @@ public class Ucar_Init extends Base_Window {
 		if(btn == home_panel.deal_btn) { ///매매 버튼
 			
 			twobtn_panel_add(home_panel.deal_btn);
+			search_panel_add(home_panel.deal_btn);
+			
 			this.layout.show(slide, "deal_0");
 			location_id = 3;
 		}
@@ -390,17 +432,20 @@ public class Ucar_Init extends Base_Window {
 			if(btn == twobtn_panel[3].base_center.btn[0]) {
 				layout.show(slide, "deal_4"); /////중고차 검색
 			}
+			if(btn == twobtn_panel[2].base_center.btn[0]) {
+				layout.show(slide, "deal_5"); ////차종 빠른 검색
+			}
+			if(btn == twobtn_panel[4].base_center.btn[0]) {
+				layout.show(slide, "deal_6"); ////중고차 빠른 검색
+			}
 		}
 		
 ////////////////////////////////////////매출/////////////////////////////////////////
-//		if(location_id == 4) {
-//			if(btn == twobtn_panel[0].base_center.btn[0]) {
-//				layout.show(slide, "sale_1");
-//			}
-//			if(btn == twobtn_panel[0].base_center.btn[1]) {
-//				layout.show(slide, "sale_2");
-//			}
-//		}
+		if(location_id == 4) {
+			if(btn == tandb_panel[0].detailed_search_btn) {
+				layout.show(slide, "sale_1");
+			}
+		}
 
 		
 	}
