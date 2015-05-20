@@ -27,7 +27,7 @@ public class Sale_Panel_0 extends TopAndBottom_Panel {
 	
 	public Sale_Panel_0() {
 		
-		setLayout(null);
+		base_top_visible(true, "∏≈√‚");
 		
 		img = new ButtonImage();
 		
@@ -50,10 +50,9 @@ public class Sale_Panel_0 extends TopAndBottom_Panel {
 		search_ilbyeol_btn.setIcon(img.ddsearch_img_1);
 		search_ilbyeol_btn.setPressedIcon(img.ddsearch_img_2);
 
-		
-		gross_sales_btn.setBounds(130, 160, 200, 200);
-		sales_registration_btn.setBounds(65, 160, 200, 200);
-		detailed_search_btn.setBounds(0, 160, 200, 200);
+		gross_sales_btn.setBounds(130, 0, 200, 200);
+		sales_registration_btn.setBounds(65, 0, 200, 200);
+		detailed_search_btn.setBounds(0, 0, 200, 200);
 		year_search_btn.setBounds(130, 0, 200, 200);
 		monthly_search_btn.setBounds(65, 0, 200, 200);
 		search_ilbyeol_btn.setBounds(0, 0, 200, 200);
@@ -79,7 +78,6 @@ public class Sale_Panel_0 extends TopAndBottom_Panel {
 		monthly_search_btn_panel.add(monthly_search_btn);
 		search_ilbyeol_btn_panel.add(search_ilbyeol_btn);
 
-		
 		Sale_Panel_0 = new JPanel(new GridLayout(2,3));
 		Sale_Panel_0.setBackground(Color.WHITE);		
 		
@@ -89,7 +87,6 @@ public class Sale_Panel_0 extends TopAndBottom_Panel {
 		Sale_Panel_0.add(year_search_btn_panel);
 		Sale_Panel_0.add(monthly_search_btn_panel);
 		Sale_Panel_0.add(search_ilbyeol_btn_panel);
-
 		
 		Sale_Panel_0.setBounds(0, 0, 1024, 768);
 		
