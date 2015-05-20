@@ -7,14 +7,14 @@ import javax.swing.ImageIcon;
 import Panel.TwoButton_Panel;
 import Window.ButtonImage;
 
-public class Sale_Panel_6 extends TwoButton_Panel {
+public class Sale_Panel_6_0 extends TwoButton_Panel {
 	
 	
 	String subject = "상세 검색";
 	
 	ButtonImage img;
 	
-	public Sale_Panel_6() {
+	public Sale_Panel_6_0() {
 		
 		super();
 		

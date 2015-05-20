@@ -2,129 +2,37 @@ package Car;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
+import Panel.ResultTable_Panel;
 
-import Panel.Search_Panel;
-import Window.Base_Window_Center;
-
-public class Car_Panel_1_2 extends Search_Panel {
-
-	String[] search_name = {"차  종", "브랜드", "모델명"};
-	public String[] btn_name = {"검색"};
-	String where = " ";
+public class Car_Panel_1_2 extends ResultTable_Panel {
 	
-	public String subject = "첫번째";
-	
+	String[] btn_name = {"상세", "등록", "수정", "삭제"};
+	String subject = "자동차 검색 결과";
+
 	public Car_Panel_1_2() {
-		
-		super();
 
-		btn_num = btn_name.length;
+		base_top_visible(true, subject);
 		
-		base_top_visible(true, "중고차 정보 검색");
-		
-		base_center = new Base_Window_Center();
-		base_center.setLayout(null);
-		base_center.SearchList_Panel(search_name, 0, result_data_0);
-		base_center.SearchList_Panel(search_name, 1, null_data);
-		base_center.SearchList_Panel(search_name, 2, null_data);
-		
-		add(base_center);
+		try {
+		DB_Connect();
+		DB_Select("car_info", "");
+		}
+		catch(Exception e) {
+			System.out.println("예외1");
+		}
+		finally {
+			try {
+				con.close();
+			}
+			catch(Exception e) {
+				System.out.println("예외2");
+			}
+		}
+//		table.setFont(new Font("맑은 고딕", 0, 15));
+		add("Center", scrollpane);
 		
 		base_bottom_visible(true, btn_name);
 		
-		base_center.search_list[0].addListSelectionListener(this);
-		base_center.search_list[1].addListSelectionListener(this);
-		base_center.search_list[2].addListSelectionListener(this);
-		
-	}
-
-	@Override
-	public void DB_Select_0(int num) {
-		// TODO Auto-generated method stub
-		super.DB_Select_0(num);
-	}
-
-	@Override
-	public void DB_Select_1(int num) {
-		// TODO Auto-generated method stub
-		super.DB_Select_1(num);
-	}
-
-	@Override
-	public void DB_Select_2(int num) {
-		// TODO Auto-generated method stub
-		super.DB_Select_2(num);
-	}
-
-	@Override
-	public void DB_Select(String column, String where) {
-		// TODO Auto-generated method stub
-		super.DB_Select(column, where);
-	}
-
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		
-		super.valueChanged(e);	
-		JList mylist = (JList)e.getSource();
-		
-		if(mylist == base_center.search_list[0]){
-			
-				if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-				
-				selection[0] = (String)base_center.search_list[0].getSelectedValue();
-				DB_Select("c_brand", "and c_type = '"+selection[0]+"'");
-				DB_Select_1(0);
-				
-				base_center.search_panel[1].setVisible(false);
-				base_center.SearchList_Panel(search_name, 1, result_data_1);
-				base_center.search_list[1].addListSelectionListener(this);
-				base_center.search_panel[1].setVisible(true);
-				
-				add(base_center);
-				setVisible(true);
-				
-			}
-		}
-		
-		if(mylist == base_center.search_list[1]){
-			
-				if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-				
-				selection[1] = (String)base_center.search_list[1].getSelectedValue();
-				DB_Select("c_name", "and c_brand = '"+selection[1]+"'"+" and c_type = '"+selection[0]+"'");
-				DB_Select_2(0);
-
-				base_center.search_panel[2].setVisible(false);
-				base_center.SearchList_Panel(search_name, 2, result_data_2);
-				base_center.search_list[2].addListSelectionListener(this);
-				base_center.search_panel[2].setVisible(true);
-				
-				add(base_center);
-				setVisible(true);
-				
-			}
-		}
-
-			
-
-		
-		if( !base_center.search_list[2].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-			
-			selection[2] = (String)base_center.search_list[2].getSelectedValue();
-
-		}
-	
-	}
-
-
-	@Override
-	public void DB_Connect() {
-		// TODO Auto-generated method stub
-		super.DB_Connect();
 	}
 	
 	@Override
@@ -150,26 +58,6 @@ public class Car_Panel_1_2 extends Search_Panel {
 		// TODO Auto-generated method stub
 		super.base_top_visible(visible, subject);
 	}
-	
-
-	@Override
-	public void base_center_visible(boolean visible, ImageIcon img_icon1,
-			ImageIcon img_icon2) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible, img_icon1, img_icon2);
-	}
-
-	@Override
-	public void base_center_visible(boolean visible, String[] search_name) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible, search_name);
-	}
-
-	@Override
-	public void base_center_visible(boolean visible) {
-		// TODO Auto-generated method stub
-		super.base_center_visible(visible);
-	}
 
 	@Override
 	public void base_bottom_visible(boolean visible, String[] btn_name) {
@@ -182,6 +70,7 @@ public class Car_Panel_1_2 extends Search_Panel {
 		// TODO Auto-generated method stub
 		super.actionPerformed(e);
 	}
+
 	
 	
 }

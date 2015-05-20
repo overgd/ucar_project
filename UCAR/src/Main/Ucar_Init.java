@@ -8,7 +8,7 @@ import javax.swing.event.ListSelectionEvent;
 
 import Car.Car_Panel_0;
 import Car.Car_Panel_1_1;
-import Car.Car_Panel_1_2;
+import Car.Car_Panel_2_1;
 import Car.Test_Panel;
 import Deal.Deal_Panel_0;
 import Deal.Deal_Panel_1_0;
@@ -73,7 +73,7 @@ public class Ucar_Init extends Base_Window {
 		if(btn == home_panel.car_btn) {/////////////////////////////차
 			search_panel = new Search_Panel[2];
 			search_panel[0] = new Car_Panel_1_1();///////////////////////////자동차 정보 검색	
-			search_panel[1] = new Car_Panel_1_2();/////////////////////////중고차 검색
+			search_panel[1] = new Car_Panel_2_1();/////////////////////////중고차 검색
 			
 			for(int i = 0; i < search_panel.length; i++) {
 				

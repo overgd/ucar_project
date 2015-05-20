@@ -1,4 +1,4 @@
-package Deal;
+package Car;
 
 import java.awt.event.ActionEvent;
 
@@ -9,7 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import Panel.Search_Panel;
 import Window.Base_Window_Center;
 
-public class Deal_Panel_2_1_1 extends Search_Panel {
+public class Car_Panel_2_1 extends Search_Panel {
 
 	String[] search_name = {"차  종", "브랜드", "모델명"};
 	public String[] btn_name = {"검색"};
@@ -17,13 +17,13 @@ public class Deal_Panel_2_1_1 extends Search_Panel {
 	
 	public String subject = "첫번째";
 	
-	public Deal_Panel_2_1_1() {
+	public Car_Panel_2_1() {
 		
 		super();
 
 		btn_num = btn_name.length;
 		
-		base_top_visible(true, "중고차 빠른 검색");
+		base_top_visible(true, "중고차 정보 검색");
 		
 		base_center = new Base_Window_Center();
 		base_center.setLayout(null);
@@ -76,7 +76,7 @@ public class Deal_Panel_2_1_1 extends Search_Panel {
 				if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 				
 				selection[0] = (String)base_center.search_list[0].getSelectedValue();
-				DB_Select("brand", "and car = '"+selection[0]+"'");
+				DB_Select("c_brand", "and c_type = '"+selection[0]+"'");
 				DB_Select_1(0);
 				
 				base_center.search_panel[1].setVisible(false);
@@ -95,7 +95,7 @@ public class Deal_Panel_2_1_1 extends Search_Panel {
 				if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 				
 				selection[1] = (String)base_center.search_list[1].getSelectedValue();
-				DB_Select("model", "and brand = '"+selection[1]+"'"+" and car = '"+selection[0]+"'");
+				DB_Select("c_name", "and c_brand = '"+selection[1]+"'"+" and c_type = '"+selection[0]+"'");
 				DB_Select_2(0);
 
 				base_center.search_panel[2].setVisible(false);
