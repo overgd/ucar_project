@@ -305,7 +305,7 @@ public class Ucar_Init extends Base_Window {
 			}/////////////////백 홈
 		}
 		
-		if(tandb_panel != null){
+		if(tandb_panel != null){ //////////////투버튼
 			
 			for(int i = 0; i < tandb_panel.length; i++) { ////////// 백 홈
 				
