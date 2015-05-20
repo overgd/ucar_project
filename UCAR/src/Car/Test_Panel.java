@@ -12,7 +12,7 @@ import Window.Base_Window_Center;
 public class Test_Panel extends Search_Panel {
 
 	String[] search_name = {"차  종", "브랜드", "모델명"};
-	public String[] btn_name = {"확인"};
+	public String[] btn_name = {"검색"};
 	String where = " ";
 	
 	public String subject = "첫번째";
@@ -23,7 +23,7 @@ public class Test_Panel extends Search_Panel {
 
 		btn_num = btn_name.length;
 		
-		base_top_visible(true, "조회");
+		base_top_visible(true, "자동차 정보 검색");
 		
 		base_center = new Base_Window_Center();
 		base_center.setLayout(null);
