@@ -141,9 +141,13 @@ public class Ucar_Init extends Base_Window {
 		}
 		
 		if(btn == panel[0].bottom_btn[0]) { ///조회창 확인 버튼
-			System.out.println(panel[0].selection[0]);
-			System.out.println(panel[0].selection[1]);
-			System.out.println(panel[0].selection[2]);
+			
+			input_data = new String[3];
+			for(int i = 0; i < input_data.length; i++){
+				input_data[0] = panel[0].selection[i];
+				System.out.println(panel[0].selection[i]);
+			}
+			
 		}
 		
 		for(int i = 0; i < panel.length; i++) { ////////// 백 홈
