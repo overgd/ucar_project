@@ -44,7 +44,7 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		selection = new String[3];
 		
 		DB_Connect();
-		DB_Select("car", "");
+		DB_Select("c_type", "");
 		DB_Select_0(0);
 		
 	}
@@ -95,7 +95,7 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 	public void DB_Select(String column, String where) { 
 		
 		String selectsql_1 = "select distinct ";
-		String selectsql_2 = " from test_info where 1=1 ";
+		String selectsql_2 = " from car_info where 1=1 ";
 		String selectsql;
 		if(where != ""){
 			selectsql = selectsql_1	+ column + selectsql_2 + where;

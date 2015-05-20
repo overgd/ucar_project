@@ -76,7 +76,7 @@ public class Car_Panel_1_2 extends Search_Panel {
 				if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 				
 				selection[0] = (String)base_center.search_list[0].getSelectedValue();
-				DB_Select("brand", "and car = '"+selection[0]+"'");
+				DB_Select("c_brand", "and c_type = '"+selection[0]+"'");
 				DB_Select_1(0);
 				
 				base_center.search_panel[1].setVisible(false);
@@ -95,7 +95,7 @@ public class Car_Panel_1_2 extends Search_Panel {
 				if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 				
 				selection[1] = (String)base_center.search_list[1].getSelectedValue();
-				DB_Select("model", "and brand = '"+selection[1]+"'"+" and car = '"+selection[0]+"'");
+				DB_Select("c_name", "and c_brand = '"+selection[1]+"'"+" and c_type = '"+selection[0]+"'");
 				DB_Select_2(0);
 
 				base_center.search_panel[2].setVisible(false);

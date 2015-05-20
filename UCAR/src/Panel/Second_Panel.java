@@ -4,15 +4,13 @@ import java.awt.event.ActionEvent;
 
 import Window.Base_Window_Panel;
 
-public class Second_Panel extends TopAndBottom_Panel {
+public class Second_Panel extends ResultTable_Panel {
 	
 	String[] btn_name = {"안녕", "취소"};
 	String subject = "두번째";
 	
 	public Second_Panel() {
-		
-		btn_num = btn_name.length;
-		
+
 		base_top_visible(true, subject);
 		base_bottom_visible(true, btn_name);
 		
