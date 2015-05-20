@@ -9,7 +9,6 @@ import Window.ButtonImage;
 
 public class Sale_Panel_6_0 extends TwoButton_Panel {
 	
-	
 	String subject = "상세 검색";
 	
 	ButtonImage img;
