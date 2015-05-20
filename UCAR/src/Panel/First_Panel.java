@@ -108,8 +108,6 @@ public class First_Panel extends Search_Panel {
 			}
 		}
 
-			
-
 		
 		if( !base_center.search_list[2].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 			

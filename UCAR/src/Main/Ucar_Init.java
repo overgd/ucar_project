@@ -158,6 +158,9 @@ public class Ucar_Init extends Base_Window {
 					twobtn_panel[i].bottom_btn[twobtn_panel[i].btn_num-1].addActionListener(this);
 				}
 				
+				twobtn_panel[i].base_center.btn[0].addActionListener(this);
+				twobtn_panel[i].base_center.btn[1].addActionListener(this);
+				
 				slide.add(twobtn_panel[i], "deal_"+String.valueOf(i));
 			}
 			
@@ -326,5 +329,15 @@ public class Ucar_Init extends Base_Window {
 				
 			}/////////////////백 홈
 		}
+		
+////////////////////////////////////////매매//////////////////////////////////////////
+		if(btn == twobtn_panel[0].base_center.btn[0]) {
+			layout.show(slide, "deal_1"); ////매입
+		}
+		if(btn == twobtn_panel[0].base_center.btn[1]) {
+			layout.show(slide, "deal_3"); ////판매
+		}
+
+		
 	}
 }

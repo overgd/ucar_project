@@ -83,15 +83,25 @@ public class Base_Window_Center extends JPanel {
 		
 		btn = new JButton[2];
 		
-		ImageIcon[] icon = new ImageIcon[btn.length];
+		String path1 = img_icon1.toString();
+		String path1_1 = path1.replace('1', '2');
+		
+		String path2 = img_icon2.toString();
+		String path2_1 = path2.replace('1', '2');
+		
+		ImageIcon[] pressicon = new ImageIcon[btn.length+1];
+		pressicon[0] = new ImageIcon(path1_1);
+		pressicon[1] = new ImageIcon(path2_1);
+		
+		ImageIcon[] icon = new ImageIcon[btn.length+1];
 		icon[0] = img_icon1;
 		icon[1] = img_icon2;
 		
 		for(int i = 0; i < btn.length; i++) {
 			btn[i] = new JButton();
 			btn[i].setIcon(icon[i]);
+			btn[i].setPressedIcon(pressicon[i]);
 			btn[i].setBounds(X+(i*250), Y, 200, 420);
-			
 			add(btn[i]);
 		}	
 		
