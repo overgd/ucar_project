@@ -59,14 +59,19 @@ public class Base_Window_Center extends JPanel {
 	
 	public void SearchList_Panel(String[] search_name, int num, String[] list_val) {
 		
+		search_label[num] = new JLabel(search_name[num]);
+		search_label[num].setBounds(10+(num*200), 0, 150, 30);
+		add(search_label[num]);
+		
 		search_list[num] = new JList(list_val);
 		list_scrollpane[num] = new JScrollPane(search_list[num]);
-		list_scrollpane[num].setBounds(0, 0, 200, 200);
+		list_scrollpane[num].setBounds(0, 0, 200, 200); //위치는 고정
 		search_panel[num] = new JPanel(null);
 		search_panel[num].add(list_scrollpane[num]);
-		search_panel[num].setBounds(10+(num*200), 10, 200, 200);
+		search_panel[num].setBounds(10+(num*200), 50, 200, 200);
 		search_panel[num].setVisible(true);
 		add(search_panel[num]);		
+		
 	}
 	
 	public void TwoButton_Panel(ImageIcon img_icon1, ImageIcon img_icon2) {

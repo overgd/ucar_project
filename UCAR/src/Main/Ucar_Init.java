@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
@@ -25,6 +26,8 @@ public class Ucar_Init extends Base_Window {
 	Home_Panel home_panel;
 	Search_Panel[] panel;
 	TwoButton_Panel test_panel;
+	
+	String[] input_data;
 
 	public Ucar_Init(String title) {
 		
@@ -55,25 +58,20 @@ public class Ucar_Init extends Base_Window {
 		
 		panel = new Search_Panel[1];
 		
-		panel[0] = new First_Panel();
-//		panel[1] = new First_Panel();
-		
-		
-//		for(int i = 0; i < panel[0].base_center.search_list.length; i++) {
-//			panel[0].base_center.search_list[i].addListSelectionListener(this);
-//			
-//		}
+		panel[0] = new First_Panel();		
 		
 		for(int i = 0; i < panel.length; i++) {
 			
 			panel[i].backbtn.addActionListener(this);
 			panel[i].homebtn.addActionListener(this);
+			panel[i].base_center.search_list[0].addListSelectionListener(this);
 			
 			if(panel[i].btn_num > 0) {
 				panel[i].bottom_btn[panel[i].btn_num-1].addActionListener(this);
 			}
 			
 			slide.add(panel[i], String.valueOf(i));
+			
 		}
 		
 	}
@@ -86,9 +84,7 @@ public class Ucar_Init extends Base_Window {
 	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		
 		super.valueChanged(e);
-		
 	}
 
 	@Override
@@ -134,17 +130,23 @@ public class Ucar_Init extends Base_Window {
 		
 		JButton btn = (JButton)e.getSource();
 		
-		if(btn == home_panel.car_btn) {
+		if(btn == home_panel.car_btn) { ///차 버튼
 			panel_add();
 			this.layout.show(slide, "0");
 		}
 		
-		if(btn == home_panel.deal_btn) {
+		if(btn == home_panel.deal_btn) { ///매매 버튼
 			test_add();
 			this.layout.show(slide, "test");
 		}
 		
-		for(int i = 0; i < panel.length; i++) {
+		if(btn == panel[0].bottom_btn[0]) { ///조회창 확인 버튼
+			System.out.println(panel[0].selection[0]);
+			System.out.println(panel[0].selection[1]);
+			System.out.println(panel[0].selection[2]);
+		}
+		
+		for(int i = 0; i < panel.length; i++) { ////////// 백 홈
 			
 			if(btn == panel[i].backbtn) {
 				layout.previous(slide);
@@ -154,12 +156,13 @@ public class Ucar_Init extends Base_Window {
 				layout.show(slide, "home");
 				System.out.println("홈버튼");
 			}
-			
+
 			for(int c = 0; c < panel[i].btn_num; c++) {
 				if(btn == panel[i].bottom_btn[c]) {
 					System.out.println(c+"버튼");
 				}
 			}
-		}
+			
+		}/////////////////백 홈
 	}
 }

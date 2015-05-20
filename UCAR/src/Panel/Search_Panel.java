@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import DB.DB_Conn;
+import Window.Base_Window_Center;
 import Window.Base_Window_Panel;
 
 public class Search_Panel extends Base_Window_Panel implements ListSelectionListener {
@@ -28,7 +29,7 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 	public String[] result_data_2;
 	
 	public String[] null_data = {""};
-	
+	public String[] search_name = {""};
 	public String[] selection;
 	
 	public int btn_num;
@@ -41,7 +42,7 @@ public class Search_Panel extends Base_Window_Panel implements ListSelectionList
 		super();
 		
 		selection = new String[3];
-
+		
 		DB_Connect();
 		DB_Select("car", "");
 		DB_Select_0(0);

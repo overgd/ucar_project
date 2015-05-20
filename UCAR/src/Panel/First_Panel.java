@@ -3,15 +3,15 @@ package Panel;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 
 import Window.Base_Window_Center;
-import Window.ButtonImage;
 
 public class First_Panel extends Search_Panel {
 
 	String[] search_name = {"차  종", "브랜드", "모델명"};
-	String[] btn_name = {"확인"};
+	public String[] btn_name = {"확인"};
 	String where = " ";
 	
 	public String subject = "첫번째";
@@ -29,6 +29,7 @@ public class First_Panel extends Search_Panel {
 		base_center.SearchList_Panel(search_name, 0, result_data_0);
 		base_center.SearchList_Panel(search_name, 1, null_data);
 		base_center.SearchList_Panel(search_name, 2, null_data);
+		
 		add(base_center);
 		
 		base_bottom_visible(true, btn_name);
@@ -67,51 +68,55 @@ public class First_Panel extends Search_Panel {
 	public void valueChanged(ListSelectionEvent e) {
 		
 		super.valueChanged(e);	
-
-			if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+		JList mylist = (JList)e.getSource();
+		
+		if(mylist == base_center.search_list[0]){
+			
+				if( !base_center.search_list[0].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
 				
 				selection[0] = (String)base_center.search_list[0].getSelectedValue();
-				System.out.println(selection[0]);
 				DB_Select("brand", "and car = '"+selection[0]+"'");
 				DB_Select_1(0);
-				System.out.println(result_data_1[0]);
 				
 				base_center.search_panel[1].setVisible(false);
 				base_center.SearchList_Panel(search_name, 1, result_data_1);
-//				base_center.SearchList_Panel(search_name, 2, null_data);
+				base_center.search_list[1].addListSelectionListener(this);
 				base_center.search_panel[1].setVisible(true);
 				
 				add(base_center);
 				setVisible(true);
 				
 			}
+		}
+		
+		if(mylist == base_center.search_list[1]){
 			
-			if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-					
+				if( !base_center.search_list[1].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+				
 				selection[1] = (String)base_center.search_list[1].getSelectedValue();
-				System.out.println(selection[1]);
-				if(selection[1] != null){
-					
-					DB_Select("model", "and brand = '"+selection[1]+"'"+" and car = '"+selection[0]+"'");
-					DB_Select_2(0);
-					System.out.println(result_data_2[0]+" 2");
-					
-					base_center.search_panel[2].setVisible(false);
-					base_center.SearchList_Panel(search_name, 2, result_data_2);
-					base_center.search_panel[2].setVisible(true);
-					add(base_center);
-					setVisible(true);
-					
-				}
-			
+				DB_Select("model", "and brand = '"+selection[1]+"'"+" and car = '"+selection[0]+"'");
+				DB_Select_2(0);
+
+				base_center.search_panel[2].setVisible(false);
+				base_center.SearchList_Panel(search_name, 2, result_data_2);
+				base_center.search_list[2].addListSelectionListener(this);
+				base_center.search_panel[2].setVisible(true);
+				
+				add(base_center);
+				setVisible(true);
+				
 			}
+		}
+
 			
-//			if( !base_center.search_list[2].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
-//				
-//				selection[2] = (String)base_center.search_list[1].getSelectedValue();
-//
-//			}
-//	
+
+		
+		if( !base_center.search_list[2].getValueIsAdjusting()) { //똑같은 항목을 눌렀을 때 처리가 안되게
+			
+			selection[2] = (String)base_center.search_list[2].getSelectedValue();
+
+		}
+	
 	}
 
 
