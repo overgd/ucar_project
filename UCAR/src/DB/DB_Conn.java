@@ -9,7 +9,7 @@ public class DB_Conn {
 	Statement stmt;
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+	String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	
 	public Connection getConnection() throws Exception {
 		
