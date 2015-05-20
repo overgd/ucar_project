@@ -20,5 +20,4 @@ public class Ucar_Main {
 //		frame.setVisible(true);
 
 	}
-
 }
