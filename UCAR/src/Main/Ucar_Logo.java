@@ -40,7 +40,9 @@ public class Ucar_Logo extends JPanel implements ActionListener {
 		if (alpha <= 0) {
 			alpha = 0;
 		    timer.stop();
+		    setVisible(false);
 		    
+//		    new Ucar_Init("UCAR 0.2.150520");
 		}
 		    
 		repaint();

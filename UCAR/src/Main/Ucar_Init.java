@@ -15,9 +15,9 @@ import Deal.Deal_Panel_1_0;
 import Deal.Deal_Panel_1_1;
 import Deal.Deal_Panel_2_0;
 import Deal.Deal_Panel_2_1;
-import Panel.First_Panel;
 import Panel.Home_Panel;
 import Panel.Search_Panel;
+import Panel.Second_Panel;
 import Panel.TopAndBottom_Panel;
 import Panel.TwoButton_Panel;
 import Sale.Sale_Panel_0;
@@ -255,7 +255,9 @@ public class Ucar_Init extends Base_Window {
 			
 			twobtn_panel_add(home_panel.car_btn);
 			search_panel_add(home_panel.car_btn);
-			this.layout.show(slide, "car_0");
+			Second_Panel sec = new Second_Panel();
+			slide.add(sec, "car_99");	
+			this.layout.show(slide, "car_99");
 			
 			location_id = 1;
 		}

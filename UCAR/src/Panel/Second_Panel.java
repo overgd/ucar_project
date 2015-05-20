@@ -1,6 +1,11 @@
 package Panel;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import Window.Base_Window_Panel;
 
@@ -8,10 +13,30 @@ public class Second_Panel extends ResultTable_Panel {
 	
 	String[] btn_name = {"¾È³ç", "Ãë¼Ò"};
 	String subject = "µÎ¹øÂ°";
-	
+
 	public Second_Panel() {
 
 		base_top_visible(true, subject);
+		
+		try {
+		DB_Connect();
+		DB_Select();
+		}
+		catch(Exception e) {
+			System.out.println("¿¹¿Ü1");
+		}
+		finally {
+			try {
+				con.close();
+			}
+			catch(Exception e) {
+				System.out.println("¿¹¿Ü2");
+			}
+		}
+//		table.setFont(new Font("¸¼Àº °íµñ", 0, 15));
+		add("Center", new JScrollPane(table));
+		
+		
 		base_bottom_visible(true, btn_name);
 		
 	}
