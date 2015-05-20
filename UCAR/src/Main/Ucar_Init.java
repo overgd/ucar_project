@@ -1,16 +1,9 @@
 package Main;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
 
 import Car.Test_Panel;
@@ -19,15 +12,15 @@ import Panel.Home_Panel;
 import Panel.Search_Panel;
 import Panel.TwoButton_Panel;
 import Window.Base_Window;
-import Window.Base_Window_Panel;
-import Window.ButtonImage;
 
 public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
+	
 	Search_Panel[] search_panel;
 	TwoButton_Panel[] twobtn_panel;
-	TwoButton_Panel test_panel;
+	
+	Search_Panel test_panel;
 	
 	String[] input_data;
 
@@ -56,7 +49,7 @@ public class Ucar_Init extends Base_Window {
 	
 	}
 	
-	public void panel_add() {
+	public void search_panel_add() {
 		
 		search_panel = new First_Panel[1];
 		
@@ -80,7 +73,19 @@ public class Ucar_Init extends Base_Window {
 	
 	public void test_add() {
 		test_panel = new Test_Panel();
-		slide.add(test_panel, "test");
+		
+
+			
+			test_panel.backbtn.addActionListener(this);
+			test_panel.homebtn.addActionListener(this);
+			test_panel.base_center.search_list[0].addListSelectionListener(this);
+			
+			if(test_panel.btn_num > 0) {
+				test_panel.bottom_btn[test_panel.btn_num-1].addActionListener(this);
+			}
+			
+			slide.add(test_panel, "test");		
+		
 	}
 	
 	
@@ -133,7 +138,7 @@ public class Ucar_Init extends Base_Window {
 		JButton btn = (JButton)e.getSource();
 		
 		if(btn == home_panel.car_btn) { ///Â÷ ¹öÆ°
-			panel_add();
+			search_panel_add();
 			this.layout.show(slide, "0");
 		}
 		
