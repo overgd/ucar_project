@@ -147,9 +147,12 @@ public class Ucar_Init extends Base_Window {
 				tandb_panel[i].backbtn.addActionListener(this);
 				tandb_panel[i].homebtn.addActionListener(this);
 				
-				if(tandb_panel[i].btn_num > 0) {
-					tandb_panel[i].bottom_btn[tandb_panel[i].btn_num-1].addActionListener(this);
-				}
+				tandb_panel[i].gross_sales_btn.addActionListener(this);
+				tandb_panel[i].detailed_search_btn.addActionListener(this);
+				tandb_panel[i].monthly_search_btn.addActionListener(this);
+				tandb_panel[i].sales_registration_btn.addActionListener(this);
+				tandb_panel[i].search_ilbyeol_btn.addActionListener(this);
+				tandb_panel[i].year_search_btn.addActionListener(this);
 				
 				slide.add(tandb_panel[i], "sale_"+String.valueOf(index_sale));
 				index_sale++;
@@ -178,7 +181,7 @@ public class Ucar_Init extends Base_Window {
 				twobtn_panel[i].base_center.btn[0].addActionListener(this);
 				twobtn_panel[i].base_center.btn[1].addActionListener(this);
 				
-				slide.add(twobtn_panel[i], "deal_"+String.valueOf(i+index_deal));
+				slide.add(twobtn_panel[i], "deal_"+String.valueOf(index_deal));
 			}
 			
 		}
@@ -382,10 +385,10 @@ public class Ucar_Init extends Base_Window {
 				layout.show(slide, "deal_3"); ////판매
 			}
 			if(btn == twobtn_panel[1].base_center.btn[0]) {
-				layout.show(slide, "deal_2");
+				layout.show(slide, "deal_2"); ////차종 검색
 			}
-			if(btn == twobtn_panel[1].base_center.btn[1]) {
-				layout.show(slide, "deal_4");
+			if(btn == twobtn_panel[3].base_center.btn[0]) {
+				layout.show(slide, "deal_4"); /////중고차 검색
 			}
 		}
 		
