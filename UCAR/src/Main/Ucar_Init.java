@@ -19,12 +19,14 @@ import Panel.Home_Panel;
 import Panel.Search_Panel;
 import Panel.TwoButton_Panel;
 import Window.Base_Window;
+import Window.Base_Window_Panel;
 import Window.ButtonImage;
 
 public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
-	Search_Panel[] panel;
+	Search_Panel[] search_panel;
+	TwoButton_Panel[] twobtn_panel;
 	TwoButton_Panel test_panel;
 	
 	String[] input_data;
@@ -56,21 +58,21 @@ public class Ucar_Init extends Base_Window {
 	
 	public void panel_add() {
 		
-		panel = new Search_Panel[1];
+		search_panel = new First_Panel[1];
 		
-		panel[0] = new First_Panel();		
+		search_panel[0] = new First_Panel();		
 		
-		for(int i = 0; i < panel.length; i++) {
+		for(int i = 0; i < search_panel.length; i++) {
 			
-			panel[i].backbtn.addActionListener(this);
-			panel[i].homebtn.addActionListener(this);
-			panel[i].base_center.search_list[0].addListSelectionListener(this);
+			search_panel[i].backbtn.addActionListener(this);
+			search_panel[i].homebtn.addActionListener(this);
+			search_panel[i].base_center.search_list[0].addListSelectionListener(this);
 			
-			if(panel[i].btn_num > 0) {
-				panel[i].bottom_btn[panel[i].btn_num-1].addActionListener(this);
+			if(search_panel[i].btn_num > 0) {
+				search_panel[i].bottom_btn[search_panel[i].btn_num-1].addActionListener(this);
 			}
 			
-			slide.add(panel[i], String.valueOf(i));
+			slide.add(search_panel[i], String.valueOf(i));
 			
 		}
 		
@@ -135,34 +137,44 @@ public class Ucar_Init extends Base_Window {
 			this.layout.show(slide, "0");
 		}
 		
+		if(btn == home_panel.user_btn) { ///회원 버튼
+			test_add();
+			this.layout.show(slide, "test");
+		}
+		
 		if(btn == home_panel.deal_btn) { ///매매 버튼
 			test_add();
 			this.layout.show(slide, "test");
 		}
 		
-		if(btn == panel[0].bottom_btn[0]) { ///+조회창 확인 버튼
+		if(btn == home_panel.sale_btn) { ///매출 버튼
+			test_add();
+			this.layout.show(slide, "test");
+		}
+		
+		if(btn == search_panel[0].bottom_btn[0]) { ///+조회창 확인 버튼
 			
 			input_data = new String[3];
 			for(int i = 0; i < input_data.length; i++){
-				input_data[0] = panel[0].selection[i];
-				System.out.println(panel[0].selection[i]);
+				input_data[0] = search_panel[0].selection[i];
+				System.out.println(search_panel[0].selection[i]);
 			}
 			
 		}
 		
-		for(int i = 0; i < panel.length; i++) { ////////// 백 홈
+		for(int i = 0; i < search_panel.length; i++) { ////////// 백 홈
 			
-			if(btn == panel[i].backbtn) {
+			if(btn == search_panel[i].backbtn) {
 				layout.previous(slide);
 				System.out.println("백버튼");
 			}
-			if(btn == panel[i].homebtn) {
+			if(btn == search_panel[i].homebtn) {
 				layout.show(slide, "home");
 				System.out.println("홈버튼");
 			}
 
-			for(int c = 0; c < panel[i].btn_num; c++) {
-				if(btn == panel[i].bottom_btn[c]) {
+			for(int c = 0; c < search_panel[i].btn_num; c++) {
+				if(btn == search_panel[i].bottom_btn[c]) {
 					System.out.println(c+"버튼");
 				}
 			}
