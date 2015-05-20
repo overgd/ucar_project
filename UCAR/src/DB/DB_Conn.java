@@ -9,12 +9,12 @@ public class DB_Conn {
 	Statement stmt;
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	String url = "jdbc:oracle:thin:@192.168.43.103:1521:xe";
 	
 	public Connection getConnection() throws Exception {
 		
 		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url, "hr", "hr");
+		Connection con = DriverManager.getConnection(url, "tm1", "1234");
 		stmt = con.createStatement();
 		return con;
 		

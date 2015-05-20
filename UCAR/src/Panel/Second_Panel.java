@@ -9,7 +9,6 @@ public class Second_Panel extends TopAndBottom_Panel {
 	String[] btn_name = {"안녕", "취소"};
 	String subject = "두번째";
 	
-	
 	public Second_Panel() {
 		
 		btn_num = btn_name.length;
