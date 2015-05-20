@@ -24,6 +24,7 @@ public class Base_Window_Center extends JPanel {
 	public JList[] search_list = new JList[3];
 	public JScrollPane[] list_scrollpane = new JScrollPane[3];
 	
+	
 	int X = 285;
 	int Y = 0;
 	
@@ -60,15 +61,17 @@ public class Base_Window_Center extends JPanel {
 	public void SearchList_Panel(String[] search_name, int num, String[] list_val) {
 		
 		search_label[num] = new JLabel(search_name[num]);
-		search_label[num].setBounds(10+(num*200), 0, 150, 30);
+		search_label[num].setBounds(275+(num*200), 65, 150, 30);
+		search_label[num].setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		add(search_label[num]);
 		
 		search_list[num] = new JList(list_val);
+		search_list[num].setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		list_scrollpane[num] = new JScrollPane(search_list[num]);
-		list_scrollpane[num].setBounds(0, 0, 200, 200); //À§Ä¡´Â °íÁ¤
+		list_scrollpane[num].setBounds(0, 0, 200, 250); //À§Ä¡´Â °íÁ¤
 		search_panel[num] = new JPanel(null);
 		search_panel[num].add(list_scrollpane[num]);
-		search_panel[num].setBounds(10+(num*200), 50, 200, 200);
+		search_panel[num].setBounds(210+(num*200), 100, 200, 250);
 		search_panel[num].setVisible(true);
 		add(search_panel[num]);		
 		
@@ -88,6 +91,7 @@ public class Base_Window_Center extends JPanel {
 			btn[i] = new JButton();
 			btn[i].setIcon(icon[i]);
 			btn[i].setBounds(X+(i*250), Y, 200, 420);
+			
 			add(btn[i]);
 		}	
 		
