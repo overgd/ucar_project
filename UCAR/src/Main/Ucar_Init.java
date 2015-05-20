@@ -140,7 +140,7 @@ public class Ucar_Init extends Base_Window {
 			this.layout.show(slide, "test");
 		}
 		
-		if(btn == panel[0].bottom_btn[0]) { ///조회창 확인 버튼
+		if(btn == panel[0].bottom_btn[0]) { ///+조회창 확인 버튼
 			
 			input_data = new String[3];
 			for(int i = 0; i < input_data.length; i++){
