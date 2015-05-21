@@ -75,10 +75,11 @@ public class Ucar_Init extends Base_Window {
 	}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	public void result_panel_add(JButton btn) {
+		
 		if(btn == home_panel.car_btn) { ///////////////////////////차
 			result_panel = new ResultTable_Panel[2];
 			result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
-			result_panel[1] = new Car_Panel_2_2("usedcar_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //중고차 차종 검색
+			result_panel[1] = new Car_Panel_2_2("usedcar_info", ""); //중고차 차종 검색
 			
 			for(int i = 0; i < result_panel.length; i++) {
 				result_panel[i].backbtn.addActionListener(this);
@@ -276,7 +277,7 @@ public class Ucar_Init extends Base_Window {
 
 	@Override
 	public void base_setting(boolean check) {
-		// TODO Auto-generated method stub
+		
 		super.base_setting(check);
 	}
 
@@ -288,25 +289,25 @@ public class Ucar_Init extends Base_Window {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		super.mouseEntered(e);
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		super.mouseExited(e);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		super.mousePressed(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		super.mouseReleased(e);
 	}
 
@@ -362,18 +363,18 @@ public class Ucar_Init extends Base_Window {
 					}
 				}
 			}
-						
-			if(btn == search_panel[0].bottom_btn[0]) {
-				
-				try {		
-					if(location_id == 1) {
-						result_panel_add(home_panel.car_btn);
+			
+			if(location_id == 1) {
+				for(int i = 0; i < search_panel.length; i++) {
+					if(btn == search_panel[i].bottom_btn[0]) {
+						try {		
+							result_panel_add(home_panel.car_btn);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+						layout.show(slide, "car_result_"+i); //////////////자동차 검색 결과
 					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
 				}
-				
-				layout.show(slide, "car_result_0"); //////////////자동차 검색 결과
 			}
 			
 			for(int i = 0; i < search_panel.length; i++) { ////////// 백 홈
@@ -455,7 +456,7 @@ public class Ucar_Init extends Base_Window {
 				}
 				for(int c = 0; c < result_panel[i].bottom_btn.length; c++) {
 					if(btn == result_panel[i].bottom_btn[c]) {
-						
+						System.out.println(c+"버튼");
 					}
 				}
 				

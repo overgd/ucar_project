@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.AlphaComposite;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -35,16 +37,16 @@ public class Ucar_Logo extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		  
-		alpha += -0.01f;
+		alpha += -0.02f;
 		    
 		if (alpha <= 0) {
 			alpha = 0;
-		    timer.stop();
-		    setVisible(false);
+		    timer.stop();		    
 		    
-//		    new Ucar_Init("UCAR 0.2.150520");
+		    new Ucar_Init("UCAR 0.2.150521");
+		    this.setVisible(false);
 		}
-		    
+		
 		repaint();
 		    
 	}
