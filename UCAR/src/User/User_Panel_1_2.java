@@ -8,13 +8,15 @@ public class User_Panel_1_2 extends ResultTable_Panel {
 	String[] btn_name = {"상세","수정", "삭제"};
 	String subject = "검색 결과";
 
-	public User_Panel_1_2() {
+	public User_Panel_1_2(String from_table, String where) {
+		
+		btn_num = btn_name.length;
 
 		base_top_visible(true, subject);
 		
 		try {
 		DB_Connect();
-		DB_Select("user_info", "");
+		DB_Select(from_table, where);
 		}
 		catch(Exception e) {
 			System.out.println("예외1");
