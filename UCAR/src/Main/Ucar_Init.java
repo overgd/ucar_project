@@ -572,9 +572,7 @@ public class Ucar_Init extends Base_Window {
 					for(int i = 0; i < insert_val.length; i++){
 						insert_val[i] = insert_panel[0].input_text[i].getText();
 					}
-					
 					insert_panel[0].DB_Connect();
-//					String[] insert_val = {"33", "대형", "기아", "봉고", "1999", "가솔린", "1800cc", "9km", "9000", "1000"};
 					insert_panel[0].DB_insert("car_info", insert_val);
 				}
 			}
