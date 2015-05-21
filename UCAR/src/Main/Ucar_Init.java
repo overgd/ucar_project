@@ -5,12 +5,12 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 
 import Car.Car_Panel_0;
 import Car.Car_Panel_1_1;
 import Car.Car_Panel_1_2;
+import Car.Car_Panel_1_2_1;
 import Car.Car_Panel_1_2_2;
 import Car.Car_Panel_1_2_3;
 import Car.Car_Panel_2_1;
@@ -24,6 +24,7 @@ import Deal.Deal_Panel_2_0;
 import Deal.Deal_Panel_2_1;
 import Deal.Deal_Panel_2_2;
 import Deal.Deal_Panel_2_4;
+import Panel.Detail_Panel;
 import Panel.Home_Panel;
 import Panel.Insert_Panel;
 import Panel.ResultTable_Panel;
@@ -40,6 +41,7 @@ public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
 	
+	Detail_Panel[] detail_panel = null;
 	Insert_Panel[] insert_panel = null;
 	ResultTable_Panel[] result_panel = null;
 	Search_Panel[] search_panel = null;
@@ -59,7 +61,7 @@ public class Ucar_Init extends Base_Window {
 
 	public Ucar_Init(String title) {
 		
-	super(title);
+		super(title);
 	
 		home_panel();
 		
@@ -72,7 +74,7 @@ public class Ucar_Init extends Base_Window {
 	public void home_panel() {
 		
 		home_panel = new Home_Panel();
-		
+
 		home_panel.car_btn.addActionListener(this);
 		home_panel.user_btn.addActionListener(this);
 		home_panel.deal_btn.addActionListener(this);
@@ -84,6 +86,25 @@ public class Ucar_Init extends Base_Window {
 	
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	public void detail_panel_add(JButton btn) {
+		
+		if(btn == home_panel.car_btn) {
+			detail_panel = new Detail_Panel[1];
+			detail_panel[0] = new Car_Panel_1_2_1(input_data);
+			
+			for(int i = 0; i < detail_panel.length; i++) {
+				detail_panel[i].backbtn.addActionListener(this);
+				detail_panel[i].homebtn.addActionListener(this);
+				for(int c = 0; c < detail_panel[i].btn_num; c++){
+					detail_panel[i].bottom_btn[c].addActionListener(this);
+				}
+				slide.add(detail_panel[i], "car_detail_"+i);
+			}
+		}
+		
+	}
+	
+	
 	public void insert_panel_add(JButton btn) {//////////////////////등록, 수정 패널
 		
 		if(btn == home_panel.car_btn) {///////////////////////////차
@@ -495,10 +516,12 @@ public class Ucar_Init extends Base_Window {
 					System.out.println("백버튼");
 				}
 				if(btn == twobtn_panel[i].homebtn) {
+					
 					layout.show(slide, "home");
 					System.out.println("홈버튼");
+					break;
 				}
-	
+				
 				for(int c = 0; c < twobtn_panel[i].btn_num; c++) {
 					if(btn == twobtn_panel[i].bottom_btn[c]) {
 						System.out.println(c+"버튼");
@@ -589,6 +612,10 @@ public class Ucar_Init extends Base_Window {
 			}
 			
 			if(result_panel != null){
+				if(btn == result_panel[0].bottom_btn[0]) {
+					detail_panel_add(home_panel.car_btn);
+					layout.show(slide, "car_detail_0");
+				}
 				if(btn == result_panel[0].bottom_btn[1]) {
 					insert_panel_add(home_panel.car_btn);
 					layout.show(slide, "car_insert_0");
