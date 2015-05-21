@@ -8,13 +8,15 @@ public class Deal_Panel_2_4 extends ResultTable_Panel {
 	String[] btn_name = {"다음"};
 	String subject = "중고차 검색 결과";
 
-	public Deal_Panel_2_4() {
+	public Deal_Panel_2_4(String from_table, String where) {
+		
+		btn_num = btn_name.length;
 
 		base_top_visible(true, subject);
 		
 		try {
 		DB_Connect();
-		DB_Select("car_info", "");
+		DB_Select(from_table, where);
 		}
 		catch(Exception e) {
 			System.out.println("예외1");
