@@ -2,8 +2,10 @@ package Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 
 import Car.Car_Panel_0;
@@ -58,7 +60,7 @@ public class Ucar_Init extends Base_Window {
 	public Ucar_Init(String title) {
 		
 	super(title);
-		
+	
 		home_panel();
 		
 		add(slide);
@@ -114,6 +116,7 @@ public class Ucar_Init extends Base_Window {
 				for(int c = 0; c < result_panel[i].btn_num; c++){
 					result_panel[i].bottom_btn[c].addActionListener(this);
 				}
+				result_panel[i].table.addMouseListener(this);
 				slide.add(result_panel[i], "car_result_"+i);
 			}
 			
@@ -132,6 +135,7 @@ public class Ucar_Init extends Base_Window {
 				for(int c = 0; c < result_panel[i].btn_num; c++){
 					result_panel[i].bottom_btn[c].addActionListener(this);
 				}
+				result_panel[i].table.addMouseListener(this);
 				slide.add(result_panel[i], "deal_result_"+i);
 			}
 			
@@ -239,7 +243,7 @@ public class Ucar_Init extends Base_Window {
 				
 				tandb_panel[i].backbtn.addActionListener(this);
 				tandb_panel[i].homebtn.addActionListener(this);
-			
+		
 				tandb_panel[i].gross_sales_btn.addActionListener(this);
 				tandb_panel[i].detailed_search_btn.addActionListener(this);
 				tandb_panel[i].monthly_search_btn.addActionListener(this);
@@ -330,6 +334,22 @@ public class Ucar_Init extends Base_Window {
 	public void mouseClicked(MouseEvent e) {
 		super.mouseClicked(e);
 		
+		int row = result_panel[0].table.getSelectedRow(); //마우스로 클릭한 행
+		int column = result_panel[0].table.getSelectedColumn(); //마우스로 클릭한 열
+		
+		input_data = new String[result_panel[0].table.getColumnCount()];
+
+		for(int i = 0; i < result_panel[0].table.getColumnCount() ;i++){
+			
+			try {
+				input_data[i] = (String) result_panel[0].table.getValueAt(0, i);
+			}
+			catch(ClassCastException ce){
+				input_data[i] = result_panel[0].table.getValueAt(0, i).toString();
+			}
+			
+		}
+				
 	}
 
 	@Override
@@ -348,6 +368,7 @@ public class Ucar_Init extends Base_Window {
 	public void mousePressed(MouseEvent e) {
 		
 		super.mousePressed(e);
+	
 	}
 
 	@Override
@@ -555,10 +576,12 @@ public class Ucar_Init extends Base_Window {
 				search_panel_add(home_panel.car_btn);
 				layout.show(slide, "car_search_0"); ////자동차 정보 검색
 			}
+			
 			if(btn == twobtn_panel[0].base_center.btn[1]) {
 				search_panel_add(home_panel.car_btn);
 				layout.show(slide, "car_search_1"); ////중고차 정보 검색
 			}
+			
 			if(result_panel != null){
 				if(btn == result_panel[0].bottom_btn[1]) {
 					insert_panel_add(home_panel.car_btn);
@@ -568,7 +591,19 @@ public class Ucar_Init extends Base_Window {
 					insert_panel_add(home_panel.car_btn);
 					layout.show(slide, "car_insert_1");
 				}
+				if(btn == result_panel[0].bottom_btn[3]) {
+						try {
+							result_panel[0].DB_Connect();
+							result_panel[0].DB_Delete("car_info", input_data);
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						} 
+						finally {
+							layout.show(slide, "car_result_0");
+						}
+				}
 			}
+			
 			if(insert_panel != null) {
 				if(btn == insert_panel[0].bottom_btn[0]) {
 					String[] insert_val = new String[insert_panel[0].input_text.length];
@@ -578,6 +613,7 @@ public class Ucar_Init extends Base_Window {
 					}
 					insert_panel[0].DB_Connect();
 					insert_panel[0].DB_insert("car_info", insert_val);
+					layout.show(slide, "car_result_0");
 				}
 			}
 		

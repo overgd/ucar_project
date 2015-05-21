@@ -22,7 +22,7 @@ public class TopAndBottom_Panel extends Base_Window_Panel {
 		
 		super();
 		
-		base_top_visible(true, subject);
+//		base_top_visible(true, subject);
 //		base_center_visible(true);
 		
 	}

@@ -41,7 +41,6 @@ public class Car_Panel_1_2_2 extends Insert_Panel {
 			//fuel, standardcost, displacement, fe, photo
 			//type
 			//id, 차종, 브랜드, 모델명, 연식, 연료, 배기량, 연비, 출고가, 기준가
-			System.out.println(insert_val[0]);
 			pstmt = con.prepareStatement(insertsql);
 			pstmt.setString(1, insert_val[0]);  //id ,id
 			pstmt.setString(11, insert_val[1]);

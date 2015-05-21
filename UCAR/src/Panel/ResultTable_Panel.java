@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
@@ -27,16 +28,15 @@ public class ResultTable_Panel extends Base_Window_Panel {
 	public JTable table;
 	public JScrollPane scrollpane;
 	
-	public Connection con;
+	public Connection con = null;
 	public PreparedStatement pstmt, pstmtNoscroll;
-	public Statement stmt;
+	public Statement stmt = null;
 	
 	public ResultSet re, reNoscroll;
 	
 	public String selectSql1 = "select * from ";
-	public String from_table = "";
 	public String selectSql2 = " where 1=1 ";
-	public String reselectSql = "";
+	public String selectSql = "";
 	
 	public int btn_num;
 	
@@ -63,12 +63,42 @@ public class ResultTable_Panel extends Base_Window_Panel {
 		
 	}
 	
+	public void DB_Delete(String from_table, String[] where) throws SQLException {
+		
+		System.out.println(table.getColumnName(1));
+				
+		String deleteSql1 = "delete from ";
+		String deleteSql2 = " where 1=1";
+		String deleteSql = "";
+		
+		deleteSql = deleteSql1 + from_table + deleteSql2;
+		
+		for(int i = 0; i < where.length ;i++) {
+			if(i == where.length-2){
+			}
+			else{
+			deleteSql = deleteSql + " and " + table.getColumnName(i) + " = '" + where[i] + "'";
+			}
+		}
+		String[] str = {"네", "아니오"};
+		int ret = JOptionPane.showOptionDialog(this, "정말로 삭제합니까?", "삭제 확인", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, str, str[0]);
+		if(ret == JOptionPane.YES_NO_OPTION){
+			stmt = con.createStatement();
+			stmt.executeUpdate(deleteSql);
+			System.out.println(deleteSql);
+		}
+		else if(ret == JOptionPane.NO_OPTION){
+			System.out.println(deleteSql);
+		}
+		
+	}
+	
 	public void DB_Select(String from_table, String where) throws SQLException {
 		
-		reselectSql = selectSql1 + from_table + selectSql2 + where;
-		System.out.println(reselectSql);
-		pstmt = con.prepareStatement(reselectSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); //last메서드를 생성하기  위해 두가지 옵션을 추가
-		pstmtNoscroll = con.prepareStatement(reselectSql); //그냥 쿼리만 가지고 만듦
+		selectSql = selectSql1 + from_table + selectSql2 + where;
+		System.out.println(selectSql);
+		pstmt = con.prepareStatement(selectSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); //last메서드를 생성하기  위해 두가지 옵션을 추가
+		pstmtNoscroll = con.prepareStatement(selectSql); //그냥 쿼리만 가지고 만듦
 		
 		re = pstmt.executeQuery(); //re는 next만 가능하다.
 		
@@ -80,7 +110,6 @@ public class ResultTable_Panel extends Base_Window_Panel {
 		///re가 한번 돌면 마지막으로 가버리기때문에 reNoscroll를 하나 더 만들어서 데이터를 채운다.
 
 		table.setModel(model); //테이블과 모델을 연결
-
 
 	}
 	

@@ -1,6 +1,11 @@
 package Car;
 
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
 
 import Panel.ResultTable_Panel;
 
@@ -36,7 +41,56 @@ public class Car_Panel_1_2 extends ResultTable_Panel {
 		base_bottom_visible(true, btn_name);
 		
 	}
-	
+		
+	@Override
+	public void DB_Delete(String from_table, String[] where)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		super.DB_Delete(from_table, where);
+	}
+
+	@Override
+	public void DB_Connect() {
+		// TODO Auto-generated method stub
+		super.DB_Connect();
+	}
+
+
+	@Override
+	public void DB_Select(String from_table, String where) throws SQLException {
+		// TODO Auto-generated method stub
+		super.DB_Select(from_table, where);
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		super.valueChanged(e);
+	}
+
+
+	@Override
+	public void base_center_visible(boolean visible, ImageIcon img_icon1,
+			ImageIcon img_icon2) {
+		// TODO Auto-generated method stub
+		super.base_center_visible(visible, img_icon1, img_icon2);
+	}
+
+
+	@Override
+	public void base_center_visible(boolean visible, String[] search_name) {
+		// TODO Auto-generated method stub
+		super.base_center_visible(visible, search_name);
+	}
+
+
+	@Override
+	public void base_center_visible(boolean visible) {
+		// TODO Auto-generated method stub
+		super.base_center_visible(visible);
+	}
+
+
 	@Override
 	public void base_top_visible(boolean visible) {
 		// TODO Auto-generated method stub
