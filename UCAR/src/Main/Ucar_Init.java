@@ -9,8 +9,8 @@ import javax.swing.event.ListSelectionEvent;
 import Car.Car_Panel_0;
 import Car.Car_Panel_1_1;
 import Car.Car_Panel_1_2;
-import Car.Car_Panel_1_2_1;
 import Car.Car_Panel_1_2_2;
+import Car.Car_Panel_1_2_3;
 import Car.Car_Panel_2_1;
 import Car.Car_Panel_2_2;
 import Deal.Deal_Panel_0;
@@ -86,8 +86,8 @@ public class Ucar_Init extends Base_Window {
 		
 		if(btn == home_panel.car_btn) {///////////////////////////차
 			insert_panel = new Insert_Panel[2];
-			insert_panel[0] = new Car_Panel_1_2_1();
-			insert_panel[1] = new Car_Panel_1_2_2();
+			insert_panel[0] = new Car_Panel_1_2_2();
+			insert_panel[1] = new Car_Panel_1_2_3();
 			
 			for(int i = 0; i < insert_panel.length; i++) {
 				insert_panel[i].backbtn.addActionListener(this);
@@ -441,7 +441,7 @@ public class Ucar_Init extends Base_Window {
 			for(int i = 0; i < search_panel.length; i++) { ////////// 백 홈
 				
 				if(btn == search_panel[i].backbtn) {
-					setVisible(false);
+					search_panel[i].setVisible(false);
 					System.out.println("백버튼");
 				}
 				if(btn == search_panel[i].homebtn) {
@@ -463,7 +463,8 @@ public class Ucar_Init extends Base_Window {
 			for(int i = 0; i < twobtn_panel.length; i++) { ////////// 백 홈
 				
 				if(btn == twobtn_panel[i].backbtn) {
-					layout.previous(slide);
+//					layout.previous(slide);
+					twobtn_panel[i].setVisible(false);
 					System.out.println("백버튼");
 				}
 				if(btn == twobtn_panel[i].homebtn) {
@@ -485,7 +486,8 @@ public class Ucar_Init extends Base_Window {
 			for(int i = 0; i < tandb_panel.length; i++) { ////////// 백 홈
 				
 				if(btn == tandb_panel[i].backbtn) {
-					layout.previous(slide);
+//					layout.previous(slide);
+					tandb_panel[i].setVisible(false);
 					System.out.println("백버튼");
 				}
 				if(btn == tandb_panel[i].homebtn) {
@@ -508,7 +510,8 @@ public class Ucar_Init extends Base_Window {
 			for(int i = 0; i < result_panel.length; i++) { ////////// 백 홈
 							
 				if(btn == result_panel[i].backbtn) {
-					layout.previous(slide);
+//					layout.previous(slide);
+					result_panel[i].setVisible(false);
 					System.out.println("백버튼");
 				}
 				if(btn == result_panel[i].homebtn) {
@@ -529,7 +532,8 @@ public class Ucar_Init extends Base_Window {
 			for(int i = 0; i < insert_panel.length; i++) { ////////// 백 홈
 							
 				if(btn == insert_panel[i].backbtn) {
-					layout.previous(slide);
+//					layout.previous(slide);
+					insert_panel[i].setVisible(false);
 					System.out.println("백버튼");
 				}
 				if(btn == insert_panel[i].homebtn) {
