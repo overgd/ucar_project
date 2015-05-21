@@ -478,11 +478,8 @@ public class Ucar_Init extends Base_Window {
 			if(btn == twobtn_panel[0].base_center.btn[1]) {
 				layout.show(slide, "car_search_2"); ////중고차 정보 검색
 			}
-			
-
 		
 		}
-		
 
 ///////////////////////////192.168.43.103////////////유저///////////////////////////////////////////
 		
