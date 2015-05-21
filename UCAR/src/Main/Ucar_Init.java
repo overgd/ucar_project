@@ -16,9 +16,11 @@ import Deal.Deal_Panel_0;
 import Deal.Deal_Panel_1_0;
 import Deal.Deal_Panel_1_1;
 import Deal.Deal_Panel_1_2;
+import Deal.Deal_Panel_1_4;
 import Deal.Deal_Panel_2_0;
 import Deal.Deal_Panel_2_1;
 import Deal.Deal_Panel_2_2;
+import Deal.Deal_Panel_2_4;
 import Panel.Home_Panel;
 import Panel.ResultTable_Panel;
 import Panel.Search_Panel;
@@ -73,13 +75,13 @@ public class Ucar_Init extends Base_Window {
 		slide.add(home_panel, "home");
 	
 	}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	public void result_panel_add(JButton btn) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	public void result_panel_add(JButton btn) {/////////////////////////결과 패널 추가
 		
 		if(btn == home_panel.car_btn) { ///////////////////////////차
 			result_panel = new ResultTable_Panel[2];
 			result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
-			result_panel[1] = new Car_Panel_2_2("usedcar_info", ""); //중고차 차종 검색
+			result_panel[1] = new Car_Panel_2_2("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"')"); //중고차 차종 검색
 			
 			for(int i = 0; i < result_panel.length; i++) {
 				result_panel[i].backbtn.addActionListener(this);
@@ -88,6 +90,24 @@ public class Ucar_Init extends Base_Window {
 					result_panel[i].bottom_btn[c].addActionListener(this);
 				}
 				slide.add(result_panel[i], "car_result_"+i);
+			}
+			
+		}
+		
+		if(btn == home_panel.deal_btn) { ///////////////////////////매매
+			result_panel = new ResultTable_Panel[4];
+			result_panel[0] = new Deal_Panel_1_4("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
+			result_panel[1] = new Deal_Panel_2_4("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"')"); //중고차 차종 검색
+			result_panel[2] = new Deal_Panel_1_4("car_info", ""); ///차종 전체 검색 결과
+			result_panel[3] = new Deal_Panel_2_4("usedcar_info", "");  ///중고차 전체 검색 결과
+			
+			for(int i = 0; i < result_panel.length; i++) {
+				result_panel[i].backbtn.addActionListener(this);
+				result_panel[i].homebtn.addActionListener(this);
+				for(int c = 0; c < result_panel[i].btn_num; c++){
+					result_panel[i].bottom_btn[c].addActionListener(this);
+				}
+				slide.add(result_panel[i], "deal_result_"+i);
 			}
 			
 		}
@@ -364,7 +384,7 @@ public class Ucar_Init extends Base_Window {
 				}
 			}
 			
-			if(location_id == 1) {
+			if(location_id == 1) {///////////////////////차
 				for(int i = 0; i < search_panel.length; i++) {
 					if(btn == search_panel[i].bottom_btn[0]) {
 						try {		
@@ -373,6 +393,19 @@ public class Ucar_Init extends Base_Window {
 							e1.printStackTrace();
 						}
 						layout.show(slide, "car_result_"+i); //////////////자동차 검색 결과
+					}
+				}
+			}
+			
+			else if(location_id == 2) {///////////////////////매매
+				for(int i = 0; i < search_panel.length; i++) {
+					if(btn == search_panel[i].bottom_btn[0]) {
+						try {		
+							result_panel_add(home_panel.deal_btn);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+						layout.show(slide, "deal_result_"+i); //////////////자동차 검색 결과
 					}
 				}
 			}
