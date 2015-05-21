@@ -107,8 +107,14 @@ public class Ucar_Init extends Base_Window {
 		
 		if(btn == home_panel.car_btn) { ///////////////////////////차
 			result_panel = new ResultTable_Panel[2];
-			result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
-			result_panel[1] = new Car_Panel_2_2("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"')"); //중고차 차종 검색
+			if(input_data[0] != null){
+				result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
+				result_panel[1] = new Car_Panel_2_2("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"')"); //중고차 차종 검색
+			}
+			else{
+				result_panel[0] = new Car_Panel_1_2("car_info", " "); //자동차 검색
+				result_panel[1] = new Car_Panel_2_2("usedcar_info", " "); //중고차 차종 검색
+			}
 			
 			for(int i = 0; i < result_panel.length; i++) {
 				result_panel[i].backbtn.addActionListener(this);

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
 import Panel.Insert_Panel;
@@ -36,29 +37,35 @@ public class Car_Panel_1_2_2 extends Insert_Panel {
 		
 		insertsql = insertsql_1	+ table_name + insertsql_2;
 		
-		try{
-			//id, brand, name, releasecost, yearmodel,
-			//fuel, standardcost, displacement, fe, photo
-			//type
-			//id, 차종, 브랜드, 모델명, 연식, 연료, 배기량, 연비, 출고가, 기준가
-			pstmt = con.prepareStatement(insertsql);
-			pstmt.setString(1, insert_val[0]);  //id ,id
-			pstmt.setString(11, insert_val[1]);
-			pstmt.setString(2, insert_val[2]);
-			pstmt.setString(3, insert_val[3]);
-			pstmt.setString(5, insert_val[4]);
-			pstmt.setString(6, insert_val[5]);
-			pstmt.setString(8, insert_val[6]);
-			pstmt.setString(9, insert_val[7]);
-			pstmt.setInt(4, Integer.parseInt(insert_val[8]));
-			pstmt.setInt(7, Integer.parseInt(insert_val[9]));
-			pstmt.setString(10, "");
-			System.out.println(insertsql);
-			ResultSet rs = pstmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		
+		String[] str = {"네", "아니오"};
+		int ret = JOptionPane.showOptionDialog(this, "정말로 등록합니까?", "등록 확인", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, str, str[0]);
+		if(ret == JOptionPane.YES_NO_OPTION){
+			try{
+				//id, brand, name, releasecost, yearmodel,
+				//fuel, standardcost, displacement, fe, photo
+				//type
+				//id, 차종, 브랜드, 모델명, 연식, 연료, 배기량, 연비, 출고가, 기준가
+				pstmt = con.prepareStatement(insertsql);
+				pstmt.setString(1, insert_val[0]);  //id ,id
+				pstmt.setString(11, insert_val[1]);
+				pstmt.setString(2, insert_val[2]);
+				pstmt.setString(3, insert_val[3]);
+				pstmt.setString(5, insert_val[4]);
+				pstmt.setString(6, insert_val[5]);
+				pstmt.setString(8, insert_val[6]);
+				pstmt.setString(9, insert_val[7]);
+				pstmt.setInt(4, Integer.parseInt(insert_val[8]));
+				pstmt.setInt(7, Integer.parseInt(insert_val[9]));
+				pstmt.setString(10, "");
+				System.out.println(insertsql);
+				ResultSet rs = pstmt.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+		}
+		else if(ret == JOptionPane.NO_OPTION){
+			
+		}
 	}
 
 	@Override
