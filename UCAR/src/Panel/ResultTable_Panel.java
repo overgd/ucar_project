@@ -36,8 +36,10 @@ public class ResultTable_Panel extends Base_Window_Panel {
 	public String selectSql1 = "select * from ";
 	public String from_table = "";
 	public String selectSql2 = " where 1=1 ";
-	public String selectSql = "";
-			
+	public String reselectSql = "";
+	
+	public int btn_num;
+	
 	public ResultTable_Panel() {
 		
 		table = new JTable();
@@ -62,10 +64,10 @@ public class ResultTable_Panel extends Base_Window_Panel {
 	
 	public void DB_Select(String from_table, String where) throws SQLException {
 		
-		selectSql = selectSql1 + from_table + selectSql2 + where;
-		
-		pstmt = con.prepareStatement(selectSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); //last메서드를 생성하기  위해 두가지 옵션을 추가
-		pstmtNoscroll = con.prepareStatement(selectSql); //그냥 쿼리만 가지고 만듦
+		reselectSql = selectSql1 + from_table + selectSql2 + where;
+		System.out.println(reselectSql);
+		pstmt = con.prepareStatement(reselectSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); //last메서드를 생성하기  위해 두가지 옵션을 추가
+		pstmtNoscroll = con.prepareStatement(reselectSql); //그냥 쿼리만 가지고 만듦
 		
 		re = pstmt.executeQuery(); //re는 next만 가능하다.
 		
@@ -75,9 +77,9 @@ public class ResultTable_Panel extends Base_Window_Panel {
 		model.setRows(re); //last를 써야하기 때문에 re
 		model.setData(reNoscroll); //데이터를 채우기, re를 first로 하는 것보다 하나 더 만들어서 더 효율적이다.
 		///re가 한번 돌면 마지막으로 가버리기때문에 reNoscroll를 하나 더 만들어서 데이터를 채운다.
-		System.out.println("1");
+
 		table.setModel(model); //테이블과 모델을 연결
-		System.out.println("1");
+
 
 	}
 	

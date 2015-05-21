@@ -9,13 +9,15 @@ public class Car_Panel_1_2 extends ResultTable_Panel {
 	String[] btn_name = {"상세", "등록", "수정", "삭제"};
 	String subject = "자동차 검색 결과";
 
-	public Car_Panel_1_2() {
-
+	public Car_Panel_1_2(String from_table, String where) {
+		
+		btn_num = btn_name.length;
+		
 		base_top_visible(true, subject);
 		
 		try {
 		DB_Connect();
-		DB_Select("car_info", "");
+		DB_Select(from_table, where);
 		}
 		catch(Exception e) {
 			System.out.println("예외1");

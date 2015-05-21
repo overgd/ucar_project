@@ -2,12 +2,14 @@ package Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.event.ListSelectionEvent;
 
 import Car.Car_Panel_0;
 import Car.Car_Panel_1_1;
+import Car.Car_Panel_1_2;
 import Car.Car_Panel_2_1;
 import Car.Test_Panel;
 import Deal.Deal_Panel_0;
@@ -18,6 +20,7 @@ import Deal.Deal_Panel_2_0;
 import Deal.Deal_Panel_2_1;
 import Deal.Deal_Panel_2_2;
 import Panel.Home_Panel;
+import Panel.ResultTable_Panel;
 import Panel.Search_Panel;
 import Panel.TopAndBottom_Panel;
 import Panel.TwoButton_Panel;
@@ -30,6 +33,7 @@ public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
 	
+	ResultTable_Panel[] result_panel = null;
 	Search_Panel[] search_panel = null;
 	TwoButton_Panel[] twobtn_panel = null;
 	TopAndBottom_Panel[] tandb_panel = null;
@@ -69,6 +73,26 @@ public class Ucar_Init extends Base_Window {
 		slide.add(home_panel, "home");
 	
 	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	public void result_panel_add(JButton btn) {
+		if(btn == home_panel.car_btn) { ///////////////////////////차
+			result_panel = new ResultTable_Panel[1];
+			result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'");
+			
+			for(int i = 0; i < result_panel.length; i++) {
+				result_panel[i].backbtn.addActionListener(this);
+				result_panel[i].homebtn.addActionListener(this);
+				for(int c = 0; c < result_panel[i].btn_num; c++){
+					result_panel[i].bottom_btn[c].addActionListener(this);
+				}
+				slide.add(result_panel[i], "car_result_"+i);
+			}
+			
+		}
+		
+	}
+	
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	public void search_panel_add(JButton btn) {//////////////////////////조회 판넬 추가
 		
@@ -87,7 +111,7 @@ public class Ucar_Init extends Base_Window {
 					search_panel[i].bottom_btn[search_panel[i].btn_num-1].addActionListener(this);
 				}
 				
-				slide.add(search_panel[i],"car_"+ String.valueOf(index_car));
+				slide.add(search_panel[i],"car_search_"+ String.valueOf(index_car));
 				index_car++;
 			}
 		}
@@ -107,7 +131,7 @@ public class Ucar_Init extends Base_Window {
 					search_panel[i].bottom_btn[search_panel[i].btn_num-1].addActionListener(this);
 				}
 				
-				slide.add(search_panel[i],"deal_"+ String.valueOf(index_deal));
+				slide.add(search_panel[i],"deal_search_"+ String.valueOf(index_deal));
 				index_deal++;
 			}
 		}
@@ -296,8 +320,9 @@ public class Ucar_Init extends Base_Window {
 		if(btn == home_panel.car_btn) { ///차 버튼
 			
 			twobtn_panel_add(home_panel.car_btn);
-			search_panel_add(home_panel.car_btn);
-	
+//			search_panel_add(home_panel.car_btn);
+//			result_panel_add(home_panel.car_btn);
+			
 			this.layout.show(slide, "car_0");
 			
 			location_id = 1;
@@ -323,26 +348,41 @@ public class Ucar_Init extends Base_Window {
 		if(btn == home_panel.sale_btn) { ///매출 버튼
 			
 			twobtn_panel_add(home_panel.sale_btn);
+			
 			this.layout.show(slide, "sale_0");
 			location_id = 4;
 		}
 /********************************************************************************************/
 		
-//		if(btn == search_panel[0].bottom_btn[0]) { ///+조회창 확인 버튼
-//			
-//			input_data = new String[3];
-//			for(int i = 0; i < input_data.length; i++){
-//				input_data[0] = search_panel[0].selection[i];
-//				System.out.println(search_panel[0].selection[i]);
-//			}
-//			
-//		}
-		
-		if(search_panel != null){
+		if(search_panel != null){ //////////////////////////조회패널이 존재하면
+			
+			for(int c = 0; c < search_panel.length; c++){
+				if(btn == search_panel[c].bottom_btn[0]) { ///+조회창 확인 버튼
+					input_data = new String[3];
+					for(int i = 0; i < input_data.length; i++){
+						input_data[i] = search_panel[c].selection[i];
+//						System.out.println(search_panel[c].selection[i]);
+					}
+				}
+			}
+						
+			if(btn == search_panel[0].bottom_btn[0]) {
+				
+				try {		
+					if(location_id == 1) {
+						result_panel_add(home_panel.car_btn);
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+				layout.show(slide, "car_result_0"); //////////////자동차 검색 결과
+			}
+			
 			for(int i = 0; i < search_panel.length; i++) { ////////// 백 홈
 				
 				if(btn == search_panel[i].backbtn) {
-					layout.previous(slide);
+					setVisible(false);
 					System.out.println("백버튼");
 				}
 				if(btn == search_panel[i].homebtn) {
@@ -403,14 +443,44 @@ public class Ucar_Init extends Base_Window {
 				
 			}/////////////////백 홈
 		}
+		
+		if(result_panel != null){ //////////////투버튼
+			
+			for(int i = 0; i < result_panel.length; i++) { ////////// 백 홈
+							
+				if(btn == result_panel[i].backbtn) {
+					layout.previous(slide);
+					System.out.println("백버튼");
+				}
+				if(btn == result_panel[i].homebtn) {
+					layout.show(slide, "home");
+					System.out.println("홈버튼");
+				}
+				for(int c = 0; c < result_panel[i].bottom_btn.length; c++) {
+					if(btn == result_panel[i].bottom_btn[c]) {
+						
+					}
+				}
+				
+			}/////////////////백 홈
+		}
 /////////////////////////////////////////차///////////////////////////////////////////
 		if(location_id == 1) {
+			
 			if(btn == twobtn_panel[0].base_center.btn[0]) {
-				layout.show(slide, "car_1"); ////자동차 정보 검색
+				
+				search_panel_add(home_panel.car_btn);
+				
+				layout.show(slide, "car_search_1"); ////자동차 정보 검색
+				
+
 			}
 			if(btn == twobtn_panel[0].base_center.btn[1]) {
-				layout.show(slide, "car_2"); ////중고차 정보 검색
+				layout.show(slide, "car_search_2"); ////중고차 정보 검색
 			}
+			
+
+		
 		}
 		
 
