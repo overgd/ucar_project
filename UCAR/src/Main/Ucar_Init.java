@@ -9,9 +9,10 @@ import javax.swing.event.ListSelectionEvent;
 import Car.Car_Panel_0;
 import Car.Car_Panel_1_1;
 import Car.Car_Panel_1_2;
+import Car.Car_Panel_1_2_1;
+import Car.Car_Panel_1_2_2;
 import Car.Car_Panel_2_1;
 import Car.Car_Panel_2_2;
-import Car.Test_Panel;
 import Deal.Deal_Panel_0;
 import Deal.Deal_Panel_1_0;
 import Deal.Deal_Panel_1_1;
@@ -22,8 +23,10 @@ import Deal.Deal_Panel_2_1;
 import Deal.Deal_Panel_2_2;
 import Deal.Deal_Panel_2_4;
 import Panel.Home_Panel;
+import Panel.Insert_Panel;
 import Panel.ResultTable_Panel;
 import Panel.Search_Panel;
+import Panel.Third_Panel;
 import Panel.TopAndBottom_Panel;
 import Panel.TwoButton_Panel;
 import Sale.Sale_Panel_0;
@@ -35,12 +38,13 @@ public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
 	
+	Insert_Panel[] insert_panel = null;
 	ResultTable_Panel[] result_panel = null;
 	Search_Panel[] search_panel = null;
 	TwoButton_Panel[] twobtn_panel = null;
 	TopAndBottom_Panel[] tandb_panel = null;
 	
-	Search_Panel test_panel = null;
+	Insert_Panel test_panel = null;
 	
 	String[] input_data;
 	
@@ -75,7 +79,28 @@ public class Ucar_Init extends Base_Window {
 		slide.add(home_panel, "home");
 	
 	}
+	
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	public void insert_panel_add(JButton btn) {//////////////////////등록, 수정 패널
+		
+		if(btn == home_panel.car_btn) {///////////////////////////차
+			insert_panel = new Insert_Panel[2];
+			insert_panel[0] = new Car_Panel_1_2_1();
+			insert_panel[1] = new Car_Panel_1_2_2();
+			
+			for(int i = 0; i < insert_panel.length; i++) {
+				insert_panel[i].backbtn.addActionListener(this);
+				insert_panel[i].homebtn.addActionListener(this);
+				for(int c = 0; c < insert_panel[i].btn_num; c++){
+					insert_panel[i].bottom_btn[c].addActionListener(this);
+				}
+				slide.add(insert_panel[i], "car_insert_"+i);
+			}
+		}
+		
+	}
+	
 	public void result_panel_add(JButton btn) {/////////////////////////결과 패널 추가
 		
 		if(btn == home_panel.car_btn) { ///////////////////////////차
@@ -207,7 +232,7 @@ public class Ucar_Init extends Base_Window {
 		
 		else if(btn == home_panel.sale_btn) {////////////////////////////매출
 			
-			tandb_panel = new TopAndBottom_Panel[1];
+			tandb_panel = new TopAndBottom_Panel[2];
 			tandb_panel[0] = new Sale_Panel_0();
 
 			for(int i = 0; i < tandb_panel.length; i++) {
@@ -275,15 +300,15 @@ public class Ucar_Init extends Base_Window {
 	}
 	
 	public void test_add() {
-		test_panel = new Test_Panel();
+		test_panel = new Third_Panel();
 		
 			test_panel.backbtn.addActionListener(this);
 			test_panel.homebtn.addActionListener(this);
-			test_panel.base_center.search_list[0].addListSelectionListener(this);
+//			test_panel.base_center.search_list[0].addListSelectionListener(this);
 			
-			if(test_panel.btn_num > 0) {
-				test_panel.bottom_btn[test_panel.btn_num-1].addActionListener(this);
-			}
+//			if(test_panel.btn_num > 0) {
+//				test_panel.bottom_btn[test_panel.btn_num-1].addActionListener(this);
+//			}
 			
 			slide.add(test_panel, "test");		
 		
@@ -349,6 +374,9 @@ public class Ucar_Init extends Base_Window {
 		
 		if(btn == home_panel.user_btn) { ///회원 버튼
 			
+//			test_add();
+//			this.layout.show(slide, "test");
+			
 			twobtn_panel_add(home_panel.user_btn);
 			
 			this.layout.show(slide, "user_0");
@@ -397,7 +425,7 @@ public class Ucar_Init extends Base_Window {
 				}
 			}
 			
-			else if(location_id == 2) {///////////////////////매매
+			else if(location_id == 3) {///////////////////////매매
 				for(int i = 0; i < search_panel.length; i++) {
 					if(btn == search_panel[i].bottom_btn[0]) {
 						try {		
@@ -430,7 +458,7 @@ public class Ucar_Init extends Base_Window {
 			}/////////////////백 홈
 		}
 		
-		if(twobtn_panel != null){
+		if(twobtn_panel != null){//////////////////투버튼
 			
 			for(int i = 0; i < twobtn_panel.length; i++) { ////////// 백 홈
 				
@@ -452,7 +480,7 @@ public class Ucar_Init extends Base_Window {
 			}/////////////////백 홈
 		}
 		
-		if(tandb_panel != null){ //////////////투버튼
+		if(tandb_panel != null){ //////////////탑앤바텀
 			
 			for(int i = 0; i < tandb_panel.length; i++) { ////////// 백 홈
 				
@@ -475,7 +503,7 @@ public class Ucar_Init extends Base_Window {
 			}/////////////////백 홈
 		}
 		
-		if(result_panel != null){ //////////////투버튼
+		if(result_panel != null){ //////////////결과패널
 			
 			for(int i = 0; i < result_panel.length; i++) { ////////// 백 홈
 							
@@ -495,6 +523,27 @@ public class Ucar_Init extends Base_Window {
 				
 			}/////////////////백 홈
 		}
+		
+		if(insert_panel != null){ //////////////결과패널
+			
+			for(int i = 0; i < insert_panel.length; i++) { ////////// 백 홈
+							
+				if(btn == insert_panel[i].backbtn) {
+					layout.previous(slide);
+					System.out.println("백버튼");
+				}
+				if(btn == insert_panel[i].homebtn) {
+					layout.show(slide, "home");
+					System.out.println("홈버튼");
+				}
+				for(int c = 0; c < insert_panel[i].bottom_btn.length; c++) {
+					if(btn == insert_panel[i].bottom_btn[c]) {
+						System.out.println(c+"버튼");
+					}
+				}
+				
+			}/////////////////백 홈
+		}
 /////////////////////////////////////////차///////////////////////////////////////////
 		if(location_id == 1) {
 			
@@ -506,10 +555,33 @@ public class Ucar_Init extends Base_Window {
 				search_panel_add(home_panel.car_btn);
 				layout.show(slide, "car_search_1"); ////중고차 정보 검색
 			}
+			if(result_panel != null){
+				if(btn == result_panel[0].bottom_btn[1]) {
+					insert_panel_add(home_panel.car_btn);
+					layout.show(slide, "car_insert_0");
+				}
+				if(btn == result_panel[0].bottom_btn[2]) {
+					insert_panel_add(home_panel.car_btn);
+					layout.show(slide, "car_insert_1");
+				}
+			}
+			if(insert_panel != null) {
+				if(btn == insert_panel[0].bottom_btn[0]) {
+					String[] insert_val = new String[insert_panel[0].input_text.length];
+					
+					for(int i = 0; i < insert_val.length; i++){
+						insert_val[i] = insert_panel[0].input_text[i].getText();
+					}
+					
+					insert_panel[0].DB_Connect();
+//					String[] insert_val = {"33", "대형", "기아", "봉고", "1999", "가솔린", "1800cc", "9km", "9000", "1000"};
+					insert_panel[0].DB_insert("car_info", insert_val);
+				}
+			}
 		
 		}
 
-///////////////////////////192.168.43.103////////////유저///////////////////////////////////////////
+///////////////////////////////////////유저///////////////////////////////////////////
 		
 		
 		

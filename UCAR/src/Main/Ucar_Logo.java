@@ -37,7 +37,7 @@ public class Ucar_Logo extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		  
-		alpha += -0.02f;
+		alpha += -0.03f;
 		    
 		if (alpha <= 0) {
 			alpha = 0;

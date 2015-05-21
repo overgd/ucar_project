@@ -15,7 +15,7 @@ public class Car_Panel_1_1 extends Search_Panel {
 	public String[] btn_name = {"검색"};
 	String where = " ";
 	
-	public String subject = "첫번째";
+	public String subject = "";
 	
 	public Car_Panel_1_1() {
 		

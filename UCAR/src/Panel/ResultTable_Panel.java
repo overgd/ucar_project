@@ -46,6 +46,7 @@ public class ResultTable_Panel extends Base_Window_Panel {
 		scrollpane = new JScrollPane(table);
 		table.setFont(new Font("¸¼Àº °íµñ", 0, 20));
 		table.setRowHeight(80);
+		table.setBackground(Color.WHITE);
 		
 	}
 	
