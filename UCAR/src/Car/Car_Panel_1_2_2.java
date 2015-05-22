@@ -14,7 +14,7 @@ public class Car_Panel_1_2_2 extends Insert_Panel {
 
 	public String subject = "자동차 정보 등록";
 	public String[] label_name = {" I    D ","차   종 ", "브랜드 ", "모델명 ", "연   식 ", "연   료", "배기량", "연   비", "출고가", "기준가"}; 
-	public String[] btn_name = {"등록", "취소"};
+	public String[] btn_name = {"등록"};
 	public String[] insert_val;
 	
 	public Car_Panel_1_2_2() {
