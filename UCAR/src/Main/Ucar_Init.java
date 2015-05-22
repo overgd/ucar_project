@@ -53,6 +53,7 @@ public class Ucar_Init extends Base_Window {
 	Insert_Panel test_panel = null;
 	
 	String[] input_data_1 = null;
+	String[] input_data_2 = null;
 	String[] table_input_data = null;
 	
 	int location_id;
@@ -108,7 +109,7 @@ public class Ucar_Init extends Base_Window {
 	}
 	
 	
-	public void insert_panel_add(JButton btn) {//////////////////////등록, 수정 패널
+	public void insert_panel_add(JButton btn) {//////////////////////등록 패널
 		
 		if(btn == home_panel.car_btn) {///////////////////////////차
 			insert_panel = new Insert_Panel[1];
@@ -127,11 +128,11 @@ public class Ucar_Init extends Base_Window {
 		
 	}
 	
-	public void update_panel_add(JButton btn) {//////////////////////등록, 수정 패널
+	public void update_panel_add(JButton btn) {//////////////////////등수정 패널
 		
 		if(btn == home_panel.car_btn) {///////////////////////////차
 			update_panel = new Update_Panel[1];
-//			update_panel[0] = new Car_Panel_1_2_2();
+			
 			update_panel[0] = new Car_Panel_1_2_3(table_input_data);
 			
 			for(int i = 0; i < update_panel.length; i++) {
@@ -669,6 +670,7 @@ public class Ucar_Init extends Base_Window {
 					
 					for(int i = 0; i < insert_val.length; i++){
 						insert_val[i] = insert_panel[0].input_text[i].getText();
+						System.out.println(insert_val[i]);
 					}
 					
 					insert_panel[0].DB_Connect();
@@ -689,15 +691,17 @@ public class Ucar_Init extends Base_Window {
 				if(btn == update_panel[0].bottom_btn[0]) {//////////////수정
 					String[] insert_val = new String[update_panel[0].input_text.length];
 					
-					input_data_1 = new String[insert_val.length];
+					input_data_2 = new String[insert_val.length];
 					
 					for(int i = 0; i < insert_val.length; i++){
 						insert_val[i] = update_panel[0].input_text[i].getText();
-						input_data_1[i] = insert_val[i];
+						for(int c = 0; c < insert_val.length; c++) {
+							System.out.println(insert_val[c]);
+						}
 					}
 					
-					update_panel[0].DB_Connect();
-					update_panel[0].DB_Update("car_info", table_input_data, input_data_1);
+					update_panel[0].DB_Connect();	
+					update_panel[0].DB_Update("car_info", insert_val, table_input_data);
 					result_panel[0].DB_Connect();
 					
 					try {

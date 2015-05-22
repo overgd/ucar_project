@@ -24,7 +24,7 @@ public class Car_Panel_1_2_3 extends Update_Panel {
 		btn_num = btn_name.length;
 		
 		base_top_visible(true, subject);
-//		insert_data_add(input_data);
+		insert_data_add(input_data);
 		insert_form_add(label_name);
 		base_bottom_visible(true, btn_name);
 	
@@ -38,8 +38,12 @@ public class Car_Panel_1_2_3 extends Update_Panel {
 
 	public void DB_Update(String table_name, String[] insert_val, String[] input_data) { 
 		
+//		for(int i = 0;i<input_data.length;i++){
+//			System.out.println(input_data[i]);
+//		}
+		
 		String updatesql_1 = "update ";
-		String updatesql_2 = " set c_id = '"+insert_val[0]+"', c_brand = '"+insert_val[1]+"', c_name = '"+insert_val[2]+"', c_releasecost = "+insert_val[3]+", c_yearmodel = '"+insert_val[4]+"', c_fuel = '"+insert_val[5]+"', c_standardcost = "+insert_val[6]+", c_displacement = '"+insert_val[7]+"', c_fe = '"+insert_val[8]+"', c_photo = '', c_type = '"+insert_val[9]+"' where c_id = '"+insert_val[0]+"'";
+		String updatesql_2 = " set c_id = '"+input_data[0]+"', c_brand = '"+insert_val[1]+"', c_name = '"+insert_val[2]+"', c_releasecost = "+insert_val[7]+", c_yearmodel = '"+insert_val[3]+"', c_fuel = '"+insert_val[4]+"', c_standardcost = "+insert_val[8]+", c_displacement = '"+insert_val[5]+"', c_fe = '"+insert_val[6]+"', c_photo = '', c_type = '"+insert_val[0]+"' where c_id = '"+input_data[0]+"'";
 		String updatesql;
 		
 		updatesql = updatesql_1	+ table_name + updatesql_2;
