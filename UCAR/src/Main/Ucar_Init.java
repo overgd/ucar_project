@@ -629,6 +629,13 @@ public class Ucar_Init extends Base_Window {
 							e1.printStackTrace();
 						} 
 						finally {
+							result_panel[0].DB_Connect();
+							try {
+								result_panel[0].DB_Select("car_info", "");
+							} catch (SQLException e1) {
+								
+								e1.printStackTrace();
+							}
 							layout.show(slide, "car_result_0");
 						}
 				}
@@ -643,6 +650,13 @@ public class Ucar_Init extends Base_Window {
 					}
 					insert_panel[0].DB_Connect();
 					insert_panel[0].DB_insert("car_info", insert_val);
+					result_panel[0].DB_Connect();
+					try {
+						result_panel[0].DB_Select("car_info", "and c_id = '"+input_data[0]+"'");
+					} catch (SQLException e1) {
+						
+						e1.printStackTrace();
+					}
 					layout.show(slide, "car_result_0");
 				}
 				if(btn == insert_panel[1].bottom_btn[0]) {
@@ -653,6 +667,13 @@ public class Ucar_Init extends Base_Window {
 					}
 					insert_panel[1].DB_Connect();
 					insert_panel[1].DB_insert("car_info", insert_val);
+					result_panel[0].DB_Connect();
+					try {
+						result_panel[0].DB_Select("car_info", "and c_id = '"+input_data[0]+"'");
+					} catch (SQLException e1) {
+	
+						e1.printStackTrace();
+					}
 					layout.show(slide, "car_result_0");
 				}
 			}
