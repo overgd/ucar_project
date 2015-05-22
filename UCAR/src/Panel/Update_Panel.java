@@ -19,7 +19,7 @@ import javax.swing.event.ListSelectionEvent;
 import DB.DB_Conn;
 import Window.Base_Window_Panel;
 
-public class Insert_Panel extends Base_Window_Panel {
+public class Update_Panel extends Base_Window_Panel {
 
 	public DB_Conn conn;
 	public Connection con;
@@ -40,7 +40,7 @@ public class Insert_Panel extends Base_Window_Panel {
 	
 	public int btn_num;
 	
-	public Insert_Panel() {
+	public Update_Panel() {
 		
 		super();
 		

@@ -32,6 +32,7 @@ import Panel.Search_Panel;
 import Panel.Third_Panel;
 import Panel.TopAndBottom_Panel;
 import Panel.TwoButton_Panel;
+import Panel.Update_Panel;
 import Sale.Sale_Panel_0;
 import Sale.Sale_Panel_6_0;
 import User.User_Panel_0;
@@ -41,6 +42,7 @@ public class Ucar_Init extends Base_Window {
 	
 	Home_Panel home_panel;
 	
+	Update_Panel[] update_panel = null;
 	Detail_Panel[] detail_panel = null;
 	Insert_Panel[] insert_panel = null;
 	ResultTable_Panel[] result_panel = null;
@@ -50,7 +52,8 @@ public class Ucar_Init extends Base_Window {
 	
 	Insert_Panel test_panel = null;
 	
-	String[] input_data = null;
+	String[] input_data_1 = null;
+	String[] table_input_data = null;
 	
 	int location_id;
 	
@@ -90,7 +93,7 @@ public class Ucar_Init extends Base_Window {
 		
 		if(btn == home_panel.car_btn) {
 			detail_panel = new Detail_Panel[1];
-			detail_panel[0] = new Car_Panel_1_2_1(input_data);
+			detail_panel[0] = new Car_Panel_1_2_1(table_input_data);
 			
 			for(int i = 0; i < detail_panel.length; i++) {
 				detail_panel[i].backbtn.addActionListener(this);
@@ -108,9 +111,9 @@ public class Ucar_Init extends Base_Window {
 	public void insert_panel_add(JButton btn) {//////////////////////등록, 수정 패널
 		
 		if(btn == home_panel.car_btn) {///////////////////////////차
-			insert_panel = new Insert_Panel[2];
+			insert_panel = new Insert_Panel[1];
 			insert_panel[0] = new Car_Panel_1_2_2();
-			insert_panel[1] = new Car_Panel_1_2_3(input_data);
+//			insert_panel[1] = new Car_Panel_1_2_3(table_input_data);
 			
 			for(int i = 0; i < insert_panel.length; i++) {
 				insert_panel[i].backbtn.addActionListener(this);
@@ -124,13 +127,32 @@ public class Ucar_Init extends Base_Window {
 		
 	}
 	
+	public void update_panel_add(JButton btn) {//////////////////////등록, 수정 패널
+		
+		if(btn == home_panel.car_btn) {///////////////////////////차
+			update_panel = new Update_Panel[1];
+//			update_panel[0] = new Car_Panel_1_2_2();
+			update_panel[0] = new Car_Panel_1_2_3(table_input_data);
+			
+			for(int i = 0; i < update_panel.length; i++) {
+				update_panel[i].backbtn.addActionListener(this);
+				update_panel[i].homebtn.addActionListener(this);
+				for(int c = 0; c < update_panel[i].btn_num; c++){
+					update_panel[i].bottom_btn[c].addActionListener(this);
+				}
+				slide.add(update_panel[i], "car_update_"+i);
+			}
+		}
+		
+	}
+	
 	public void result_panel_add(JButton btn) {/////////////////////////결과 패널 추가
 		
 		if(btn == home_panel.car_btn) { ///////////////////////////차
 			result_panel = new ResultTable_Panel[2];
-			if(input_data[0] != null){
-				result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
-				result_panel[1] = new Car_Panel_2_2("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"')"); //중고차 차종 검색
+			if(input_data_1[0] != null){
+				result_panel[0] = new Car_Panel_1_2("car_info", "and c_type = '"+input_data_1[0]+"' and c_brand = '"+input_data_1[1]+"' and c_name = '"+input_data_1[2]+"'"); //자동차 검색
+				result_panel[1] = new Car_Panel_2_2("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data_1[0]+"' and c_brand = '"+input_data_1[1]+"' and c_name = '"+input_data_1[2]+"')"); //중고차 차종 검색
 			}
 			else{
 				result_panel[0] = new Car_Panel_1_2("car_info", " "); //자동차 검색
@@ -151,8 +173,8 @@ public class Ucar_Init extends Base_Window {
 		
 		if(btn == home_panel.deal_btn) { ///////////////////////////매매
 			result_panel = new ResultTable_Panel[4];
-			result_panel[0] = new Deal_Panel_1_4("car_info", "and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"'"); //자동차 검색
-			result_panel[1] = new Deal_Panel_2_4("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data[0]+"' and c_brand = '"+input_data[1]+"' and c_name = '"+input_data[2]+"')"); //중고차 차종 검색
+			result_panel[0] = new Deal_Panel_1_4("car_info", "and c_type = '"+input_data_1[0]+"' and c_brand = '"+input_data_1[1]+"' and c_name = '"+input_data_1[2]+"'"); //자동차 검색
+			result_panel[1] = new Deal_Panel_2_4("usedcar_info", "and uc_c_id = (select c_id from car_info where 1=1 and c_type = '"+input_data_1[0]+"' and c_brand = '"+input_data_1[1]+"' and c_name = '"+input_data_1[2]+"')"); //중고차 차종 검색
 			result_panel[2] = new Deal_Panel_1_4("car_info", ""); ///차종 전체 검색 결과
 			result_panel[3] = new Deal_Panel_2_4("usedcar_info", "");  ///중고차 전체 검색 결과
 			
@@ -363,14 +385,14 @@ public class Ucar_Init extends Base_Window {
 		
 		int row = result_panel[0].table.getSelectedRow(); //마우스로 클릭한 행
 		int column = result_panel[0].table.getSelectedColumn(); //마우스로 클릭한 열
-		input_data = new String[result_panel[0].table.getColumnCount()];
+		table_input_data = new String[result_panel[0].table.getColumnCount()];
 
 		for(int i = 0; i < result_panel[0].table.getColumnCount() ;i++){
 			try {
-				input_data[i] = (String) result_panel[0].table.getValueAt(row, i);
+				table_input_data[i] = (String) result_panel[0].table.getValueAt(row, i);
 			}
 			catch(ClassCastException ce){
-				input_data[i] = result_panel[0].table.getValueAt(row, i).toString();
+				table_input_data[i] = result_panel[0].table.getValueAt(row, i).toString();
 			}
 		}
 				
@@ -449,9 +471,9 @@ public class Ucar_Init extends Base_Window {
 			
 			for(int c = 0; c < search_panel.length; c++){
 				if(btn == search_panel[c].bottom_btn[0]) { ///+조회창 확인 버튼
-					input_data = new String[3];
-					for(int i = 0; i < input_data.length; i++){
-						input_data[i] = search_panel[c].selection[i];
+					input_data_1 = new String[3];
+					for(int i = 0; i < input_data_1.length; i++){
+						input_data_1[i] = search_panel[c].selection[i];
 //						System.out.println(search_panel[c].selection[i]);
 					}
 				}
@@ -618,13 +640,13 @@ public class Ucar_Init extends Base_Window {
 					layout.show(slide, "car_insert_0");
 				}
 				if(btn == result_panel[0].bottom_btn[2]) {
-					insert_panel_add(home_panel.car_btn);
-					layout.show(slide, "car_insert_1");
+					update_panel_add(home_panel.car_btn);
+					layout.show(slide, "car_update_0");
 				}
 				if(btn == result_panel[0].bottom_btn[3]) {
 						try {
 							result_panel[0].DB_Connect();
-							result_panel[0].DB_Delete("car_info", input_data);
+							result_panel[0].DB_Delete("car_info", table_input_data);
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						} 
@@ -648,28 +670,38 @@ public class Ucar_Init extends Base_Window {
 					for(int i = 0; i < insert_val.length; i++){
 						insert_val[i] = insert_panel[0].input_text[i].getText();
 					}
+					
 					insert_panel[0].DB_Connect();
 					insert_panel[0].DB_insert("car_info", insert_val);
 					result_panel[0].DB_Connect();
 					try {
-						result_panel[0].DB_Select("car_info", "and c_id = '"+input_data[0]+"'");
+						result_panel[0].DB_Select("car_info", "and c_id = '"+insert_val[0]+"'");
 					} catch (SQLException e1) {
 						
 						e1.printStackTrace();
 					}
 					layout.show(slide, "car_result_0");
 				}
-				if(btn == insert_panel[1].bottom_btn[0]) {
-					String[] insert_val = new String[insert_panel[1].input_text.length];
+			}
+			
+			if(update_panel != null) {
+				
+				if(btn == update_panel[0].bottom_btn[0]) {//////////////수정
+					String[] insert_val = new String[update_panel[0].input_text.length];
+					
+					input_data_1 = new String[insert_val.length];
 					
 					for(int i = 0; i < insert_val.length; i++){
-						insert_val[i] = insert_panel[1].input_text[i].getText();
+						insert_val[i] = update_panel[0].input_text[i].getText();
+						input_data_1[i] = insert_val[i];
 					}
-					insert_panel[1].DB_Connect();
-					insert_panel[1].DB_insert("car_info", insert_val);
+					
+					update_panel[0].DB_Connect();
+					update_panel[0].DB_Update("car_info", table_input_data, input_data_1);
 					result_panel[0].DB_Connect();
+					
 					try {
-						result_panel[0].DB_Select("car_info", "and c_id = '"+input_data[0]+"'");
+						result_panel[0].DB_Select("car_info", "and c_id = '"+table_input_data[0]+"'");
 					} catch (SQLException e1) {
 	
 						e1.printStackTrace();

@@ -9,8 +9,8 @@ public class DB_Conn {
 	Statement stmt;
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@192.168.43.103:1521:xe";
-//	String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+//	String url = "jdbc:oracle:thin:@192.168.43.103:1521:xe";
+	String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	
 	public Connection getConnection() throws Exception {
 		
@@ -18,6 +18,7 @@ public class DB_Conn {
 		Connection con = DriverManager.getConnection(url, "tm1", "1234");
 //		Connection con = DriverManager.getConnection(url, "hr", "hr");
 		stmt = con.createStatement();
+		
 		return con;
 		
 	}
