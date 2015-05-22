@@ -35,6 +35,8 @@ public class Insert_Panel extends Base_Window_Panel {
 	public String[] label_name = {""};
 	public JTextField[] input_text;
 	
+	public String[] data = null;
+	
 	public int btn_num;
 	
 	public Insert_Panel() {
@@ -42,6 +44,19 @@ public class Insert_Panel extends Base_Window_Panel {
 		super();
 		
 	}
+	
+	public void insert_data_add(String[] input_data) {
+		
+		data = null;
+		
+		if(input_data != null) {
+			data = new String[input_data.length];
+			for(int i = 0; i < input_data.length; i++){
+				data[i] = input_data[i];
+			}
+		}
+	}
+	
 	public void DB_insert(String table_name, String[] insert_val) {
 		
 	}
@@ -99,7 +114,7 @@ public class Insert_Panel extends Base_Window_Panel {
 		
 		input_panel_1 = new JPanel(new GridLayout(label_name.length, 1));
 		input_panel_1.setBackground(Color.WHITE);
-		input_panel_1.setBounds(190, 20, 200, 380);
+		input_panel_1.setBounds(190, 20, 110, 380);
 		input_panel_2 = new JPanel(new GridLayout(label_name.length, 1));
 		input_panel_2.setBounds(300, 20, 200, 380);
 		
@@ -117,6 +132,19 @@ public class Insert_Panel extends Base_Window_Panel {
 			label[i].setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 			
 			input_text[i] = new JTextField("");
+			if(data != null) {
+				input_text[0] = new JTextField(data[10]);
+				input_text[1] = new JTextField(data[1]);
+				input_text[2] = new JTextField(data[2]);
+				input_text[3] = new JTextField(data[4]);
+				input_text[4] = new JTextField(data[5]);
+				input_text[5] = new JTextField(data[7]);
+				input_text[6] = new JTextField(data[8]);
+				input_text[7] = new JTextField(data[3]);
+				input_text[8] = new JTextField(data[6]);
+			}
+			
+//			input_text[i] = new JTextField("");
 			input_text[i].setFont(new Font("¸¼Àº °íµñ", 0, 20));
 			
 			input_panel_1.add(label[i]);

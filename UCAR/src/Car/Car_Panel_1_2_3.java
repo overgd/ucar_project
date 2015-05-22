@@ -13,16 +13,41 @@ public class Car_Panel_1_2_3 extends Insert_Panel {
 	public String[] label_name = {"차   종 ", "브랜드 ", "모델명 ", "연   식 ", "연   료", "배기량", "연   비", "출고가", "기준가"}; 
 	public String[] btn_name = {"수정"};
 	
-	public Car_Panel_1_2_3() {
+	public Car_Panel_1_2_3(String[] input_data) {
 		
 		super();
 		
 		btn_num = btn_name.length;
 		
 		base_top_visible(true, subject);
+		insert_data_add(input_data);
 		insert_form_add(label_name);
 		base_bottom_visible(true, btn_name);
 	
+	}
+
+	@Override
+	public void insert_data_add(String[] input_data) {
+		// TODO Auto-generated method stub
+		super.insert_data_add(input_data);
+	}
+
+	@Override
+	public void DB_insert(String table_name, String[] insert_val) {
+		// TODO Auto-generated method stub
+		super.DB_insert(table_name, insert_val);
+	}
+
+	@Override
+	public void DB_Connect() {
+		// TODO Auto-generated method stub
+		super.DB_Connect();
+	}
+
+	@Override
+	public void DB_Select(String column, String where) {
+		// TODO Auto-generated method stub
+		super.DB_Select(column, where);
 	}
 
 	@Override

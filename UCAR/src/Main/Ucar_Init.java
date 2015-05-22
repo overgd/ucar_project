@@ -50,7 +50,7 @@ public class Ucar_Init extends Base_Window {
 	
 	Insert_Panel test_panel = null;
 	
-	String[] input_data;
+	String[] input_data = null;
 	
 	int location_id;
 	
@@ -110,7 +110,7 @@ public class Ucar_Init extends Base_Window {
 		if(btn == home_panel.car_btn) {///////////////////////////차
 			insert_panel = new Insert_Panel[2];
 			insert_panel[0] = new Car_Panel_1_2_2();
-			insert_panel[1] = new Car_Panel_1_2_3();
+			insert_panel[1] = new Car_Panel_1_2_3(input_data);
 			
 			for(int i = 0; i < insert_panel.length; i++) {
 				insert_panel[i].backbtn.addActionListener(this);
@@ -363,18 +363,15 @@ public class Ucar_Init extends Base_Window {
 		
 		int row = result_panel[0].table.getSelectedRow(); //마우스로 클릭한 행
 		int column = result_panel[0].table.getSelectedColumn(); //마우스로 클릭한 열
-		
 		input_data = new String[result_panel[0].table.getColumnCount()];
 
 		for(int i = 0; i < result_panel[0].table.getColumnCount() ;i++){
-			
 			try {
-				input_data[i] = (String) result_panel[0].table.getValueAt(0, i);
+				input_data[i] = (String) result_panel[0].table.getValueAt(row, i);
 			}
 			catch(ClassCastException ce){
-				input_data[i] = result_panel[0].table.getValueAt(0, i).toString();
+				input_data[i] = result_panel[0].table.getValueAt(row, i).toString();
 			}
-			
 		}
 				
 	}
@@ -646,6 +643,16 @@ public class Ucar_Init extends Base_Window {
 					}
 					insert_panel[0].DB_Connect();
 					insert_panel[0].DB_insert("car_info", insert_val);
+					layout.show(slide, "car_result_0");
+				}
+				if(btn == insert_panel[1].bottom_btn[0]) {
+					String[] insert_val = new String[insert_panel[1].input_text.length];
+					
+					for(int i = 0; i < insert_val.length; i++){
+						insert_val[i] = insert_panel[1].input_text[i].getText();
+					}
+					insert_panel[1].DB_Connect();
+					insert_panel[1].DB_insert("car_info", insert_val);
 					layout.show(slide, "car_result_0");
 				}
 			}

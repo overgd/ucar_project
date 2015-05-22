@@ -74,7 +74,20 @@ public class Detail_Panel extends Base_Window_Panel {
 			label[i] = new JLabel(label_name[i]);
 			label[i].setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 			
-			detail_text[i] = new JTextField(data[i]);
+			detail_text[i] = new JTextField("");
+			if(data != null) {
+				detail_text[0] = new JTextField(data[0]);
+				detail_text[1] = new JTextField(data[10]);
+				detail_text[2] = new JTextField(data[1]);
+				detail_text[3] = new JTextField(data[2]);
+				detail_text[4] = new JTextField(data[4]);
+				detail_text[5] = new JTextField(data[5]);
+				detail_text[6] = new JTextField(data[7]);
+				detail_text[7] = new JTextField(data[8]);
+				detail_text[8] = new JTextField(data[3]);
+				detail_text[9] = new JTextField(data[6]);
+			}
+			
 			detail_text[i].setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 			detail_text[i].setEnabled(false);
 
